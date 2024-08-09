@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)#/danh-muc/phan-mem -->
+<html lang="en" dir="ltr" xmlns:with="http://www.thymeleaf.org/extras/with"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Required meta tags -->
+	
+	<meta name="_csrf" content="b965e7f8-6059-4ba2-b000-f9fe754054d0">
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="X-CSRF-TOKEN">
+	
+		<title>ShopWaiting</title>
+		<meta property="og:title" content="ShopWaiting">
+		<meta property="og:description" content="ShopWaiting">
+		<meta name="description" content="ShopWaiting">
+		
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- fonts -->
+	<link rel="stylesheet" href="./css">
+	<link rel="shortcut icon" type="image/png" href="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-1/254119297_142829881414207_946298403396805965_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeFUuI3nRTXZ0kchwYqWNJ_BCKS4vcXh0UwIpLi9xeHRTM0v__L-6j6DBJWy_ahxJ-8wNuYNTG0N_wJwA1upND1q&_nc_ohc=giQfv65HQZAQ7kNvgGrK229&_nc_ht=scontent.fsgn5-10.fna&oh=00_AYAdfU2tTAgvFoBr8jGkJy54kJNOfCLUubl_9pv30YesEA&oe=66BBD7DC"/>
+	<!-- css -->
+	<link rel="stylesheet" href="./bootstrap.min.css">
+	<link rel="stylesheet" href="./owl.carousel.min.css">
+	<link rel="stylesheet" href="./photoswipe.css">
+	<link rel="stylesheet" href="./default-skin.css">
+	<link rel="stylesheet" href="./select2.min.css">
+	<link rel="stylesheet" href="./style.css">
+	<!-- font - fontawesome -->
+	<link rel="stylesheet" href="./all.min.css">
+	<!-- font - stroyka -->
+	<link rel="stylesheet" href="./stroyka.css">
+	<link rel="stylesheet" href="./jquery.dataTables.min.css">
+	<link rel="stylesheet" href="./sweetalert.css">
+	<link rel="stylesheet" href="./toastr.min.css">
+	<link rel="stylesheet" href="./default.min.css">
+	<script src="./sceditor.min.js.download"></script>
+	
+	<link href="./datepicker.css" rel="stylesheet" type="text/css">
+	<script src="./jquery-3.5.1.js.download"></script>
+	<script src="./moment.min.js.download"></script>
+
+	
+	<style>
+		.container_fix {
+			width: 100%;
+			padding-right: 15px;
+			padding-left: 20px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		@media (max-width: 768px){
+			.container_fix{
+			    padding-right: 0px;
+				padding-left: 15px;
+			}
+		}
+		.holder {
+			z-index: 1000;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+		}
+
+		.preloader {
+			/* size */
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			animation: rotatePreloader 2s infinite ease-in;
+		}
+
+		@keyframes rotatePreloader {
+			0% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+			}
+			100% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+			}
+		}
+		.preloader div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+
+		.preloader div:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 0%;
+			width: 10%;
+			height: 10%;
+			background-color: #21be73;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+
+		.preloader div:nth-child(1) {
+			transform: rotateZ(0deg);
+			animation: rotateCircle1 2s infinite linear;
+			z-index: 9;
+		}
+
+		@keyframes rotateCircle1 {
+			0% {
+				opacity: 0;
+			}
+			0% {
+				opacity: 1;
+				transform: rotateZ(36deg);
+			}
+			7% {
+				transform: rotateZ(0deg);
+			}
+			57% {
+				transform: rotateZ(0deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(2) {
+			transform: rotateZ(36deg);
+			animation: rotateCircle2 2s infinite linear;
+			z-index: 8;
+		}
+
+		@keyframes rotateCircle2 {
+			5% {
+				opacity: 0;
+			}
+			5.0001% {
+				opacity: 1;
+				transform: rotateZ(0deg);
+			}
+			12% {
+				transform: rotateZ(-36deg);
+			}
+			62% {
+				transform: rotateZ(-36deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(3) {
+			transform: rotateZ(72deg);
+			animation: rotateCircle3 2s infinite linear;
+			z-index: 7;
+		}
+
+		@keyframes rotateCircle3 {
+			10% {
+				opacity: 0;
+			}
+			10.0002% {
+				opacity: 1;
+				transform: rotateZ(-36deg);
+			}
+			17% {
+				transform: rotateZ(-72deg);
+			}
+			67% {
+				transform: rotateZ(-72deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(4) {
+			transform: rotateZ(108deg);
+			animation: rotateCircle4 2s infinite linear;
+			z-index: 6;
+		}
+
+		@keyframes rotateCircle4 {
+			15% {
+				opacity: 0;
+			}
+			15.0003% {
+				opacity: 1;
+				transform: rotateZ(-72deg);
+			}
+			22% {
+				transform: rotateZ(-108deg);
+			}
+			72% {
+				transform: rotateZ(-108deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(5) {
+			transform: rotateZ(144deg);
+			animation: rotateCircle5 2s infinite linear;
+			z-index: 5;
+		}
+
+		@keyframes rotateCircle5 {
+			20% {
+				opacity: 0;
+			}
+			20.0004% {
+				opacity: 1;
+				transform: rotateZ(-108deg);
+			}
+			27% {
+				transform: rotateZ(-144deg);
+			}
+			77% {
+				transform: rotateZ(-144deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(6) {
+			transform: rotateZ(180deg);
+			animation: rotateCircle6 2s infinite linear;
+			z-index: 4;
+		}
+
+		@keyframes rotateCircle6 {
+			25% {
+				opacity: 0;
+			}
+			25.0005% {
+				opacity: 1;
+				transform: rotateZ(-144deg);
+			}
+			32% {
+				transform: rotateZ(-180deg);
+			}
+			82% {
+				transform: rotateZ(-180deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(7) {
+			transform: rotateZ(216deg);
+			animation: rotateCircle7 2s infinite linear;
+			z-index: 3;
+		}
+
+		@keyframes rotateCircle7 {
+			30% {
+				opacity: 0;
+			}
+			30.0006% {
+				opacity: 1;
+				transform: rotateZ(-180deg);
+			}
+			37% {
+				transform: rotateZ(-216deg);
+			}
+			87% {
+				transform: rotateZ(-216deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(8) {
+			transform: rotateZ(252deg);
+			animation: rotateCircle8 2s infinite linear;
+			z-index: 2;
+		}
+
+		@keyframes rotateCircle8 {
+			35% {
+				opacity: 0;
+			}
+			35.0007% {
+				opacity: 1;
+				transform: rotateZ(-216deg);
+			}
+			42% {
+				transform: rotateZ(-252deg);
+			}
+			92% {
+				transform: rotateZ(-252deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(9) {
+			transform: rotateZ(288deg);
+			animation: rotateCircle9 2s infinite linear;
+			z-index: 1;
+		}
+
+		@keyframes rotateCircle9 {
+			40% {
+				opacity: 0;
+			}
+			40.0008% {
+				opacity: 1;
+				transform: rotateZ(-252deg);
+			}
+			47% {
+				transform: rotateZ(-288deg);
+			}
+			97% {
+				transform: rotateZ(-288deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(10) {
+			transform: rotateZ(324deg);
+			animation: rotateCircle10 2s infinite linear;
+			z-index: 0;
+		}
+
+		@keyframes rotateCircle10 {
+			45% {
+				opacity: 0;
+			}
+			45.0009% {
+				opacity: 1;
+				transform: rotateZ(-288deg);
+			}
+			52% {
+				transform: rotateZ(-324deg);
+			}
+			102% {
+				transform: rotateZ(-324deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="site">
+		<!-- mobile site__header -->
+<div id="wrapper"></div><header class="site__header d-lg-none" style="">
+    <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
+    <div class="mobile-header mobile-header--sticky" data-sticky-mode="pullToShow">
+        <div class="mobile-header__panel" style="background:rgb(19,117,255)">
+            <div class="container_fix">
+                <div class="mobile-header__body">
+                    <button class="mobile-header__menu-button">
+                        <div class="nav-panel__nav-links nav-links">
+                            <ul class="nav-links__list">
+
+                                    <li class="nav-links__item">
+                                        <a class="nav-links__item-link" href="index.html">
+                                            <div class="nav-links__item-body">Sản Phẩm</div>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-links__item">
+                                        <a class="nav-links__item-link" href="index.html">
+                                            <div class="nav-links__item-body">Liên Hệ</div>
+                                        </a>
+                                    </li> 
+
+									<li class="nav-links__item">
+									    <a id="napTienLink" class="nav-links__item-link" href="naptien.html">
+									        <div class="nav-links__item-body">Nạp Tiền</div>
+									    </a>
+									</li>                               
+                            </ul>
+                        </div>    
+                    </button>
+                    <a class="mobile-header__logo" href="index.html">
+                        <img src="./logo1.png" alt="Logo" height="45">
+                    </a>
+
+                    <div class="mobile-header__indicators">
+                        
+                        
+                            <div class="indicator indicator--mobile-search indicator--mobile d-md">
+                                <a class="indicator__button" href="#rene_hwceft">
+									<span class="indicator__area">
+										<svg width="20px" height="20px">
+											<use xlink:href="/images/svg/sprite.svg#person-20"></use>
+										</svg>
+									</span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-header__topbar" style="background-color:white;border: none;">
+                <div class="topbar__container container_fix">
+                    <div class="topbar__row">
+                        <marquee style="color: #ff2626;">ShopWaiting - Uy Tín - Chất Lượng - Nhanh Chóng</marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- mobile site__header / end -->
+
+<!-- desktop site__header -->
+<div id="wrapper" style="height: 0px;"></div><header class="site__header d-lg-block d-none">
+    <div class="site-header">
+        <!-- .topbar -->
+        <div class="site-header__topbar topbar" style="background-color:white;">
+            <div class="topbar__container container_fix">
+                <div class="topbar__row">
+                    <div class="topbar__item topbar__item--link">
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link">Hỗ trợ trực tuyến:</a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186" class="topbar-link" style="color: #21bf73;">
+                                <i class="footer-contacts__icon fab fa-facebook"></i>ShopWaiting
+                            </a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link">
+                                <i class="footer-contacts__icon far fa-envelope"></i>dphat1601@gmail.com
+                            </a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link"> <i class="footer-contacts__icon far fa-clock"></i>08:00am - 23:00pm</a>
+                        </div>
+                    </div>
+
+                    <div class="topbar__spring"></div>
+                    <div class="topbar__item">
+                        <div class="topbar-dropdown">
+                            <button class="topbar-dropdown__btn" type="button">
+                                <a style="color: #ff2626;" href="">ShopWaiting</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="topbar__item">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .topbar / end -->
+
+        <div class="site-header__nav-panel">
+            <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow" style="background: rgb(19,117,255);">
+                <div class="nav-panel__container container_fix">
+                    <div class="nav-panel__row">
+                        <div class="nav-panel__logo">
+                            <a href="#/">
+                                <img src="./logo1.png" alt="Logo" height="45">
+                            </a>
+                        </div>
+                        <!-- .nav-links -->
+                        <div class="nav-panel__nav-links nav-links">
+                            <ul class="nav-links__list">
+
+
+                                    <li class="nav-links__item">
+                                        <a class="nav-links__item-link" href="index.html">
+                                            <div class="nav-links__item-body">Sản Phẩm</div>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-links__item">
+                                        <a class="nav-links__item-link" href="index.html">
+                                            <div class="nav-links__item-body">Liên Hệ</div>
+                                        </a>
+                                    </li> 
+
+									<li class="nav-links__item">
+									    <a id="napTienLink" class="nav-links__item-link" href="">
+									        <div class="nav-links__item-body">Nạp Tiền</div>
+									    </a>
+									</li>
+
+
+                            
+                                
+                            </ul>
+                        </div>
+                        <!-- .nav-links / end -->
+                        <div class="nav-panel__indicators">
+                            <div class="indicator">
+                                <a href="naptien.html" class="indicator__button">
+									<span class="indicator__area" id="homeUserBalance">0 VND</span>
+                                </a>
+                               
+                            </div>
+
+                            
+                    </div>
+                </div>
+            </div>
+
+			<div class="site-header__topbar" style="background-color:white;border: none;">
+			    <div class="topbar__container container_fix">
+			        <div class="topbar__row">
+			            <marquee class="neon-text" >
+			                ShopWaiting - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết
+			            </marquee>
+			        </div>
+			    </div>
+			</div>
+        </div>
+    </div>
+   
+</header>
+
+
+
+<article class="card" style="margin-bottom: 15px">
+    <div class="card-body row">
+        <div class="col"><strong>Mã đơn #:</strong>
+            <br> D66B64CB4C017C
+        </div>
+        <div class="col"><strong>Số tiền:</strong>
+            <br> Tùy Chỉnh</div>
+        <div class="col"><strong>TT hóa đơn:</strong><br>
+            <label class="badge badge-module badge-warning">Chưa thanh toán</label>
+        </div>
+        <div class="col"><strong>Ngày tạo:</strong>
+        <div><span id="currentDate"></span></div>
+        </div>
+        <script type="text/javascript">
+		    // Hàm để định dạng ngày theo định dạng "dd/mm/yyyy"
+		    function formatDate(date) {
+		        const day = String(date.getDate()).padStart(2, '0');
+		        const month = String(date.getMonth() + 1).padStart(2, '0');
+		        const year = date.getFullYear();
+		        return `${day}/${month}/${year}`;
+		    }
+
+		    // Hàm để cập nhật thời gian
+		    function updateDateTime() {
+		        const now = new Date();
+		        document.getElementById('currentDate').textContent = formatDate(now);
+		    }
+
+		    // Cập nhật thời gian ngay lập tức
+		    updateDateTime();
+
+		    // Cập nhật thời gian mỗi giây
+		    setInterval(updateDateTime, 1000);
+	    </script>
+    </div>
+</article>
+
+ <div class="container">
+        <div class="row justify-content-md-center" style="padding:5px">
+            
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="heading-m1">
+
+                    <div class="card-body" style="font-size:15px">
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <img style="width: 10rem;" src="./mb.png">
+							    <ul>
+							        <li class="item_bank">Ngân Hàng: <b>MB Bank</b></li>
+							        <li class="item_bank">STK: <b>0343406068</b></li>
+							        <li class="item_bank">Người nhận: <b style="font-size: 14px;">DAO DUY PHAT</b></li>
+							        <li class="item_bank">
+							            Nội dung chuyển khoản:
+							            <a id="memo_bank_main"></a>
+							            <script>
+							                // Generate a random number
+							                let randomNum = Math.floor(Math.random() * 100 + 101); // Random number between 101 and 200
+
+							                // Set the content of the link
+							                document.getElementById("memo_bank_main").textContent = "WT" + randomNum;
+							            </script>
+							        </li>
+							    </ul>
+							    <style type="text/css">
+							        ul {
+							            list-style-type: none;
+							            padding: 0;
+							        }
+							        .item_bank {
+							            background-color: #f9f9f9;
+							            border: 1px solid #ddd;
+							            border-radius: 8px;
+							            margin: 10px 0;
+							            padding: 10px;
+							            font-family: Arial, sans-serif;
+							            font-size: 16px;
+							        }
+							        .item_bank b {
+							            display: inline-block;
+							            padding: 5px;
+							        }
+							        #memo_bank_main {
+							            font-weight: bold;
+							            font-size: 20px;
+							            color: green;
+							        }
+							    </style>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="text-center text-danger">Quét mã QR Code để số tài khoản khoản chính xác</p>
+                                <p class="text-center">
+                                    <img src="./generateQRCode" style="width: 250px; height: 250px;">
+
+
+                                </p>
+                            </div>
+                            <div class="col-lg-12" style="padding-left:15px;">
+                                <p style="color:red; padding-top:15px;"><b>Lưu ý:</b></p>
+                                <li class="text-danger">Vui lòng điền chính xác nội dung chuyển khoản để thực hiện nạp tiền tự động.</li>
+                                <li>Tiền sẽ vào tài khoảng trong vòng 1-10 phút kể từ khi giao dịch thành công. Tuy nhiên đôi lúc do một vài lỗi khách quan, tiền có thể sẽ vào chậm hơn một chút.</li>
+                                <li><span style="color:red;">Vietcombank trong khoảng 23-3h không thể kiểm tra lịch sử giao dịch</span>, các giao dịch trong khung giờ này có thể mất từ 15 phút đến 2 giờ tiền mới vào tài khoản. Bạn có thể tránh nạp tiền trong khung giờ này để đỡ mất thời gian chờ đợi nhé.</li>
+                                <li style="padding-bottom: 10px;">Nếu quá lâu không thấy cập nhật số dư, Vui lòng liên hệ hỗ trợ viên:
+                                    <a target="_blank" href="https://zalo.me/0343406068">Tại đây</a>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer class="site__footer">
+	<div id="site_footer" class="site-footer">
+		<div class="container">
+			<div class="site-footer__widgets">
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-contacts">
+							<h5 class="footer-contacts__title">Liên hệ</h5>
+							<div class="footer-contacts__text">Liên hệ ngay nếu bạn có khó khăn khi sử dụng dịch vụ hoặc cần hợp tác.</div>
+							<ul class="footer-contacts__contacts">
+								<li><i class="footer-contacts__icon fa fa-paper-plane"></i><a rel="nofollow" href="https://zalo.me/0343406068" target="_blank">Chat với hỗ trợ viên</a></li>
+								<li><i class="footer-contacts__icon fab fa-facebook"></i><a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> ShopWaiting</a></li>
+								<li><i class="footer-contacts__icon far fa-envelope"></i> dphat1601@gmail.com</li>
+								<li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 08:00am - 23:00pm</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-links">
+							<h5 class="footer-links__title">Thông tin</h5>
+							<ul class="footer-links__list">
+								<li class="footer-links__item"><span class="footer-links__link">ShopWaiting - Chúng tôi cam kết mang đến cho bạn sản phẩm chất lượng nhất và dịch vụ giao hàng nhanh chóng, đúng hẹn, với sự hoàn hảo trong từng chi tiết, giúp mỗi giao dịch trở nên dễ dàng và đáng tin cậy</span></li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-links">
+							<h5 class="footer-links__title">Cộng Tác Viên</h5>
+							<ul class="footer-links__list">
+								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0343406068 - Duy Phát</span></li>
+								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0835228264 - Thái Nguyễn</span></li>
+
+							</ul>
+						</div>
+					</div>
+
+					
+				</div>
+			</div>
+			<div class="site-footer__bottom">
+				<div class="site-footer__copyright">
+					<a rel="nofollow" target="_blank" href="https://zalo.me/0343406068"> <b>All rights reserved:</b></a>
+					<a rel="nofollow" target="_blank" href="https://zalo.me/0343406068"> <b>ShopWaiting</b></a>
+				</div>
+			</div>
+		</div>
+
+		
+
+
+	
+
+	</div>
+</footer>
+<!-- site__footer / end -->
+
+		
+	<!-- mobilemenu -->
+	
+	<!-- mobilemenu / end -->
+
+
+		
+		
+	<!-- js -->
+
+
+
+		
+	</div>
+
+
+
+</body></html>
