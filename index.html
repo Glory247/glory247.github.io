@@ -7,10 +7,10 @@
 	<!-- default header name is X-CSRF-TOKEN -->
 	<meta name="_csrf_header" content="X-CSRF-TOKEN">
 	
-		<title>GloryShop</title>
-		<meta property="og:title" content="GloryShop">
-		<meta property="og:description" content="GloryShop">
-		<meta name="description" content="GloryShop">
+		<title>ShopWaiting</title>
+		<meta property="og:title" content="ShopWaiting">
+		<meta property="og:description" content="ShopWaiting">
+		<meta name="description" content="ShopWaiting">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- fonts -->
@@ -340,219 +340,6 @@
 </head>
 
 <body>
-
-
-	<div class="modal inmodal" id="resellerModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="display: none;">
-		<form method="post" id="formReseller" action=""><input type="hidden" name="_csrf" value="cdef9b21-6f87-4142-a13c-5101af0e1572">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			        <div class="modal-header">
-			            <h5 class="modal-title">Xác Nhận Đơn Hàng - WaitingShopVip</h5>
-			        </div>
-			        <div class="modal-body">
-			            <div class="row">
-			                <div style="padding-bottom:20px;" class="col-12 col-lg-12 col-xl-12">
-			                    <span class="text-success">Để đảm bảo bạn có một trải nghiệm mua sắm suôn sẻ và hài lòng, xin vui lòng xác nhận thông tin của bạn trước khi tiến hành đặt hàng.</span><br>
-			                    <span class="text-danger">Trước khi tiếp tục, chúng tôi xin lưu ý bạn hãy kiểm tra và chọn đúng mức giá của sản phẩm mà bạn muốn mua.</span>
-			                </div>
-			                <div class="col-12 col-lg-12 col-xl-12">
-			                    <div class="form-group">
-			                        <label>Chọn Thiết Bị Bạn Sử Dụng</label>
-			                        <select class="form-control" name="device" id="deviceSelect" required="required">
-			                            <option value="">Chưa Lựa Chọn</option>
-			                            <option value="windows">Windows</option>
-			                            <option value="mac">MacOS</option>
-			                            <option value="android">Android</option>
-			                            <option value="ios">iOS</option>
-			                            <option value="ps5">PlayStation 5</option>
-			                            <option value="xbox">Xbox Series X</option>
-			                            <!-- Thêm các lựa chọn khác nếu cần -->
-			                        </select>
-			                    </div>
-			                </div>
-
-			                <div class="col-12 col-lg-12 col-xl-12" id="productSection" style="display: none;">
-			                    <div class="form-group">
-			                        <label>Chọn Sản Phẩm Bạn Xác Nhận Mua</label>
-			                        <select class="form-control" name="product" id="productSelect" required="required">
-			                            <option value="">Chưa Lựa Chọn</option>
-			                            <!-- Các lựa chọn sản phẩm sẽ được thêm vào động -->
-			                        </select>
-			                    </div>
-			                </div>
-
-			                <div class="col-12 col-lg-12 col-xl-12" id="priceSection" style="display: none;">
-			                    <div class="form-group">
-			                        <label>Chọn Giá Tiền</label>
-			                        <select class="form-control" name="price" id="priceSelect" required="required">
-			                            <option value="">Chưa Lựa Chọn</option>
-			                            <!-- Các lựa chọn giá sẽ được thêm vào động -->
-			                        </select>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-
-			        <div class="modal-footer">
-			            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-			            <a href="naptien.html"><button type="button" id="paymentButton" class="btn btn-secondary" disabled>Thanh Toán</button></a>
-			            
-			        </div>
-			    </div>
-
-			    <script type="text/javascript">
-			        function validateForm() {
-			            var deviceSelect = document.getElementById('deviceSelect').value;
-			            var productSelect = document.getElementById('productSelect').value;
-			            var priceSelect = document.getElementById('priceSelect').value;
-
-			            var paymentButton = document.getElementById('paymentButton');
-
-			            if (deviceSelect && productSelect && priceSelect) {
-			                paymentButton.classList.remove('btn-secondary');
-			                paymentButton.classList.add('btn-primary');
-			                paymentButton.disabled = false;
-			            } else {
-			                paymentButton.classList.remove('btn-primary');
-			                paymentButton.classList.add('btn-secondary');
-			                paymentButton.disabled = true;
-			            }
-			        }
-
-			        function showProductOptions() {
-			            var deviceSelect = document.getElementById('deviceSelect');
-			            var productSection = document.getElementById('productSection');
-			            var productSelect = document.getElementById('productSelect');
-			            var priceSelect = document.getElementById('priceSelect');
-
-
-			            productSelect.innerHTML = '<option value="">Chưa Lựa Chọn</option>';
-
-			            if (deviceSelect.value) {
-			                productSection.style.display = 'block';
-			                if (deviceSelect.value === 'windows' || deviceSelect.value === 'mac') {
-			                    productSelect.innerHTML += '<option value="aurora">Phần Mềm Panel Aurora</option>';
-			                    productSelect.innerHTML += '<option value="heaven">Heaven Xiters Panel</option>';
-			                    productSelect.innerHTML += '<option value="abnormal">ABNORMAL RED ALL IN ONE PLAN PRICE</option>';
-			                    productSelect.innerHTML += '<option value="kratos">Kratos External Panel</option>';
-			                    productSelect.innerHTML += '<option value="regeditpc">Regedit Pc</option>';
-			                } else if (deviceSelect.value === 'android') {
-			                    productSelect.innerHTML += '<option value="regeditadr">Regedit Android</option>';
-			                    productSelect.innerHTML += '<option value="aimbotadr">Aimbot Android</option>';
-			                    productSelect.innerHTML += '<option value="sensi">Sensi</option>';
-			                } else if (deviceSelect.value === 'ios') {
-			                    productSelect.innerHTML += '<option value="regeditios">Regedit iOS</option>';
-			                    productSelect.innerHTML += '<option value="aimbotios">Aimbot iOS</option>';
-			                    productSelect.innerHTML += '<option value="sensi">Sensi</option>';
-			                }
-
-			                validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
-			            } else {
-			                productSection.style.display = 'none';
-			                document.getElementById('priceSection').style.display = 'none';
-			                document.getElementById('priceSelect').innerHTML = '<option value="">Chưa Lựa Chọn</option>';
-			                validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
-			            }
-			        }
-
-			        function showPriceOptions() {
-			            var productSelect = document.getElementById('productSelect');
-			            var priceSection = document.getElementById('priceSection');
-			            var priceSelect = document.getElementById('priceSelect');
-
-			            priceSelect.innerHTML = '<option value="">Chưa Lựa Chọn</option>';
-
-			            if (productSelect.value) {
-			                priceSection.style.display = 'block';
-
-			                if (productSelect.value === 'aurora') {
-			                    priceSelect.innerHTML += '<option value="#">15.000 đ | 6 giờ</option>';
-			                    priceSelect.innerHTML += '<option value="#">25.000 đ | 24 giờ</option>';
-			                    priceSelect.innerHTML += '<option value="#">200.000 đ | 15 ngày</option>';
-			                    priceSelect.innerHTML += '<option value="#">500.000 đ | 45 ngày</option>';
-			                    priceSelect.innerHTML += '<option value="#">800.000 đ | 90 ngày</option>';
-			                    priceSelect.innerHTML += '<option value="#">1.500.000 đ | Vĩnh viển | AimOnly</option>';
-			                    priceSelect.innerHTML += '<option value="#">2.000.000 đ | Vĩnh viển | AimXESP</option>';
-			                    priceSelect.innerHTML += '<option value="#">2.500.000 đ | Vĩnh viển | FullChucNang</option>';
-			                } else if (productSelect.value === 'heaven') {
-			                    priceSelect.innerHTML += '<option value="#">200.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">330.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">450.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">550.000 đ</option>';
-			                } else if (productSelect.value === 'abnormal') {
-			                    priceSelect.innerHTML += '<option value="#">200.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">250.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">300.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="#">330.000 đ</option>';
-			                } else if (productSelect.value === 'kratos') {
-			                    priceSelect.innerHTML += '<option value="200000">300.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="300000">440.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="400000">500.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="400000">650.000 đ</option>';
-			                } else if (productSelect.value === 'regeditpc') {
-			                    priceSelect.innerHTML += '<option value="50000">200.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="50000">330.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="100000">448.000 đ</option>';
-			                } else if (productSelect.value === 'aimbotadr') {
-			                    priceSelect.innerHTML += '<option value="70000">200.000 đ | 1 Thiết Bị </option>';
-			                    priceSelect.innerHTML += '<option value="70000">330.000 đ | 1 Thiết Bị</option>';
-			                    priceSelect.innerHTML += '<option value="70000">400.000 đ | 2 Thiết Bị</option>';
-			                    priceSelect.innerHTML += '<option value="120000">550.000 đ | 2 Thiết Bị</option>';
-			                    priceSelect.innerHTML += '<option value="120000">800.000 đ | 1 Thiết Bị</option>';
-			                    priceSelect.innerHTML += '<option value="120000">1.000.000 đ | 1 Thiết Bị</option>';
-			                    priceSelect.innerHTML += '<option value="120000">1.500.000 đ | 1 Thiết Bị</option>';
-			                } else if (productSelect.value === 'regeditadr') {
-			                    priceSelect.innerHTML += '<option value="70000">175.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="70000">250.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="70000">330.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="70000">400.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">550.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">800.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">1.000.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">1.450.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">2.000.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="120000">2.500.000 đ</option>';
-			                } else if (productSelect.value === 'sensi') {
-			                    priceSelect.innerHTML += '<option value="60000">50.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">110.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">410.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">510.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">850.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">1.550.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">2.000.000 đ</option>';
-			                } else if (productSelect.value === 'regeditios') {
-			                    priceSelect.innerHTML += '<option value="60000">190.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">250.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">375.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">510.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">720.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">850.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="110000">1.400.000 đ</option>';
-			                } else if (productSelect.value === 'aimbotios') {
-			                    priceSelect.innerHTML += '<option value="50000">200.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="50000">330.000 đ</option>';
-			                    priceSelect.innerHTML += '<option value="100000">400.000 đ</option>';
-			                }
-
-			                validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
-			            } else {
-			                priceSection.style.display = 'none';
-			                validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
-			            }
-			        }
-
-			        // Gán sự kiện onchange cho các select
-			        document.getElementById('deviceSelect').addEventListener('change', showProductOptions);
-			        document.getElementById('deviceSelect').addEventListener('change', showPriceOptions);
-			        document.getElementById('productSelect').addEventListener('change', showPriceOptions);
-			        document.getElementById('priceSelect').addEventListener('change', validateForm);
-			    </script>
-			</div>
-		</div>
-		</form>
-	</div>
-
-
 	<div class="site">
 		<!-- mobile site__header -->
 <div id="wrapper"></div><header class="site__header d-lg-none" style="">
@@ -571,7 +358,7 @@
                     <div class="mobile-header__indicators">
                         
                             <div class="indicator indicator--mobile-search indicator--mobile d-md">
-                                <a class="indicator__button" href="#login.html">
+                                <a class="indicator__button" href="https://zalo.me/0343406068">
 									<span class="indicator__area">
 										<svg width="20px" height="20px">
 											<use xlink:href="/images/svg/sprite.svg#person-20"></use>
@@ -588,9 +375,7 @@
             <div class="site-header__topbar" style="background-color:white;border: none;">
                 <div class="topbar__container container_fix">
                     <div class="topbar__row">
-                        <marquee style="color: #ff2626;">
-			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết
-			            .</marquee>
+                        <marquee style="color: #ff2626;">			                ShopWaiting - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
                     </div>
                 </div>
             </div>
@@ -611,22 +396,22 @@
                             <a class="topbar-link">Hỗ trợ trực tuyến:</a>
                         </div>
                         <div class="topbar__item topbar__item--link">
-                            <a target="_blank" href="https://zalo.me/0343406068" class="topbar-link" style="color: rgb(19,117,255);">
+                            <a target="_blank" href="https://fb.com/#" class="topbar-link" style="color: rgb(19,117,255);">
                                 <i class="footer-contacts__icon fab fa-facebook"></i>GloryShop
                             </a>
                         </div>
                         <div class="topbar__item topbar__item--link">
                             <a class="topbar-link">
-                                <i class="footer-contacts__icon far fa-envelope"></i>dphat1601@gmail.com
+                                <i class="footer-contacts__icon far fa-envelope"></i>support@#.net
                             </a>
                         </div>
                         <div class="topbar__item topbar__item--link">
-                            <a class="topbar-link"> <i class="footer-contacts__icon far fa-clock"></i>08:00am - 23:00pm</a>
+                            <a class="topbar-link"> <i class="footer-contacts__icon far fa-clock"></i>08:00am - 10:00pm</a>
                         </div>
                     </div>
 
                     <div class="topbar__spring"></div>
-
+   
 
                     <div class="topbar__item">
                         <div class="topbar-dropdown">
@@ -641,10 +426,10 @@
                                 <div class="menu menu--layout--topbar  menu--with-icons ">
                                     <div class="menu__submenus-container"></div>
                                     <ul class="menu__list">
- 
+
                                         <li class="menu__item">
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="">
+                                            <a class="menu__item-link" href="#">
                                                 <div class="menu__item-icon"><img src="./Mua bán Phần mềm - Tạp hoá MMO_files/vn.png" alt=""></div>
                                                 Tiếng Việt
                                             </a>
@@ -660,12 +445,11 @@
         <!-- .topbar / end -->
 
         <div class="site-header__nav-panel">
-            <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow" style="background: linear-gradient(to left, #00fffc, #a8ff97);">
-
+            <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow" style="background: linear-gradient(to right, #00ff84, white);">
                 <div class="nav-panel__container container_fix">
                     <div class="nav-panel__row">
                         <div class="nav-panel__logo">
-                            <a href="#">
+                            <a href="https://#.net/">
                                 <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/logo1.png" alt="Logo" height="45">
                             </a>
                         </div>
@@ -674,121 +458,24 @@
                             <ul class="nav-links__list">
 
                                 <li class="nav-links__item  nav-links__item--has-submenu ">
-                                    <a class="nav-links__item-link">
+                                    <a class="nav-links__item-link" href="index.html">
                                         <div style="cursor: pointer;" class="nav-links__item-body">
-                                            <div>Sản phẩm</div>
+                                            <div>Trang Chủ</div>
                                             <svg class="nav-links__item-arrow" width="9px" height="6px">
                                                 <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-9x6"></use>
                                             </svg>
                                         </div>
                                     </a>
-                                    <div class="nav-links__submenu nav-links__submenu--type--megamenu nav-links__submenu--size--x1">
-                                        <!-- .megamenu -->
-                                        <div class="megamenu ">
-                                            <div class="megamenu__body">
-                                                <div class="row">
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#">Phần mềm hỗ trợ</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#">Tài khoản game</a>
-                                                                    <div><a href="https://zalo.me/0343406068">(Liên Hệ Admin)</a></div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/tai-khoan"> </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/danh-muc-khac"> </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- .megamenu / end -->
-                                    </div>
+                       
                                 </li>
                                  
 
-                                <li class="nav-links__item  nav-links__item--has-submenu ">
-                                    <a class="nav-links__item-link">
-                                        <div style="cursor: pointer;" class="nav-links__item-body">
-                                            <div>Dịch vụ</div>
-                                            <svg class="nav-links__item-arrow" width="9px" height="6px">
-                                                <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-9x6"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    <div class="nav-links__submenu nav-links__submenu--type--megamenu nav-links__submenu--size--x1">
-                                        <!-- .megamenu -->
-                                        <div class="megamenu ">
-                                            <div class="megamenu__body">
-                                                <div class="row">
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/dich-vu-tuong-tac">Tăng tương tác</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/dich-vu-phan-mem">Dịch vụ phần mềm</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/dich-vu-blockchain">Blockchain</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                        <div class="col-6">
-                                                            <ul class="megamenu__links megamenu__links--level--0">
-                                                                <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                    <a href="#danh-muc/dich-vu-khac">Dịch vụ khác</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- .megamenu / end -->
-                                    </div>
-                                </li>
+
+ 
+                               
                                 
 
-								<li class="nav-links__item">
-								    <a id="napTienLink" class="nav-links__item-link" href="naptien.html">
-								        <div class="nav-links__item-body">Nạp Tiền</div>
-								    </a>
-								</li>
+
                             </ul>
                         </div>
                         <!-- .nav-links / end -->
@@ -796,8 +483,9 @@
                             
                             <div class="indicator">
                                 <a href="#addFunds.html" class="indicator__button">
-									<span class="indicator__area" id="homeUserBalance"> Số dư: 0 VND</span>
+									<span class="indicator__area" id="homeUserBalance">0 VND</span>
                                 </a>
+                               
                             </div>
                             
 
@@ -810,9 +498,7 @@
             <div class="site-header__topbar" style="background-color:white;border: none;">
                 <div class="topbar__container container_fix">
                     <div class="topbar__row">
-                        <marquee style="color: #ff2626;">
-			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết
-			            </marquee>
+                        <marquee style="color: #ff2626;">			                ShopWaiting - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
                     </div>
                 </div>
             </div>
@@ -911,7 +597,7 @@
 															<hr>
 															<div class="widget-posts__image" style="width: 100%">
 																<a href="https://zalo.me/0343406068">
-																		Hỗ Trợ GloryShop
+																		Hỗ Trợ ShopWaiting
 																</a>
 															</div>
 															<div class="widget-posts__info" style="margin-top: 10px;">
@@ -976,37 +662,7 @@
 											</div>
 										
 									</div>
-									<div class="widget-posts__list">
-										
-											<div class="widget-posts__item" style="display: block;">
-											</div>
-										
-										
-											<div class="widget-posts__item" style="display: block;">
-												<hr>
-												<div class="widget-posts__image" style="width: 100%">
-													<a href="">
-															 Activated DLL Menu
-													</a>
-												</div>
-												<div class="widget-posts__info" style="margin-top: 10px;">
-													<div class="widget-posts__name" style="font-weight: 800">
-														Lưu Ý:
-														Giả lập của bạn phải bật OpenGL trong Graphics Renderer 
-
-														Cài đặt:
-														Sao chép opengl32.dll và dán đến thư mục dọc theo đường dẫn cài đặt giả lập của bạn(ví dụ: "C:\Program Files\BlueStacks").
-
-														Cách mở:
-														Vào game, sau khi vào game (trong trận) nhấn phím Insert trên bàn phím.
-														Sau đó sẽ hiện Menu , nếu muốn ẩn thì ấn lại Insert
-														
-													</div>
-
-												</div>
-											</div>
-										
-									</div>
+									
 											</div>
 
 	
@@ -1020,1117 +676,122 @@
 			</div>
 
 			<div class="shop-layout__content">
-				<div class="block">
-					<div class="products-view">
-						<div class="products-view__options">
-							<div class="view-options view-options--offcanvas--mobile">
-								<div class="view-options__filters-button">
-									<button type="button" class="filters-button">
-											<img src="./Mua bán Phần mềm - Tạp hoá MMO_files/boloc.png" height="20">
-										<span class="filters-button__title">Menu Khác</span>
-									</button>
-								</div>
-								<h1 style="font-size: 28px;" class="subheading text">Gian hàng phần mềm </h1>
-							</div>
- 
-						</div>
+<article class="card" style="margin-bottom: 15px">
+    <div class="card-body row">
+        <div class="col"><strong>Mã đơn #:</strong>
+            <br> D66B64CB4C017C
+        </div>
+
+        <div class="col"><strong>TT hóa đơn:</strong><br>
+            <label class="badge badge-module badge-warning">Chưa thanh toán</label>
+        </div>
+        <div class="col"><strong>  Ngày tạo:</strong>
+        <div><span id="currentDate"></span></div>
+        </div>
+		<script type="text/javascript">
+		    // Hàm để định dạng ngày theo định dạng "dd/mm/yyyy hh:mm"
+		    function formatDate(date) {
+		        const day = String(date.getDate()).padStart(2, '0');
+		        const month = String(date.getMonth() + 1).padStart(2, '0');
+		        const year = date.getFullYear();
+		        const hours = String(date.getHours()).padStart(2, '0');
+		        const minutes = String(date.getMinutes()).padStart(2, '0');
+		        return `${day}/${month}/${year}  -  ${hours}:${minutes}`;
+		    }
+
+		    // Hàm để cập nhật thời gian
+		    function updateDateTime() {
+		        const now = new Date();
+		        document.getElementById('currentDate').textContent = formatDate(now);
+		    }
+
+		    // Cập nhật thời gian ngay lập tức
+		    updateDateTime();
+
+		    // Cập nhật thời gian mỗi phút
+		    setInterval(updateDateTime, 60000);
+		</script>
+
+    </div>
+</article>
+
+<div class="container">
+    <div class="row justify-content-md-center" style="padding:5px">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="heading-m1">
+                    <div class="card-body" style="font-size:15px">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <img style="width: 10rem;" src="./mb.png">
+                                <ul>
+                                    <li class="item_bank">Ngân Hàng: <b>MB Bank</b></li>
+                                    <li class="item_bank">STK: <b>0343406068</b></li>
+                                    <li class="item_bank">Người nhận: <b style="font-size: 14px;">DAO DUY PHAT</b></li>
+                                    <li class="item_bank">
+                                        Nội dung chuyển khoản:
+                                        <a id="memo_bank_main">NAPWT54280</a>
+                                    </li>
+                                </ul>
+                                <style type="text/css">
+                                    ul {
+                                        list-style-type: none;
+                                        padding: 0;
+                                    }
+                                    .item_bank {
+                                        background-color: #f9f9f9;
+                                        border: 1px solid #ddd;
+                                        border-radius: 8px;
+                                        margin: 10px 0;
+                                        padding: 10px;
+                                        font-family: Arial, sans-serif;
+                                        font-size: 16px;
+                                    }
+                                    .item_bank b {
+                                        display: inline-block;
+                                        padding: 5px;
+                                    }
+                                    #memo_bank_main {
+                                        font-weight: bold;
+                                        font-size: 20px;
+                                        color: green;
+                                    }
+                                </style>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="text-center text-danger">Quét mã QR Code để số tài khoản chính xác</p>
+                                <p class="text-center">
+                                    <img src="./generateQRCode" style="width: 250px; height: 250px;">
+                                </p>
+                            </div>
+                            <div class="col-lg-12" style="padding-left:15px;">
+                                <p style="color:red; padding-top:15px;"><b>Lưu ý:</b></p>
+                                <li class="text-danger">Vui lòng điền chính xác nội dung chuyển khoản để thực hiện nạp tiền tự động.</li>
+                                <li>Tiền sẽ vào tài khoản trong vòng 1-10 phút kể từ khi giao dịch thành công. Tuy nhiên đôi lúc do một vài lỗi khách quan, tiền có thể sẽ vào chậm hơn một chút.</li>
+                                <li><span style="color:red;">Vietcombank trong khoảng 23-3h không thể kiểm tra lịch sử giao dịch</span>, các giao dịch trong khung giờ này có thể mất từ 15 phút đến 2 giờ tiền mới vào tài khoản. Bạn có thể tránh nạp tiền trong khung giờ này để đỡ mất thời gian chờ đợi nhé.</li>
+                                <li style="padding-bottom: 10px;">Nếu quá lâu không thấy cập nhật số dư, vui lòng liên hệ hỗ trợ viên:
+                                    <a target="_blank" href="https://zalo.me/0343406068">Tại đây</a>
+                                </li>
+                            </div>
+                        </div>
+                        <!-- Thêm nút ở đây -->
+                        <div class="text-center" style="padding: 20px;">
+                            <button class="btn btn-success">Tôi đã hoàn tất chuyển tiền</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-						<div style="padding-right: 15px;" class="products-view__list products-list" data-layout="list" data-with-features="false" data-mobile-grid-columns="2">
-							<div class="products-view__list products-list" data-layout="list" data-with-features="false" data-mobile-grid-columns="2">
-								<div class="products-list__body">
-									<div class="products-list__item">
-										<div class="product-card product-card--hidden-actions">
-											<div style="padding:15px;">
-												<span class="text-success"><i>Đối với gian hàng không trùng, chúng tôi
-														cam kết sản phẩm được bán ra 1 lần duy nhất trên hệ thống, tránh
-														trường hợp sản phẩm đó được bán nhiều lần.
-													</i></span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="products-view__list products-list" data-layout="list" data-with-features="false" data-mobile-grid-columns="2">
-							<div class="products-list__body">
-								<div class="row" style="width: 100%;">
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-12 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="" class="product-image__body">
-													<img class="product-image__img" src="./Aurora.png" alt="Tool Kéo Mem Telegram Full Chức Năng - TechSoft ">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">482</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">25.000 đ - 3.000.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href=""><span class="badge badge-success">Sản phẩm</span>  Phần Mềm Panel Aurora | Được Nhiều Idol Ưa Chuộng | CHẤT LƯỢNG | ANTIBAND</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>90 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>692</span>
-														<span>| Khiếu nại:</span>
-														<span>0.5%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Panel</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>AURORA - GHIM ĐẦU - SỬA LỖI - KHÔNG KHÓA TÀI KHOẢN</li>
-													<li>Tắt Bật Bằng Phím - Nhanh Chóng - Trong Vòng 1 Giây</li>
-													<div style="display: inline;">
-														<i class="fa fa-star" style="color:#e3cd39;font-size: 15px; "></i>
-														<span style="font-size: 13px; " class="badge badge-warning">Được Ưa Chuộng</span>
-													</div>
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-											<div style="position: absolute; bottom: 10px; right: 10px;">
-											    <button id="buyNowButton" style="padding:6px" title=6Yêu cầu reseller" 
-											            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-											            data-toggle="modal" data-target="#resellerModal" 
-											            class="btn btn-light" type="button">
-											        	<img src="./giohang.png" height="25"> Mua hàng
-											    </button>
-											</div>
-
-
-	
-										</div>
-
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#telegram-multi-manager-tdata-quan-ly-so-luong-lon-tiet-kiem-dung-luong-o-cung_70435" class="product-image__body">
-													<img class="product-image__img" src="./Heaven Xiters Panel.png">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">16</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">200.000 đ - 550.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#Heaven Xiters Panel"><span class="badge badge-success">Sản phẩm</span>  Heaven Xiters Panel </a></h2>
-												</div>
-												<div class="product-card__rating">
-<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-
-												</span>
-
-													<div class="product-card__rating-legend">
-														<span>0 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>95</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wai1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Aimbot  Head  [Aggressive]</li>
-													<li>Sniper Scope Track [External]</li>
-													<li>Sniper Switch [External]</li>
-													<li>Fast Fire [New]</li>
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;33a9935b-9fc0-49be-b7b7-8d6978428819&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;33a9935b-9fc0-49be-b7b7-8d6978428819&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-
-
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#ABNORMAL" class="product-image__body">
-													<img class="product-image__img" src="./ABNORMAL.png" alt="ABNORMAL RED ALL IN ONE PLAN PRICE">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">9</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">200.000 đ - 330.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#ABNORMAL RED ALL IN ONE PLAN PRICE"><span class="badge badge-success">Sản phẩm</span>  ABNORMAL RED ALL IN ONE PLAN PRICE</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>40 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>360</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wai1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Panel</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>ANTIPATCH CAPABILITY🛡️</li>
-													<li>MOBILE CONTROL📱</li>
-													<li>EXTERNAL AIMBOT++ [𝙁𝙖𝙨𝙩 𝘼𝙘𝙩𝙞𝙫𝙖𝙩𝙚]✅</li>
-													<li>CHAMS MENU✅</li>
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;707931e7-1879-4eec-a508-36aeb31165be&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;707931e7-1879-4eec-a508-36aeb31165be&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-											
-											<div style="position: absolute; bottom: 10px; right: 10px;">
-											    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-											            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-											            data-toggle="modal" data-target="#resellerModal" 
-											            class="btn btn-light" type="button">
-											        	<img src="./giohang.png" height="25"> Mua hàng
-											    </button>
-											</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#tool-change-ip-lien-tuc-voi-1-click-thay-the-cho-dcom-4g-danh-cho-ae-mmo_897240" class="product-image__body">
-													<img class="product-image__img" src="./kairos.png">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">909</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">300.000 đ - 650.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="# Kratos External Panel"><span class="badge badge-success">Sản phẩm</span>   Kratos External Panel</a></h2>
-												</div>
-												<div class="product-card__rating">
-<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>59 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>396</span>
-														<span>| Khiếu nại:</span>
-														<span>0.7%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Aimscope X2  FOV </li>
-													<li>AimNeck</li>
-													<li>Aimbots  Adjustable Accuracy With 3 Differents Type</li>
-													<li>Auto Sniper Scope </li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;91fdb5d8-e6e7-44ad-98ff-c8a5c66dc72a&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;91fdb5d8-e6e7-44ad-98ff-c8a5c66dc72a&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-											
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#vnlogin-full-antidetect-fake-van-tay-trinh-duyet_780100" class="product-image__body">
-													<img class="product-image__img" src="./RegeditPc.png">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">80</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">200.000 đ - 448.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#Regedit PC"><span class="badge badge-success">Sản phẩm</span>  Regedit Pc - Tăng Nhạy - Đầm Tâm </a></h2>
-												</div>
-												<div class="product-card__rating">
-<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>11 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>796</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Hỗ Trợ Kéo Nhẹ </li>
-													<li>Nhạy Chuột Chuẩn</li>
-													<li>Cài Ngoài Máy</li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;a0315755-ed4f-4a2b-aa7e-73e2fd337fb0&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;a0315755-ed4f-4a2b-aa7e-73e2fd337fb0&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-											
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#tool-keo-mem-telegram-rate-5-50_533646" class="product-image__body">
-													<img class="product-image__img" src="./RegeditAdr.png">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">9</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">175.000 đ - 2.500.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#Regedit Adr"><span class="badge badge-success">Sản phẩm</span> Regedit Adroid | Hỗ Mọi Phiên Bản</a></h2>
-												</div>
-												<div class="product-card__rating">
-<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>10 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>79</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Hỗ Trợ Kéo Tâm </li>
-													<li>Tăng Nhạy Máy</li>
-													<li>Không Ảnh Hưởng Đến Game</li>
-													<li>Fix Rung Tâm</li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;94eed84a-1cc0-4b19-b691-43ee089dc9e3&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;94eed84a-1cc0-4b19-b691-43ee089dc9e3&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-											
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#fs-soft-reup-dung-cho-youtuber-tiktoker-reup_476759" class="product-image__body">
-													<img class="product-image__img" src="./AimbotIos.png">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">13420</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">200.000 đ - 400.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#fs-soft-reup-dung-cho-youtuber-tiktoker-reup_476759"><span class="badge badge-success">Sản phẩm</span>  Aimbot Ios Antiband - Mọi Phiên Bản</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>3 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>15052</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Ghim Đầu</li>
-													<li>Ghim Cổ</li>
-													<li>Ghim Thân</li>
-													<li>ANTIBAND 100%</li>
-
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;f7d6f7c7-9fe9-49c2-b5d5-0b7767d017cf&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-											
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#tool-check-status-gmail-live-disabled-verify-phone-2fa_994463" class="product-image__body">
-													<img class="product-image__img" src="./RegeditIos.png" alt="Regedit Ios">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">62</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">190.000 đ - 1.400.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#Regedit Ios"><span class="badge badge-success">Sản phẩm</span>  Regedit Ios | Mọi Phiên Bản | Nâng Cao Kĩ Năng</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>1 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>46</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Regedit Ios</li>
-													<li>Hỗ Trợ Nhạy</li>
-													<li>Đầm Tâm</li>
-													<li>Không Quá Đầu</li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;002b007c-52dd-46d9-bcf2-3de766511ed6&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;002b007c-52dd-46d9-bcf2-3de766511ed6&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-											
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#tool-telegram-seeding_982031" class="product-image__body">
-													<img class="product-image__img" src="./AimbotAdr.png" alt="Aimbot Adroid | Ghim Đầu | Ghim Cổ | Chạy Code Song Song">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">268</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">200.000 đ - 1.500.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#Aim Adroid"><span class="badge badge-success">Sản phẩm</span>  Aimbot Adroid | Ghim Đầu | Ghim Cổ | Chạy Code Song Song</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>4 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>55</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Ghim Đầu</li>
-													<li>Chạy Code Song Song</li>
-
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;1aebbc34-2c99-4cce-b517-b88a8a118511&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;1aebbc34-2c99-4cce-b517-b88a8a118511&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												<div style="position: absolute;left:1px; top:25px;z-index: 1;">
-
-														
-												</div>
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#thay-oi-ip-dcom-sieu-toc_450766" class="product-image__body">
-													<img class="product-image__img" src="./FixLagPc.png" alt="Fix Lag PC | Tool Fix Lag | Power Vip">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">12</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">100.000 đ - 250.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#fixlag"><span class="badge badge-success">Sản phẩm</span>  Fix Lag PC | Tool Fix Lag | Power Vip</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>0 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>17</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Tối Ưu Hóa Máy Nhiều Chức Năng</li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;2416fc89-3d9e-4247-a7d3-41b2f5b5fcc4&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;2416fc89-3d9e-4247-a7d3-41b2f5b5fcc4&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-								
-
-								<!-- -----Kiosk start----- -->
-
-									<div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
-									<div class="products-list__item" style="height: 100%;">
-										<div class="product-card product-card--hidden-actions" style="height: 96%;">
-											<!--<div class="product-card__badges-list">
-												<div class="product-card__badge product-card__badge--new">New</div>
-											</div>-->
-											<div style="padding:5px; " class="product-card__image product-image">
-												<div style="position: absolute;left:1px; top:3px;z-index: 1;">
-													<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Shop Waiting</div>
-													
-												</div>
-												
-												<div>
-
-												</div>
-												<a style="padding-bottom: 80%;padding-top: 10px;" href="#tool-reg-tk-vtc_48796" class="product-image__body">
-													<img class="product-image__img" src="./Sensi.png" alt="SenSi | Mọi Thiết Bị | Chống Lệch Tâm | Nhẹ Tâm">
-												</a>
-												<div style="padding-top:15px;text-align:center;" class="product-card__availability">
-													Tồn kho: <span class="text-success">22</span>
-												</div>
-												<div style="text-align: center; font-size: 15px; margin-top: 12px;" class="product-card__prices">50.000 đ - 2.000.000 đ</div>
-											</div>
-											<div class="product-card__info" style="position: relative; padding-left: 10px;padding-top: 10px;">
-												<div class="product-card__name">
-													<h2 style="font-size: 16px; font-weight:500;"><a href="#SenSi"><span class="badge badge-success">Sản phẩm</span>  SenSi | Mọi Thiết Bị | Chống Lệch Tâm | Nhẹ Tâm</a></h2>
-												</div>
-												<div class="product-card__rating">
-													<span class="rating" style="padding:2px;" data-value="4.777777777777779"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-half</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-0.029 0.015 0.029-17.837 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"></path></svg>
-</span>
-													<div class="product-card__rating-legend">
-														<span>0 Reviews</span>
-														<span>| Đã bán:</span>
-														<span>7</span>
-														<span>| Khiếu nại:</span>
-														<span>0.0%</span>
-
-													</div>
-
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Người bán: <a style="color: #21bf73;" href="#wait1m">wait1m</a>
-												</div>
-												<div class="product-card__name product-card__features-list">
-													Sản phẩm: <a style="color: #21bf73;" href="">Phần Mềm Hỗ Trợ</a>
-												</div>
-												<ul class="product-card__features-list">
-													<li>Nhạy Chuẩn Game</li>
-
-													
-													
-
-												</ul>
-												<button style="position: absolute;top: 2px;right: 2px;" onclick="wishlist(&quot;2e6cbde7-adb2-490b-b998-07a8ddfc7886&quot;)" class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist btn-lg" type="button" data-toggle="tooltip" title="" data-original-title="Yêu thích">&gt;
-                                                    <svg width="20px" height="20px">
-                                                        <use xlink:href="/images/svg/sprite.svg#wishlist-16"></use>
-                                                    </svg>
-                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                </button>
-											</div>
-
-
-											
-
-												<div style="position: absolute;bottom: 2px;right: 2px;">
-													<button style="padding:0px" title="Yêu cầu reseller" onclick="doReseller(&quot;2e6cbde7-adb2-490b-b998-07a8ddfc7886&quot;)" data-toggle="modal" data-target="#resellerModal" class="btn btn-light" type="button">
-		                                                
-		                                            </button>
-												</div>
-												<div style="position: absolute; bottom: 10px; right: 10px;">
-												    <button id="buyNowButton" style="padding:6px" title="Yêu cầu reseller" 
-												            onclick="doReseller(&quot;a9084783-633d-4735-b710-d0401e0b3ccc&quot;)" 
-												            data-toggle="modal" data-target="#resellerModal" 
-												            class="btn btn-light" type="button">
-												        	<img src="./giohang.png" height="25"> Mua hàng
-												    </button>
-												</div>
-
-										</div>
-									</div>
-									</div>
-									<!-- -----Kiosk stop----- -->
-
-
-
-									<style type="text/css">
-										#buyNowButton {
-										    padding: 8px 16px; /* Add more padding for better spacing */
-										    font-size: 16px; /* Increase font size */
-										    font-weight: bold; /* Make the text bold */
-										    color: #fff; /* White text color */
-										    background-color: #00ffe1; /* Bright orange background color */
-										    border: none; /* Remove default border */
-										    border-radius: 8px; /* Rounded corners */
-										    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-										    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-										}
-
-										#buyNowButton#buyNowButton:hover {
-										    background-color: #069988; /* Darker shade on hover */
-										    transform: translateY(-2px); /* Slight lift on hover */
-										    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
-										}
-
-										#buyNowButton:active {
-										    background-color: #069988; /* Even darker shade when clicked */
-										    transform: translateY(0); /* Return to normal position */
-										    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow */
-										}
-
-									</style>
-								
-								</div>
-							</div>
-						</div>
-						<div class="products-view__pagination" style="padding-bottom: 25px;">
-							
-
-
-
-						</div>
-					</div>
-				</div>
 
 				
 			</div>
-		</div>
+	</div>
 
-		
+		<!-- ------------------------------------------- Reseller  ----------------------------------------------------- -->
 		
 
 
@@ -2148,7 +809,7 @@
 							<div class="footer-contacts__text">Liên hệ ngay nếu bạn có khó khăn khi sử dụng dịch vụ hoặc cần hợp tác.</div>
 							<ul class="footer-contacts__contacts">
 								<li><i class="footer-contacts__icon fa fa-paper-plane"></i><a rel="nofollow" href="https://zalo.me/0343406068" target="_blank">Chat với hỗ trợ viên</a></li>
-								<li><i class="footer-contacts__icon fab fa-facebook"></i><a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> GloryShop</a></li>
+								<li><i class="footer-contacts__icon fab fa-facebook"></i><a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> ShopWaiting</a></li>
 								<li><i class="footer-contacts__icon far fa-envelope"></i> dphat1601@gmail.com</li>
 								<li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 08:00am - 23:00pm</li>
 							</ul>
@@ -2158,7 +819,7 @@
 						<div class="site-footer__widget footer-links">
 							<h5 class="footer-links__title">Thông tin</h5>
 							<ul class="footer-links__list">
-								<li class="footer-links__item"><span class="footer-links__link">GloryShop - Chúng tôi cam kết mang đến cho bạn sản phẩm chất lượng nhất và dịch vụ giao hàng nhanh chóng, đúng hẹn, với sự hoàn hảo trong từng chi tiết, giúp mỗi giao dịch trở nên dễ dàng và đáng tin cậy</span></li>
+								<li class="footer-links__item"><span class="footer-links__link">ShopWaiting - Chúng tôi cam kết mang đến cho bạn sản phẩm chất lượng nhất và dịch vụ giao hàng nhanh chóng, đúng hẹn, với sự hoàn hảo trong từng chi tiết, giúp mỗi giao dịch trở nên dễ dàng và đáng tin cậy</span></li>
 
 							</ul>
 						</div>
@@ -2170,8 +831,6 @@
 							<ul class="footer-links__list">
 								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0343406068 - Duy Phát</span></li>
 								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0835228264 - Thái Nguyễn</span></li>
-								<a href="https://www.facebook.com/profile.php?id=100070615887186"><li class="footer-links__item"><span class="footer-links__link">Facebook: Duy Phat</span></li></a>
-								
 
 							</ul>
 						</div>
@@ -2183,7 +842,7 @@
 			<div class="site-footer__bottom">
 				<div class="site-footer__copyright">
 					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186https://www.facebook.com/profile.php?id=100070615887186"> <b>All rights reserved:</b></a>
-					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> <b>GloryShop</b></a>
+					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> <b>ShopWaiting</b></a>
 				</div>
 			</div>
 		</div>
@@ -2225,7 +884,9 @@
       			</div>
       		</div>
 		</div>
-		
+	
+
+	
 
 	</div>
 </footer>
@@ -2246,45 +907,13 @@
 				<ul class="mobile-links mobile-links--level--0" data-collapse="" data-collapse-opened-class="mobile-links__item--open">
 					<li class="mobile-links__item" data-collapse-item="">
 						<div class="mobile-links__item-title">
-							<a href="#" class="mobile-links__item-link">Trang chủ</a>
-						</div>
-					</li>
-
-					<li class="mobile-links__item" data-collapse-item="">
-						<div class="mobile-links__item-title">
-							<a data-collapse-trigger="" class="mobile-links__item-link">Sản phẩm</a>
-							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger="">
-								<>
-							</button>
-						</div>
-						<div class="mobile-links__item-sub-links" data-collapse-content="">
-							<ul class="mobile-links mobile-links--level--1">
-								
-								
-									<li class="mobile-links__item" data-collapse-item="">
-										<div class="mobile-links__item-title">
-											<a href="#" class="mobile-links__item-link">Phần mềm Hỗ Trợ</a>
-										</div>
-									</li>
-								
-									<li class="mobile-links__item" data-collapse-item="">
-										<div class="mobile-links__item-title">
-											<a href="#" class="mobile-links__item-link">Tài khoản game (Liên hệ ADMIN)</a>
-										</div>
-									</li>
-								
-								
-							</ul>
+							<a href="index.html" class="mobile-links__item-link">Trang chủ</a>
 						</div>
 					</li>
 
 
-					 
-				<li class="mobile-links__item" data-collapse-item="">
-						<div class="mobile-links__item-title">
-							<a href="naptien.html" class="mobile-links__item-link">Nạp Tiền</a>
-						</div>
-					</li>
+
+					
 					
 					
 
