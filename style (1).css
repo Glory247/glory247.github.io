@@ -182,7 +182,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  background: #fff;
+  background: #f2f7f7;
   color: #3d464d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -758,7 +758,7 @@ h6 {
 
 .block-header__arrow:focus, .block-header__arrow:hover {
   background: #47991f;
-  fill: #fff;
+  fill: #f2f7f7;
 }
 
 .block-header__arrow:active {
@@ -8029,6 +8029,62 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
 .topbar__container {
   height: 100%;
 }
+
+
+@keyframes neon {
+    0% {
+        text-shadow: 
+            0 0 10px #ff0000,
+            0 0 15px #ff0000,
+            0 0 20px #ff0000,
+            0 0 25px #ff0000,
+            0 0 30px #ff0000;
+        color: #ff0000;
+    }
+    25% {
+        text-shadow: 
+            0 0 10px #00ff00,
+            0 0 15px #00ff00,
+            0 0 20px #00ff00,
+            0 0 25px #00ff00,
+            0 0 30px #00ff00;
+        color: #00ff00;
+    }
+    50% {
+        text-shadow: 
+            0 0 10px #0000ff,
+            0 0 15px #0000ff,
+            0 0 20px #0000ff,
+            0 0 25px #0000ff,
+            0 0 30px #0000ff;
+        color: #0000ff;
+    }
+    75% {
+        text-shadow: 
+            0 0 10px #ffff00,
+            0 0 15px #ffff00,
+            0 0 20px #ffff00,
+            0 0 25px #ffff00,
+            0 0 30px #ffff00;
+        color: #ffff00;
+    }
+    100% {
+        text-shadow: 
+            0 0 10px #ff00ff,
+            0 0 15px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 25px #ff00ff,
+            0 0 30px #ff00ff;
+        color: #ff00ff;
+    }
+}
+
+.neon-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    animation: neon 8s infinite alternate;
+}
+
 
 .topbar__row {
   height: 100%;
@@ -17367,3 +17423,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/*# MY CODE
+
+/* CSS cho hộp thông tin nạp tiền */

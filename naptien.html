@@ -726,7 +726,7 @@
                             <div class="col-lg-6">
                                 <img style="width: 10rem;" src="./mb.png">
                                 <ul>
-                                    <li class="item_bank">Ngân Hàng: <b>MB Bank</b></li>
+                                    <li class="item_bank">: <b>MB Bank</b></li>
                                     <li class="item_bank">STK: <b>0343406068</b></li>
                                     <li class="item_bank">Người nhận: <b style="font-size: 14px;">DAO DUY PHAT</b></li>
 
@@ -798,8 +798,82 @@
                         <!-- Thêm nút ở đây -->
 
                         <div class="text-center" style="padding: 20px;">
-                        	<a href="index.html"><button class="btn btn-success">Tôi đã hoàn tất chuyển tiền</button></a>    
+                        	<button class="btn btn-success" data-toggle="modal" data-target="#orderModal">Tôi đã hoàn tất chuyển tiền</button>   
                         </div>
+
+ 
+
+
+
+						<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+						    <div class="modal-dialog" role="document">
+						        <div class="modal-content">
+						            <div class="modal-header">
+						                <h5 class="modal-title" id="orderModalLabel" style="font-size: 20px; font-weight: bold;">XÁC THỰC THANH TOÁN</h5>
+						                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+						                    <span aria-hidden="true">&times;</span>
+						                </button>
+						            </div>
+						            <div class="modal-body">
+						                <p class="text-success">Vui lòng điền đầy đủ các thông tin sau:</p>
+						                
+						                <form>
+						                    <div class="form-group">
+						                        <label for="bankName">Tên ngân hàng</label>
+						                        <select class="form-control" id="bankName">
+						                            <option value="" disabled selected>Chọn ngân hàng</option>
+						                            <option value="agribank"> Nông nghiệp và Phát triển Nông thôn Việt Nam (Agribank)</option>
+						                            <option value="bidv"> Đầu tư và Phát triển Việt Nam (BIDV)</option>
+						                            <option value="techcombank"> Kỹ thương Việt Nam (Techcombank)</option>
+						                            <option value="vietcombank"> Ngoại thương Việt Nam (Vietcombank)</option>
+						                            <option value="vietinbank"> Công thương Việt Nam (VietinBank)</option>
+						                            <option value="mbbank"> Quân đội (MB Bank)</option>
+						                            <option value="eximbank"> Xuất nhập khẩu Việt Nam (Eximbank)</option>
+						                            <option value="sacombank"> Sài Gòn Thương Tín (Sacombank)</option>
+						                            <option value="shinhanbank"> Shinhan Việt Nam</option>
+						                            <option value="hsbc"> HSBC Việt Nam</option>
+						                            <option value="standardchartered"> Standard Chartered Việt Nam</option>
+						                            <option value="citibank"> Citibank Việt Nam</option>
+						                            <option value="abbank"> An Bình (ABBank)</option>
+						                            <option value="aib"> Quốc tế (AIB)</option>
+						                            <option value="pgbank"> Xăng dầu Petrolimex (PGBank)</option>
+						                            <option value="ncb"> Quốc dân (NCB)</option>
+						                            <option value="vib"> Quốc tế Việt Nam (VIB)</option>
+						                            <option value="hdbank"> Phát triển TP.HCM (HDBank)</option>
+						                            <option value="ocebank"> Đại Dương (OceanBank)</option>
+						                            <option value="scb"> Sài Gòn (SCB)</option>
+						                            <option value="kbank"> Kasikorn Việt Nam (KBank)</option>
+						                            <option value="uob"> United Overseas Bank (UOB)</option>
+						                            <option value="ibk"> Industrial Bank of Korea (IBK)</option>
+						                            <!-- Thêm các ngân hàng khác nếu cần -->
+						                        </select>
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="accountNumber">Số tài khoản ngân hàng chuyển</label>
+						                        <input type="text" class="form-control" id="accountNumber" placeholder="Nhập số tài khoản ngân hàng">
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="accountHolder">Chủ tài khoản</label>
+						                        <input type="text" class="form-control" id="accountHolder" placeholder="Nhập tên chủ tài khoản">
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="transactionCode">Mã giao dịch</label>
+						                        <input type="text" class="form-control" id="transactionCode" placeholder="Nhập mã giao dịch">
+						                    </div>
+						                </form>
+						            </div>
+						            <div class="modal-footer">
+						                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+						                <a href="naptien.html"><button type="button" class="btn btn-primary">Xác thực</button></a>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+
+
+
+
+
                     </div>
                 </div>
             </div>
