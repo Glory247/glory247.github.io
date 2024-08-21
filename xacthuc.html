@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif; /* Modern font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient background */
+            overflow: hidden;
+        }
+
+        .loading-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease; /* Smooth transition */
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            max-width: 600px; /* Expanded width */
+            width: 100%;
+            transition: opacity 0.5s ease; /* Smooth transition */
+        }
+
+        .content img {
+            width: 120px; /* Slightly larger image */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em; /* Increased font size for emphasis */
+            color: #333;
+            margin: 0 0 20px 0;
+        }
+
+        p {
+            font-size: 1.2em; /* Larger font size for readability */
+            color: #666;
+            line-height: 1.6; /* Improved line height */
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="spinner" role="status" aria-label="Loading"></div>
+    </div>
+
+    <div class="content">
+        <!-- Nội dung dài hơn -->
+        <img src="chuathanhtoan.png" alt="Chưa thanh toán Icon">
+        <h1>Mã đơn thanh toán không được tìm thấy</h1>
+        <p>
+            Hiện tại chúng tôi không thấy mã đơn thanh toán nào như bạn cung cấp. Vui lòng thử lại hoặc 
+            liên hệ với đội ngũ hỗ trợ của chúng tôi để được trợ giúp. Chúng tôi sẵn sàng hỗ trợ bạn trong 
+            việc giải quyết vấn đề này. Cảm ơn bạn đã hợp tác!
+        </p>
+        <a href="https://zalo.me/0343406068" class="contact-button">Liên hệ với chúng tôi</a>
+    </div>
+
+    <script>
+        // Giả lập thời gian tải để ẩn hiệu ứng loading
+        setTimeout(() => {
+            document.querySelector('.loading-container').style.opacity = '0';
+            document.querySelector('.content').style.display = 'block';
+            setTimeout(() => {
+                document.querySelector('.loading-container').style.display = 'none';
+                document.querySelector('.content').style.opacity = '1';
+            }, 500); // Delay to match transition
+        }, 3000); // Thay đổi thời gian theo nhu cầu của bạn
+    </script>
+</body>
+</html>
