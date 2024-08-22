@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)#danh-muc/phan-mem -->
+<html lang="en" dir="ltr" xmlns:with="http://www.thymeleaf.org/extras/with"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Required meta tags -->
+	
+	<meta name="_csrf" content="b965e7f8-6059-4ba2-b000-f9fe754054d0">
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="X-CSRF-TOKEN">
+	
+		<title>GloryShop</title>
+		<meta property="og:title" content="GloryShop">
+		<meta property="og:description" content="GloryShop">
+		<meta name="description" content="GloryShop">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- fonts -->
+	<link rel="stylesheet" href="./css">
+	<link rel="shortcut icon" type="image/png" href="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-1/254119297_142829881414207_946298403396805965_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeFUuI3nRTXZ0kchwYqWNJ_BCKS4vcXh0UwIpLi9xeHRTM0v__L-6j6DBJWy_ahxJ-8wNuYNTG0N_wJwA1upND1q&_nc_ohc=giQfv65HQZAQ7kNvgGrK229&_nc_ht=scontent.fsgn5-10.fna&oh=00_AYAdfU2tTAgvFoBr8jGkJy54kJNOfCLUubl_9pv30YesEA&oe=66BBD7DC"/>
+	<!-- css -->
+	<link rel="stylesheet" href="./bootstrap.min.css">
+	<link rel="stylesheet" href="./style.css">
+	
+<!--	<script th:src='|https://www.google.com/recaptcha/api.js?render=${@captchaService.getReCaptchaSite()}'></script>-->
+	
+	<style>
+		.container_fix {
+			width: 100%;
+			padding-right: 15px;
+			padding-left: 20px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		@media (max-width: 768px){
+			.container_fix{
+			    padding-right: 0px;
+				padding-left: 15px;
+			}
+		}
+		.holder {
+			z-index: 1000;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+		}
+
+		.preloader {
+			/* size */
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			animation: rotatePreloader 2s infinite ease-in;
+		}
+
+		@keyframes rotatePreloader {
+			0% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+			}
+			100% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+			}
+		}
+		.preloader div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+
+		.preloader div:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 0%;
+			width: 10%;
+			height: 10%;
+			background-color: #21be73;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+
+		.preloader div:nth-child(1) {
+			transform: rotateZ(0deg);
+			animation: rotateCircle1 2s infinite linear;
+			z-index: 9;
+		}
+
+		@keyframes rotateCircle1 {
+			0% {
+				opacity: 0;
+			}
+			0% {
+				opacity: 1;
+				transform: rotateZ(36deg);
+			}
+			7% {
+				transform: rotateZ(0deg);
+			}
+			57% {
+				transform: rotateZ(0deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(2) {
+			transform: rotateZ(36deg);
+			animation: rotateCircle2 2s infinite linear;
+			z-index: 8;
+		}
+
+		@keyframes rotateCircle2 {
+			5% {
+				opacity: 0;
+			}
+			5.0001% {
+				opacity: 1;
+				transform: rotateZ(0deg);
+			}
+			12% {
+				transform: rotateZ(-36deg);
+			}
+			62% {
+				transform: rotateZ(-36deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(3) {
+			transform: rotateZ(72deg);
+			animation: rotateCircle3 2s infinite linear;
+			z-index: 7;
+		}
+
+		@keyframes rotateCircle3 {
+			10% {
+				opacity: 0;
+			}
+			10.0002% {
+				opacity: 1;
+				transform: rotateZ(-36deg);
+			}
+			17% {
+				transform: rotateZ(-72deg);
+			}
+			67% {
+				transform: rotateZ(-72deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(4) {
+			transform: rotateZ(108deg);
+			animation: rotateCircle4 2s infinite linear;
+			z-index: 6;
+		}
+
+		@keyframes rotateCircle4 {
+			15% {
+				opacity: 0;
+			}
+			15.0003% {
+				opacity: 1;
+				transform: rotateZ(-72deg);
+			}
+			22% {
+				transform: rotateZ(-108deg);
+			}
+			72% {
+				transform: rotateZ(-108deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(5) {
+			transform: rotateZ(144deg);
+			animation: rotateCircle5 2s infinite linear;
+			z-index: 5;
+		}
+
+		@keyframes rotateCircle5 {
+			20% {
+				opacity: 0;
+			}
+			20.0004% {
+				opacity: 1;
+				transform: rotateZ(-108deg);
+			}
+			27% {
+				transform: rotateZ(-144deg);
+			}
+			77% {
+				transform: rotateZ(-144deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(6) {
+			transform: rotateZ(180deg);
+			animation: rotateCircle6 2s infinite linear;
+			z-index: 4;
+		}
+
+		@keyframes rotateCircle6 {
+			25% {
+				opacity: 0;
+			}
+			25.0005% {
+				opacity: 1;
+				transform: rotateZ(-144deg);
+			}
+			32% {
+				transform: rotateZ(-180deg);
+			}
+			82% {
+				transform: rotateZ(-180deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(7) {
+			transform: rotateZ(216deg);
+			animation: rotateCircle7 2s infinite linear;
+			z-index: 3;
+		}
+
+		@keyframes rotateCircle7 {
+			30% {
+				opacity: 0;
+			}
+			30.0006% {
+				opacity: 1;
+				transform: rotateZ(-180deg);
+			}
+			37% {
+				transform: rotateZ(-216deg);
+			}
+			87% {
+				transform: rotateZ(-216deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(8) {
+			transform: rotateZ(252deg);
+			animation: rotateCircle8 2s infinite linear;
+			z-index: 2;
+		}
+
+		@keyframes rotateCircle8 {
+			35% {
+				opacity: 0;
+			}
+			35.0007% {
+				opacity: 1;
+				transform: rotateZ(-216deg);
+			}
+			42% {
+				transform: rotateZ(-252deg);
+			}
+			92% {
+				transform: rotateZ(-252deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(9) {
+			transform: rotateZ(288deg);
+			animation: rotateCircle9 2s infinite linear;
+			z-index: 1;
+		}
+
+		@keyframes rotateCircle9 {
+			40% {
+				opacity: 0;
+			}
+			40.0008% {
+				opacity: 1;
+				transform: rotateZ(-252deg);
+			}
+			47% {
+				transform: rotateZ(-288deg);
+			}
+			97% {
+				transform: rotateZ(-288deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.preloader div:nth-child(10) {
+			transform: rotateZ(324deg);
+			animation: rotateCircle10 2s infinite linear;
+			z-index: 0;
+		}
+
+		@keyframes rotateCircle10 {
+			45% {
+				opacity: 0;
+			}
+			45.0009% {
+				opacity: 1;
+				transform: rotateZ(-288deg);
+			}
+			52% {
+				transform: rotateZ(-324deg);
+			}
+			102% {
+				transform: rotateZ(-324deg);
+			}
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+		.modal-dialog {
+		    max-width: 800px;
+		    margin: 1.75rem auto;
+		}
+		.modal-content {
+		    border-radius: 0.5rem;
+		    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+		.modal-header {
+		    background-color: #f8f9fa;
+		    border-bottom: 1px solid #e9ecef;
+		    padding: 1rem;
+		}
+
+		.modal-title {
+		    margin-bottom: 0;
+		    line-height: 1.5;
+		}
+		.modal-body {
+		    padding: 1.5rem;
+		}
+
+		.modal-footer {
+		    padding: 1rem;
+		    text-align: right;
+		    border-top: 1px solid #e9ecef;
+		}
+		.text-success {
+		    color: #28a745;
+		}
+
+		.text-danger {
+		    color: #dc3545;
+		}
+		.form-group {
+		    margin-bottom: 1rem;
+		}
+		.form-group label {
+		    margin-bottom: .5rem;
+		    display: block;
+		}
+		.price-options label {
+		    display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="site">
+		<!-- mobile site__header -->
+<div id="wrapper"></div><header class="site__header d-lg-none" style="">
+    <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
+    <div class="mobile-header mobile-header--sticky" data-sticky-mode="pullToShow">
+        <div class="mobile-header__panel" style="background:linear-gradient(to right, #00ff84, white)">
+            <div class="container_fix">
+                <div class="mobile-header__body">
+                    <button class="mobile-header__menu-button">
+                            <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/menubar.png" height="35">
+                    </button>
+                    <a class="mobile-header__logo" href="#">
+                        <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/logo1.png" alt="Logo" height="45">
+                    </a>
+
+                    <div class="mobile-header__indicators">
+                        
+                            <div class="indicator indicator--mobile-search indicator--mobile d-md">
+                                <a class="indicator__button" href="https://zalo.me/0343406068">
+									<span class="indicator__area">
+										<svg width="20px" height="20px">
+											<use xlink:href="/images/svg/sprite.svg#person-20"></use>
+										</svg>
+									</span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-header__topbar" style="background-color:white;border: none;">
+                <div class="topbar__container container_fix">
+                    <div class="topbar__row">
+                        <marquee style="color: #ff2626;">			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- mobile site__header / end -->
+
+<!-- desktop site__header -->
+<div id="wrapper"></div><header class="site__header d-lg-block d-none">
+    <div class="site-header">
+        <!-- .topbar -->
+        <div class="site-header__topbar topbar" style="background-color:white;">
+            <div class="topbar__container container_fix">
+                <div class="topbar__row">
+                    <div class="topbar__item topbar__item--link">
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link">Hỗ trợ trực tuyến:</a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a target="_blank" href="https://fb.com/#" class="topbar-link" style="color: rgb(19,117,255);">
+                                <i class="footer-contacts__icon fab fa-facebook"></i>GloryShop
+                            </a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link">
+                                <i class="footer-contacts__icon far fa-envelope"></i>support@#.net
+                            </a>
+                        </div>
+                        <div class="topbar__item topbar__item--link">
+                            <a class="topbar-link"> <i class="footer-contacts__icon far fa-clock"></i>08:00am - 10:00pm</a>
+                        </div>
+                    </div>
+
+                    <div class="topbar__spring"></div>
+   
+
+                    <div class="topbar__item">
+                        <div class="topbar-dropdown">
+                            <button class="topbar-dropdown__btn" type="button">
+                                <span>Ngôn ngữ:</span>
+                                <span class="topbar__item-value text-uppercase">vi</span>
+                                <svg width="7px" height="5px">
+                                    <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-7x5"></use>
+                                </svg>
+                            </button>
+                            <div class="topbar-dropdown__body">
+                                <div class="menu menu--layout--topbar  menu--with-icons ">
+                                    <div class="menu__submenus-container"></div>
+                                    <ul class="menu__list">
+
+                                        <li class="menu__item">
+                                            <div class="menu__item-submenu-offset"></div>
+                                            <a class="menu__item-link" href="#">
+                                                <div class="menu__item-icon"><img src="./Mua bán Phần mềm - Tạp hoá MMO_files/vn.png" alt=""></div>
+                                                Tiếng Việt
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .topbar / end -->
+
+        <div class="site-header__nav-panel">
+            <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow" style="background: linear-gradient(to right, #00ff84, white);">
+                <div class="nav-panel__container container_fix">
+                    <div class="nav-panel__row">
+                        <div class="nav-panel__logo">
+                            <a href="https://#.net/">
+                                <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/logo1.png" alt="Logo" height="45">
+                            </a>
+                        </div>
+                        <!-- .nav-links -->
+                        <div class="nav-panel__nav-links nav-links">
+                            <ul class="nav-links__list">
+
+                                <li class="nav-links__item  nav-links__item--has-submenu ">
+                                    <a class="nav-links__item-link" href="index.html">
+                                        <div style="cursor: pointer;" class="nav-links__item-body">
+                                            <div>Trang Chủ</div>
+                                            <svg class="nav-links__item-arrow" width="9px" height="6px">
+                                                <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-9x6"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                       
+                                </li>
+                                 
+
+
+ 
+                               
+                                
+
+
+                            </ul>
+                        </div>
+                        <!-- .nav-links / end -->
+                        <div class="nav-panel__indicators">
+                            
+                            <div class="indicator">
+                                <a href="#addFunds.html" class="indicator__button">
+									<span class="indicator__area" id="homeUserBalance">0 VND</span>
+                                </a>
+                               
+                            </div>
+                            
+
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-header__topbar" style="background-color:white;border: none;">
+                <div class="topbar__container container_fix">
+                    <div class="topbar__row">
+                        <marquee style="color: #ff2626;">			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function beforeLogin2() {
+            $('#formSignin').submit();
+            
+            // if (typeof grecaptcha !== 'undefined') {
+            //     var siteKey = "6LdlMFIcAAAAALDBHMRWYQXmpfU34Kgz11OmxTku";
+            //     grecaptcha.execute(siteKey, {action: "register"}).then(function (response) {
+            //         $('#response3').val(response);
+            //         $('#formSignin').submit();
+            //     });
+            // }
+        }
+    </script>
+    
+    <script>
+        var time = new Date().getTime();
+        $(document.body).bind("mousemove keypress", function (e) {
+            time = new Date().getTime();
+        });
+
+        function refresh() {
+            if (new Date().getTime() - time >= 300000) {
+                time = new Date().getTime();
+                window.location.reload(true);
+            }
+
+        }
+
+        setInterval(function () {
+            refresh();
+        }, 60000);
+    </script>
+</header>
+<!-- desktop site__header / end -->
+
+		<div class="site__body">
+			<div class="holder" style="display: none;"><div class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+			</div>
+			
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/jquery.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/feather.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/script.min.js.download"></script>
+	<style>
+		.services {
+			border: 1px solid rgb(19,117,255);
+			margin-bottom: 40px;
+			margin-right: 10px;;
+			width: 100%;
+			border-radius: 4px;
+			-moz-transition: all 0.3s ease;
+			-o-transition: all 0.3s ease;
+			-webkit-transition: all 0.3s ease;
+			-ms-transition: all 0.3s ease;
+			transition: all 0.3s ease;
+		}
+
+		.product-tabs__item {
+			padding: 11px 22px !important;
+			font-size: 1rem;
+			cursor: pointer;
+		}
+
+	</style>
+	<div>&nbsp;</div>
+	<div class="container_fix">
+		<div class="shop-layout shop-layout--sidebar--start">
+			<div class="shop-layout__sidebar">
+				<div class="block block-sidebar block-sidebar--offcanvas--mobile">
+					<div class="block-sidebar__backdrop"></div>
+					<div class="block-sidebar__body">
+						<div class="block-sidebar__header">
+							<div class="block-sidebar__title">Tìm kiếm</div>
+							<button class="block-sidebar__close" type="button">
+								X
+							</button>
+						</div>
+						<div class="block-sidebar__item">
+				
+							<div class="block-sidebar__item">
+								<div class="widget-posts widget widget-filters--offcanvas--mobile">
+									<h4 class="widget__title" style="margin-bottom: -5px;">Bài viết tham khảo</h4>
+									<div class="widget-posts__list">
+										
+											<div class="widget-posts__item" style="display: block;">
+												<div class="widget-posts__list">
+													
+														<div class="widget-posts__item" style="display: block;">
+														</div>
+													
+														<div class="widget-posts__item" style="display: block;">
+															<hr>
+															<div class="widget-posts__image" style="width: 100%">
+																<a href="https://zalo.me/0343406068">
+																		Hỗ Trợ GloryShop
+																</a>
+															</div>
+															<div class="widget-posts__info" style="margin-top: 10px;">
+																<div class="widget-posts__name" style="font-weight: 800">
+																	<a href="https://zalo.me/0343406068">Zalo: 0343.406.068</a>
+																</div>
+																<div class="widget-posts__name" style="font-weight: 800">
+																	dphat1601@gmail.com
+																</div>
+																<div class="widget-posts__name" style="font-weight: 800">
+																	Đào Duy Phát
+																</div>
+
+															</div>
+														</div>
+													
+												</div>
+
+											<div class="widget-posts__list">
+												
+													<div class="widget-posts__item" style="display: block;">
+													</div>
+												
+												
+													<div class="widget-posts__item" style="display: block;">
+														<hr>
+														<div class="widget-posts__image" style="width: 100%">
+															<a href="">
+																	Regedit Là Gì ?
+															</a>
+														</div>
+														<div class="widget-posts__info" style="margin-top: 10px;">
+															<div class="widget-posts__name" style="font-weight: 800">
+																Regedit được thiết kế để giúp bạn nâng cao độ nhạy của trò chơi, mang lại trải nghiệm chơi trò chơi tinh tế và cải tiến hơn. Bằng cách sử dụng ứng dụng này, bạn có thể tối ưu hóa cài đặt trò chơi của mình và cuối cùng là cải thiện kỹ năng của mình với tư cách là người chơi.
+																
+															</div>
+
+														</div>
+													</div>
+												
+											</div>
+<div class="widget-posts__list">
+										
+											<div class="widget-posts__item" style="display: block;">
+											</div>
+										
+										
+											<div class="widget-posts__item" style="display: block;">
+												<hr>
+												<div class="widget-posts__image" style="width: 100%">
+													<a href="">
+															Aimbot Là Gì ?
+													</a>
+												</div>
+												<div class="widget-posts__info" style="margin-top: 10px;">
+													<div class="widget-posts__name" style="font-weight: 800">
+														Aimbot là một phần mềm được viết ra với chức năng là hỗ trợ người chơi gian lận việc tự động ngắm bắn. Thay vì phải tự mình xoay chuột và thực hiện thao tác ngắm bắn, Aimbot sẽ làm việc này và người dùng chỉ việc bấm nút bắn đạn vào đối thủ để ăn mạng.
+														
+													</div>
+
+												</div>
+											</div>
+										
+									</div>
+									
+											</div>
+
+	
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="shop-layout__content">
+ 
+	<div class="container">
+			<div class="product product--layout--standard">
+				<div class="product__content">
+
+					<!-- .product__gallery -->
+					<div class="product__gallery" style=" text-align: center;position: relative;">
+						<div style="position: absolute;left:0px; top:3px;z-index: 1;">
+                        	<div class="product-card__badge product-card__badge--new" style="background-color: #67b740;">Không trùng</div>
+                        	
+                    	</div>
+                    	 
+                    	<div style="position: absolute;left:0px; top:25px;z-index: 1;">
+							<div class="product-card__badge product-card__badge--new" style="background-color: rgb(0, 128, 255);">Kho GloryShop</div>
+
+						</div>
+						<div style="position: absolute;left:0px; top:48px;z-index: 1;">
+							<div class="product-card__badge product-card__badge--new" style="background-color: #b38704;">
+								<a data-toggle="tooltip" title="" data-original-title="Đánh giá đơn hàng hoàn ngay 1.0%">
+									Đánh giá hoàn tiền
+								</a>
+							</div>
+
+						</div>
+						<img style="width: 100%;" src="./Custom.png" alt="">
+						<img style="width: 100%;" src="./CustomFull.png" alt="">
+					</div>
+					<!-- .product__gallery / end -->
+
+					<!-- .product__info -->
+					<div class="product__info">
+						<h1 style="font-size: 28px;" class="product__name"><a href="#"><span class="badge badge-success">Sản phẩm</span>  All Thiết Bị | AimbotVip + Tự Chọn Tối Đa 10 Chức Năng Trong 1 Bản </a></h1>
+
+						<div class="product__rating">
+							<span class="rating" style="padding:2px;" data-value="4.782608695652175"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32"><title>star-full</title><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></svg>
+</span>
+							<div class="product-card__rating-legend">
+								<span>10 Reviews</span>
+								<span>| Đã bán:</span>
+								<span>17</span>
+								<span>| Khiếu nại:</span>
+								<span>0.0%</span>
+							</div>
+						</div>
+
+						<div class="product__description"> <h2 style="font-size: 18px; font-weight: normal;"> Fix Lỗi Dame | Antiband Mọi Thiết Bị
+Có Khả Năng Bật Tắt
+Kết Hợp Tất Cả Tính Năng Vip Ở Glory247
+Tự Custom Chức Năng Cho Bản Của Chính Mình
+Có Thể Tự Tạo Key | Tên Đăng Nhập | Mật Khẩu Của Bản Thân </h2> </div>
+						<div class="row">
+							<div class="col-lg-8">
+								<ul class="product__meta">
+									<li class="product__meta-availability">Người bán:
+										<a class="text-success" href="https://zalo.me/0343406068">Glory247</a>
+										<span> | <span style="padding: 3px;">Online 1 giờ trước.</span></span>
+									</li>
+								</ul>
+								<ul class="product__meta" style="border-top: none;padding-top: 0px;">
+									<li class="product__meta-availability">
+										 Sản phẩm: <a style="color: #21bf73;" href="#">Phần Mềm Hỗ Trợ</a>
+									</li>
+								</ul>
+								<ul class="product__meta" style="border-top: none;padding-top: 0px;">
+									<li class="product__meta-availability">Kho:
+										<span id="totalProductShow" class="text-success">82</span>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<div class="text-center">
+ 						<span style="color: red;">Lưu ý: Đây là sản phẩm tích hợp - thiết bị là chức năng  là do <strong>người dùng lựa chọn và cài đặt</strong>  </span> 
+					</div>
+
+
+					<div class="text-center">
+ 						<span style="color: red;"> Hãy lựa chọn thật đúng đắn, phù hợp với thiết bị, nếu không có kiến thức chuyên môn hãy nhờ nhân viên tư vẫn chi tiết hơn trước khi tiến hành đặt hàng để tránh sai sót không mong muốn  </span> 
+					</div>
+
+
+					<div class="text-center">
+
+					    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal">
+					        Chọn Thiết Bị Và Chức Năng Ngay
+					    </button>
+					</div>
+
+                                     
+
+									<label id="result_payment" class="d-block font-weight-bold text-danger"></label>
+								</div>
+							</div>
+						</form>
+						<!-- .product__options / end -->
+					</div>
+					<!-- .product__end -->
+				</div>
+			</div>
+			 
+				 
+	
+					</div>
+					<div class="product-tabs__pane" id="tab-reviews">
+						<div class="reviews-view">
+							<div class="reviews-view__list">
+								<div class="reviews-list">
+									<ol class="reviews-list__content">
+										<div id="_rating">
+	
+		 
+	
+		 
+	
+
+	<!-- Paging-->
+ 
+
+</div>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+				
+			</div>
+	</div>
+
+		<!-- ------------------------------------------- Reseller  ----------------------------------------------------- -->
+		
+
+
+
+		</div>
+		<!-- site__footer -->
+<footer class="site__footer">
+	<div id="site_footer" class="site-footer">
+		<div class="container">
+			<div class="site-footer__widgets">
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-contacts">
+							<h5 class="footer-contacts__title">Liên hệ</h5>
+							<div class="footer-contacts__text">Liên hệ ngay nếu bạn có khó khăn khi sử dụng dịch vụ hoặc cần hợp tác.</div>
+							<ul class="footer-contacts__contacts">
+								<li><i class="footer-contacts__icon fa fa-paper-plane"></i><a rel="nofollow" href="https://zalo.me/0343406068" target="_blank">Chat với hỗ trợ viên</a></li>
+								<li><i class="footer-contacts__icon fab fa-facebook"></i><a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> GloryShop</a></li>
+								<li><i class="footer-contacts__icon far fa-envelope"></i> dphat1601@gmail.com</li>
+								<li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 08:00am - 23:00pm</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-links">
+							<h5 class="footer-links__title">Thông tin</h5>
+							<ul class="footer-links__list">
+								<li class="footer-links__item"><span class="footer-links__link">GloryShop - Chúng tôi cam kết mang đến cho bạn sản phẩm chất lượng nhất và dịch vụ giao hàng nhanh chóng, đúng hẹn, với sự hoàn hảo trong từng chi tiết, giúp mỗi giao dịch trở nên dễ dàng và đáng tin cậy</span></li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="site-footer__widget footer-links">
+							<h5 class="footer-links__title">Cộng Tác Viên</h5>
+							<ul class="footer-links__list">
+								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0343406068 - Duy Phát</span></li>
+								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0835228264 - Thái Nguyễn</span></li>
+
+							</ul>
+						</div>
+					</div>
+
+					
+				</div>
+			</div>
+			<div class="site-footer__bottom">
+				<div class="site-footer__copyright">
+					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186https://www.facebook.com/profile.php?id=100070615887186"> <b>All rights reserved:</b></a>
+					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> <b>GloryShop</b></a>
+				</div>
+			</div>
+		</div>
+
+		
+      <style>
+      	.super_note{
+			width: 350px; 
+			border: 1px solid rgb(19,117,255);
+			border-radius: 3px; 
+			color: white; 
+			background-color:rgb(19,117,225) ;
+			z-index: 1000; 
+			position: fixed;
+    		bottom: 15px;
+    		box-shadow:2px 3px 3px #888888;
+    		overflow: hidden;
+    		display:none
+		}
+      </style>
+      <div id="super_note" class="super_note" style="display: block; width: 350px;">
+      		<div class="row">
+      			<div class="col-3">
+      				<button onclick="hideNoteDetail();" style="background-color: rgb(19,117,255);padding: 13px;height: 100%;" class="indicator__area btn">
+      					<i class="far fa-bell" style="font-size:20px;color:white;">
+      					()
+      					</i>
+      				</button>
+      			</div>
+      			<div id="body_note" class="col-9" style="margin: auto; text-align: center; padding: 5px;">
+      				<div>
+      					<a id="note_url" href="https://zalo.me/0343406068">
+							<b><span id="note_header" style="font-size: 16px;color:white;">Uy Tín - Chất Lượng</span></b><br>
+							<div id="note_body" style="font-size: 13px;color:white; "></div>
+							<span id="note_status" class="badge badge-warning" style="font-size: 12px; ">Giảm giá sốc khi mua riêng của Admin </span><br>
+						</a>
+						
+					</div>
+      			</div>
+      		</div>
+		</div>
+	
+
+		    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+		        <div class="modal-dialog" role="document">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <h5 class="modal-title" id="orderModalLabel">Xác Nhận Đơn Hàng - GloryShopVip</h5>
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                        <span aria-hidden="true">&times;</span>
+		                    </button>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="row">
+		                        <div class="col-12">
+		                            <span class="text-success">Để đảm bảo bạn có một trải nghiệm mua sắm suôn sẻ và hài lòng, xin vui lòng xác nhận thông tin của bạn trước khi tiến hành đặt hàng.</span><br>
+		                            <span class="text-danger">Trước khi tiếp tục, chúng tôi xin lưu ý bạn hãy kiểm tra và chọn đúng mức giá của sản phẩm mà bạn muốn mua.</span>
+		                        </div>
+		                        <div class="col-12 mt-3">
+		                            <div class="form-group">
+		                                <label for="deviceSelect">Chọn Thiết Bị Bạn Sử Dụng</label>
+		                                <select class="form-control" name="device" id="deviceSelect" required>
+		                                    <option value="">Chưa Lựa Chọn</option>
+		                                    <option value="windows">Windows</option>
+		                                    <option value="mac">MacOS</option>
+		                                    <option value="android">Android</option>
+		                                    <option value="ios">iOS</option>
+		                                </select>
+		                            </div>
+		                        </div>
+		                        <div class="col-12" id="productSection" style="display: none;">
+		                            <div class="form-group">
+		                                <label for="productSelect">Chọn Sản Phẩm Bạn Xác Nhận Mua</label>
+		                                <select class="form-control" name="product" id="productSelect" required>
+		                                    <option value="">Chưa Lựa Chọn</option>
+		                                </select>
+		                            </div>
+		                        </div>
+		                        <div class="col-12" id="priceSection" style="display: none;">
+		                            <div class="form-group">
+		                                <label for="priceOptions">Chọn Chức Năng Custom</label>
+		                                <div id="priceOptions" class="price-options">
+		                                    <!-- Các checkbox sẽ được thêm vào đây bằng JavaScript -->
+		                                </div>
+		                                <div id="totalPrice" class="mt-3">
+		                                    <strong>Tổng Giá: </strong><span id="priceTotal"style="font-size: 25px; font-weight: bold;">0 đ</span>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+		                    <a href="naptien.html"><button type="button" id="paymentButton" class="btn btn-secondary" disabled>Thanh Toán</button></a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		    function validateForm() {
+		        var deviceSelect = document.getElementById('deviceSelect').value;
+		        var productSelect = document.getElementById('productSelect').value;
+		        var priceOptions = document.querySelectorAll('#priceOptions input[type="checkbox"]:checked').length;
+
+		        var paymentButton = document.getElementById('paymentButton');
+
+		        if (deviceSelect && productSelect && priceOptions > 0) {
+		            paymentButton.classList.remove('btn-secondary');
+		            paymentButton.classList.add('btn-primary');
+		            paymentButton.disabled = false;
+		        } else {
+		            paymentButton.classList.remove('btn-primary');
+		            paymentButton.classList.add('btn-secondary');
+		            paymentButton.disabled = true;
+		        }
+		    }
+
+		    function calculateTotalPrice() {
+		        var checkboxes = document.querySelectorAll('#priceOptions input[type="checkbox"]:checked');
+		        var totalPrice = 0;
+
+		        checkboxes.forEach(function(checkbox) {
+		            totalPrice += parseInt(checkbox.value);
+		        });
+
+		        document.getElementById('priceTotal').textContent = totalPrice.toLocaleString('vi-VN') + ' đ';
+		    }
+
+		    function showProductOptions() {
+		        var deviceSelect = document.getElementById('deviceSelect');
+		        var productSection = document.getElementById('productSection');
+		        var productSelect = document.getElementById('productSelect');
+		        var priceSection = document.getElementById('priceSection');
+		        var priceOptionsDiv = document.getElementById('priceOptions');
+
+		        productSelect.innerHTML = '<option value="">Chưa Lựa Chọn</option>';
+
+		        if (deviceSelect.value) {
+		            productSection.style.display = 'block';
+		            if (deviceSelect.value === 'windows' || deviceSelect.value === 'mac') {
+		                productSelect.innerHTML += '<option value="customPC">CustomVip PC</option>';
+
+		            } else if (deviceSelect.value === 'android') {
+		                productSelect.innerHTML += '<option value="customADR">CustomVip Android</option>';
+
+		            } else if (deviceSelect.value === 'ios') {
+		                productSelect.innerHTML += '<option value="customIOS">CustomVip iOS</option>';
+
+		            }
+
+		            validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
+		        } else {
+		            productSection.style.display = 'none';
+		            priceSection.style.display = 'none';
+		            priceOptionsDiv.innerHTML = '';  // Xóa các checkbox
+		            document.getElementById('priceTotal').textContent = '0 đ';
+		            validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
+		        }
+		    }
+
+		    function showPriceOptions() {
+		        var productSelect = document.getElementById('productSelect');
+		        var priceSection = document.getElementById('priceSection');
+		        var priceOptionsDiv = document.getElementById('priceOptions');
+
+		        priceOptionsDiv.innerHTML = '';  // Xóa các checkbox
+
+		        if (productSelect.value) {
+		            priceSection.style.display = 'block';
+
+		            if (productSelect.value === 'customPC') {
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="975000" checked disabled> AimbotPc VIP | 975.000đ | Mặc Định</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="300000"> AimNeck | 300.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="150000"> AimScope | 150.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="550000"> Nhận Diện Kéo Tâm Thông Minh | 550.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="75000"> ESP Lazer VIP | 175.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="185000"> Sniper Switch and Scope | 285.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="50000"> Fast Fire | 50.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="350000"> Bypass Emulator Logo | 350.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="150000"> Camera Hack | 150.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="350000"> Bypass Emulator Logo | 350.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="100000"> Magic Bullet [risk] | 100.000đ</label><br>';
+
+		            }
+
+		            if (productSelect.value === 'customIOS') {
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="975000" checked disabled> AimbotIOS VIP | 975.000đ | Mặc Định</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="550000"> Regedit Tích Hợp | 550.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="275000"> AimNeck | 275.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="450000"> AimBody | 450.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="125000"> AimScope | 125.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="125000"> AimFov| 325.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="300000"> Hologram | 150.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="100000"> ESP + BOX + InF | 300.000đ</label><br>';
+
+		            }
+
+		            if (productSelect.value === 'customADR') {
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="975000" checked disabled> AimbotADR VIP | 975.000đ | Mặc Định</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="1250000"> Tracking Full Scope + ESP VIP | 1.250.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="350000"> AimNeck | 350.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="260000"> AimDrag | 260.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="550000"> Regedit Tích Hợp | 550.000đ</label><br>';
+		                priceOptionsDiv.innerHTML += '<label><input type="checkbox" value="170000"> AimLock | 170.000đ</label><br>';
+
+
+		            }
+
+		            calculateTotalPrice(); // Update total price with default checked options
+		            validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
+		        } else {
+		            priceSection.style.display = 'none';
+		            document.getElementById('priceTotal').textContent = '0 đ';
+		            validateForm();  // Kiểm tra lại trạng thái của nút thanh toán
+		        }
+		    }
+
+		    // Gán sự kiện onchange cho các select và checkbox
+		    document.getElementById('deviceSelect').addEventListener('change', function() {
+		        showProductOptions();
+		        showPriceOptions();
+		    });
+		    document.getElementById('productSelect').addEventListener('change', function() {
+		        showPriceOptions();
+		    });
+		    document.getElementById('priceOptions').addEventListener('change', function() {
+		        calculateTotalPrice();
+		        validateForm();
+		    });
+		</script>	
+
+	</div>
+</footer>
+<!-- site__footer / end -->
+
+		
+	<!-- mobilemenu -->
+	<div class="mobilemenu">
+		<div class="mobilemenu__backdrop"></div>
+		<div class="mobilemenu__body">
+			<div class="mobilemenu__header">
+				<div class="mobilemenu__title">Menu</div>
+				<button type="button" class="mobilemenu__close">
+					X
+				</button>
+			</div>
+			<div class="mobilemenu__content">
+				<ul class="mobile-links mobile-links--level--0" data-collapse="" data-collapse-opened-class="mobile-links__item--open">
+					<li class="mobile-links__item" data-collapse-item="">
+						<div class="mobile-links__item-title">
+							<a href="index.html" class="mobile-links__item-link">Trang chủ</a>
+						</div>
+					</li>
+
+
+
+					
+					
+					
+
+
+<!--					<li class="mobile-links__item" data-collapse-item>-->
+<!--						<div class="mobile-links__item-title">-->
+<!--							<a class="mobile-links__item-link" th:href="@{/post/your-self.html}" >Bài viết của bạn</a></span>-->
+<!--						</div>-->
+<!--					</li>-->
+					 
+
+					 
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- mobilemenu / end -->
+
+
+		
+		
+	<!-- js -->
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap.bundle.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/owl.carousel.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/nouislider.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe-ui-default.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/select2.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/number.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/main.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/header.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/svg4everybody.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/jquery.dataTables.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/sweetalert.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/toastr.min.js.download"></script>
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/summernote.min.js.download"></script>
+
+	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap-datepicker.js.download"></script>
+	<script>
+		hideLoading();
+		function showLoading() {
+			$('.holder').show();
+		}
+		function hideLoading() {
+			$('.holder').hide();
+		}
+		svg4everybody();
+
+		const token = $("meta[name='_csrf']").attr("content");
+		const header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function (e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	</script>
+	
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!-- Google tag (gtag.js) -->
+		<script async="" src="./Mua bán Phần mềm - Tạp hoá MMO_files/js"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-1DX3JZJ613');
+		</script>
+
+
+	  
+
+
+
+		
+	</div>
+
+
+
+</body></html>
