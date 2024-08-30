@@ -342,6 +342,175 @@
 <body>
 
 
+
+	<div id="welcomeModal" class="modal">
+	    <div id="modalContent" class="modal-content">
+	        <span id="closeButton" class="close">&times;</span>
+	        <h2 id="modalHeading">Chào Mừng Đến Với GloryShop!</h2>
+	        <p id="introText">🎉 Chúng tôi rất vui được chào đón bạn đến với GloryShop - điểm đến lý tưởng cho tất cả những tín đồ công nghệ 🎮</p>
+	        <p id="serviceInfo">GloryShop cung cấp các phần mềm và file hỗ trợ độc quyền giúp bạn nâng cao kỹ năng và tận hưởng trải nghiệm chơi game tuyệt vời nhất. Được thành lập và vận hành bởi những người đam mê game, chúng tôi cam kết mang đến dịch vụ tận tâm và sản phẩm chất lượng nhất.</p>
+	        <p id="contactPrompt">Nếu có khó khăn trong việc thực hiện mua hàng trên shop, hãy liên hệ với chúng tôi</p>
+	        <p id="contactText">🔗 <strong>Liên hệ với chúng tôi:</strong></p>
+	        <div id="buttonContainer" class="button-container">
+	            <a id="contactLink1" target="_blank" href="https://zalo.me/0343406068">
+	                <button id="contactButton1" type="button" title="Liên hệ người bán">Liên hệ Duy Phát</button>
+	            </a>
+	            <a id="contactLink2" target="_blank" href="https://zalo.me/0835228264">
+	                <button id="contactButton2" type="button" title="Hỗ trợ & Bán hàng">Liên hệ GloryShop</button>
+	            </a>
+	        </div>
+	    </div>
+	</div>
+
+	<style type="text/css">
+	    #welcomeModal {
+	        display: none; /* Hidden by default */
+	        position: fixed; /* Fixed position */
+	        z-index: 1000; /* Ensure modal is on top */
+	        left: 0;
+	        top: 0;
+	        width: 100%;
+	        height: 100%;
+	        overflow: auto; /* Scroll if needed */
+	        background: rgba(0,0,0,0.6); /* Dark background with opacity */
+	    }
+
+	    /* Modal content box */
+	    #modalContent {
+	        background: #ffffff; /* White background */
+	        margin: 10% auto; /* Center horizontally and vertically */
+	        padding: 30px;
+	        border: 1px solid #ddd;
+	        width: 90%; /* Responsive width */
+	        max-width: 700px; /* Maximum width */
+	        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+	        border-radius: 12px; /* Rounded corners */
+	        position: relative; /* Position relative for the close button */
+	        animation: fadeIn 0.6s ease-out; /* Fade-in effect */
+	    }
+
+	    /* Animation for fading in */
+	    @keyframes fadeIn {
+	        from {
+	            opacity: 0;
+	            transform: translateY(-20px);
+	        }
+	        to {
+	            opacity: 1;
+	            transform: translateY(0);
+	        }
+	    }
+
+	    /* The close button */
+	    #closeButton {
+	        color: #555;
+	        font-size: 40px;
+	        font-weight: bold;
+	        position: absolute; /* Position absolute for precise placement */
+	        top: 20px; /* Distance from the top */
+	        right: 20px; /* Distance from the right */
+	        transition: color 0.3s ease;
+	        cursor: pointer; /* Pointer cursor on hover */
+	    }
+
+	    #closeButton:hover,
+	    #closeButton:focus {
+	        color: #ff5722; /* Highlight color on hover */
+	        text-decoration: none;
+	    }
+
+	    /* Heading */
+	    #modalHeading {
+	        color: #333;
+	        font-family: 'Arial', sans-serif;
+	        font-size: 30px;
+	        margin-top: 0;
+	        text-align: center; /* Center align the heading */
+	        position: relative;
+	        padding-bottom: 15px;
+	        border-bottom: 3px solid #ff5722; /* Add a bottom border for emphasis */
+	    }
+
+	    /* Paragraph */
+	    #introText,
+	    #serviceInfo,
+	    #contactPrompt,
+	    #contactText {
+	        color: #666;
+	        font-family: 'Arial', sans-serif;
+	        line-height: 1.8;
+	        text-align: center; /* Center align text */
+	    }
+
+	    /* Button container styling */
+	    #buttonContainer {
+	        display: flex; /* Align buttons in a row */
+	        justify-content: center; /* Center align buttons */
+	        gap: 20px; /* Space between buttons */
+	        margin-top: 20px; /* Space above buttons */
+	    }
+
+	    /* Button styling */
+	    #contactButton1,
+	    #contactButton2 {
+	        background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+	        border: none; /* Remove borders */
+	        color: white; /* White text */
+	        padding: 14px 30px; /* Padding */
+	        text-align: center; /* Center text */
+	        text-decoration: none; /* Remove underline */
+	        display: inline-block; /* Inline-block */
+	        font-size: 18px; /* Font size */
+	        cursor: pointer; /* Pointer cursor on hover */
+	        border-radius: 10px; /* Rounded corners */
+	        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Shadow */
+	        transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition */
+	    }
+
+	    #contactButton1:hover,
+	    #contactButton2:hover {
+	        background: linear-gradient(135deg, #218838 0%, #28a745 100%);
+	        transform: scale(1.1); /* Slightly enlarge button on hover */
+	    }
+
+	    /* Additional styling for links */
+	    #registerLink {
+	        color: #ff5722; /* Orange color */
+	        text-decoration: none;
+	        font-weight: bold;
+	    }
+
+	    #registerLink:hover {
+	        text-decoration: underline;
+	    }
+	</style>
+
+	<script type="text/javascript">
+	    document.addEventListener("DOMContentLoaded", function() {
+	        // Get modal and close button
+	        var modal = document.getElementById("welcomeModal");
+	        var closeButton = document.getElementById("closeButton");
+
+	        // Show modal when the page loads
+	        modal.style.display = "block";
+
+	        // When the user clicks on the close button, hide the modal
+	        closeButton.onclick = function() {
+	            modal.style.display = "none";
+	        }
+
+	        // When the user clicks outside of the modal, hide the modal
+	        window.onclick = function(event) {
+	            if (event.target == modal) {
+	                modal.style.display = "none";
+	            }
+	        }
+	    });
+	</script>
+
+
+
+
 	<!-- <div class="modal inmodal" id="resellerModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="display: none;">
 		<form method="post" id="formReseller" action=""><input type="hidden" name="_csrf" value="cdef9b21-6f87-4142-a13c-5101af0e1572">
 		<div class="modal-dialog">
@@ -2319,7 +2488,6 @@
 									<!-- -----Kiosk stop----- -->
 
 									 							
-
 								<!-- -----Kiosk start----- -->
 
 									<!-- <div class="col-xl-6 col-lg-12 col-md-12" style="padding-right: 0px;">
@@ -2526,27 +2694,7 @@
     		display:none
 		}
       </style>
-      <div id="super_note" class="super_note" style="display: block; width: 350px;">
-      		<div class="row">
-      			<div class="col-3">
-      				<button onclick="hideNoteDetail();" style="background-color: rgb(19,117,255);padding: 13px;height: 100%;" class="indicator__area btn">
-      					<i class="far fa-bell" style="font-size:20px;color:white;">
-      					()
-      					</i>
-      				</button>
-      			</div>
-      			<div id="body_note" class="col-9" style="margin: auto; text-align: center; padding: 5px;">
-      				<div>
-      					<a id="note_url" href="https://zalo.me/0343406068">
-							<b><span id="note_header" style="font-size: 16px;color:white;">Giảm Giá - GloryShop</span></b><br>
-							<div id="note_body" style="font-size: 13px;color:white; "></div>
-							<span id="note_status" class="badge badge-warning" style="font-size: 12px; ">Uy Tín - Chất Lượng </span><br>
-						</a>
-						
-					</div>
-      			</div>
-      		</div>
-		</div>
+       
 		
 
 	</div>
