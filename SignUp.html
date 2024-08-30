@@ -820,7 +820,7 @@
 				                <div class="field">
 				                    <label class="label">Tên Đăng Nhập <span class="required">*</span></label>
 				                    <div class="control">
-				                        <input class="input" type="text" placeholder="Username" name="username" required />
+				                        <input class="input" type="text" placeholder="Username" name="username" id="username" required />
 				                    </div>
 				                </div>
 
@@ -1063,8 +1063,27 @@
 			document.getElementById("form").addEventListener("submit", function (e) {
 			  e.preventDefault(); // Prevent the default form submission
 
+			  var username = document.getElementById("username").value;
 			  var password = document.getElementById("password").value;
 			  var confirmPassword = document.getElementById("confirm-password").value;
+
+
+
+			  if (username.trim() === "") {
+			    showMessage("Tên đăng nhập không được để trống", "red", "white");
+			    return; // Stop the form from submitting
+			  }
+
+			  if (username.length < 4) {
+			    showMessage("Tên đăng nhập phải có ít nhất 4 ký tự", "red", "white");
+			    return; // Stop the form from submitting
+			  }
+
+			  if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+			    showMessage("Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới", "red", "white");
+			    return; // Stop the form from submitting
+			  }
+
 
 			  if (password !== confirmPassword) {
 			    document.getElementById("message").textContent = "Mật khẩu xác nhận không khớp";
