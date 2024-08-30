@@ -340,7 +340,158 @@
 </head>
 
 <body>
+	<div id="loginModal" class="modal">
+	    <div class="modal-content">
+	        <span class="close">&times;</span>
+	        <h2>Chào mừng đến với GloryShop!</h2>
+	        <p>Chúng tôi rất vui được chào đón bạn! Hiện tại bạn chưa đăng nhập vào hệ thống, điều này có thể khiến bạn bỏ lỡ nhiều ưu đãi và tính năng đặc biệt mà chúng tôi cung cấp.</p>
+	        <p><strong>Đăng nhập ngay</strong> để khám phá các sản phẩm mới nhất, nhận ưu đãi độc quyền và trải nghiệm dịch vụ khách hàng tận tâm của chúng tôi. Nếu bạn chưa có tài khoản, đừng lo lắng! <a href="SignUp.html" id="registerLink">Đăng ký ngay</a> để trở thành thành viên và nhận ngay nhiều phần quà hấp dẫn!</p>
+	        <p>Cảm ơn bạn đã ghé thăm GloryShop. Chúng tôi rất mong được đồng hành và phục vụ bạn!</p>
+	        <div class="button-container">
+	            <a href="https://script.google.com/macros/s/AKfycbxE6BeVUs0ZiULixBAtbtI7lSTeTwr-mwvzG5q-BzatbhLbCQO9QNIC6rX9NzCztQWrWQ/exec">
+	                <button id="loginButton">Đăng nhập ngay</button>
+	            </a>
+	            <a target="_blank" href="https://zalo.me/0343406068">
+	                <button id="contactButton" type="button" title="Liên hệ người bán">Liên hệ GloryShop</button>
+	            </a>
+	        </div>
+	    </div>
+	</div>
 
+	<style type="text/css">
+	    /* Styles for the login modal */
+	    #loginModal {
+	        left: 0;
+	        top: 0;
+	        width: 100%; /* Full width */
+	        height: 100%; /* Full height */
+	        overflow: auto; /* Enable scroll if needed */
+	        background: rgba(0,0,0,0.6); /* Dark background with opacity */
+	    }
+
+	    /* Modal content box */
+	    #loginModal .modal-content {
+	        background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+	        margin: 5% auto; /* Center vertically and horizontally */
+	        padding: 30px;
+	        border: 1px solid #ddd;
+	        width: 90%; /* Responsive width */
+	        max-width: 600px; /* Maximum width */
+	        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+	        border-radius: 15px; /* Rounded corners */
+	        position: relative; /* Position relative for the close button */
+	        animation: fadeIn 0.4s ease-out; /* Fade-in effect */
+	    }
+
+	    /* Animation for fading in */
+	    @keyframes fadeIn {
+	        from { opacity: 0; }
+	        to { opacity: 1; }
+	    }
+
+	    /* The close button */
+	    #loginModal .close {
+	        color: #333;
+	        font-size: 36px;
+	        font-weight: bold;
+	        position: absolute; /* Position absolute for precise placement */
+	        top: 15px; /* Distance from the top */
+	        right: 15px; /* Distance from the right */
+	        transition: color 0.3s ease;
+	    }
+
+	    #loginModal .close:hover,
+	    #loginModal .close:focus {
+	        color: #555;
+	        text-decoration: none;
+	        cursor: pointer;
+	    }
+
+	    /* Button container styling */
+	    .button-container {
+	        display: flex; /* Align buttons in a row */
+	        justify-content: flex-start; /* Align buttons to the left */
+	        gap: 15px; /* Space between buttons */
+	        margin-top: 20px; /* Space above buttons */
+	    }
+
+	    /* Button styling */
+	    #loginButton {
+	        background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+	        border: none; /* Remove borders */
+	        color: white; /* White text */
+	        padding: 14px 25px; /* Padding */
+	        text-align: center; /* Center text */
+	        text-decoration: none; /* Remove underline */
+	        display: inline-block; /* Inline-block */
+	        font-size: 18px; /* Font size */
+	        cursor: pointer; /* Pointer cursor on hover */
+	        border-radius: 8px; /* Rounded corners */
+	        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Shadow */
+	        transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition */
+	    }
+
+	    #loginButton:hover {
+	        background: linear-gradient(135deg, #e64a19 0%, #ff5722 100%);
+	        transform: scale(1.05); /* Slightly enlarge button on hover */
+	    }
+
+	    #contactButton {
+	        background: #28a745;
+	        border: none;
+	        color: white;
+	        padding: 12px 20px;
+	        font-size: 18px;
+	        border-radius: 8px;
+	        cursor: pointer;
+	        transition: background 0.3s ease, transform 0.2s ease;
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+	    }
+
+	    #contactButton:hover {
+	        background: #218838;
+	        transform: scale(1.05); /* Slightly enlarge button on hover */
+	    }
+
+	    /* Additional styling for links */
+	    #registerLink {
+	        color: #ff5722;
+	        text-decoration: none;
+	        font-weight: bold;
+	    }
+
+	    #registerLink:hover {
+	        text-decoration: underline;
+	    }
+
+	</style>
+
+
+
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function() {
+		    // Lấy modal và nút đóng
+		    var modal = document.getElementById("loginModal");
+		    var closeButton = document.getElementsByClassName("close")[0];
+
+		    // Hiển thị modal ngay khi trang được tải
+		    modal.style.display = "block";
+
+		    // Khi người dùng nhấp vào nút đóng, ẩn modal
+		    closeButton.onclick = function() {
+		        modal.style.display = "none";
+		    }
+
+		    // Khi người dùng nhấp ra ngoài modal, ẩn modal
+		    window.onclick = function(event) {
+		        if (event.target == modal) {
+		            modal.style.display = "none";
+		        }
+		    }
+		});
+	</script>
 
 	<!-- <div class="modal inmodal" id="resellerModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="display: none;">
 		<form method="post" id="formReseller" action=""><input type="hidden" name="_csrf" value="cdef9b21-6f87-4142-a13c-5101af0e1572">
@@ -999,8 +1150,8 @@
                         <div class="nav-panel__indicators">
                             
                             <div class="indicator">
-                                <a href="#addFunds.html" class="indicator__button">
-									<span class="indicator__area" id="homeUserBalance"> Số dư: 0 VND</span>
+                                <a href="https://script.google.com/macros/s/AKfycbxE6BeVUs0ZiULixBAtbtI7lSTeTwr-mwvzG5q-BzatbhLbCQO9QNIC6rX9NzCztQWrWQ/exec" class="indicator__button">
+									<span class="indicator__area" id="homeUserBalance" style="color: black">Đăng Nhập</span>
                                 </a>
                             </div>
                             
