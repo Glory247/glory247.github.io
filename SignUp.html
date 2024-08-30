@@ -807,77 +807,84 @@
 
 
 
-<div class="container">
-    <div class="row justify-content-md-center" style="padding:5px">
-    	<section class="hero is-primary is-bold is-center">
-    	  <div class="hero-body container" style="text-align: center; height:50px; padding: 5px;">
-    	    <span style="font-size: 30px; color: #00000; font-weight: bold;">ĐĂNG KÝ TÀI KHOẢN</span>
-    	  </div>
-    	</section>
-         <div style="height: 10px"></div>
-         <div class="container" style="border: solid 2px #00a779; border-radius: 10px">
-           <form id="form" class="container m-4 pl-4" method="POST">
-             <div class="field">
-               <label class="label">Tên Đăng Nhập</label>
-               <div class="control">
-                 <input class="input" type="text" placeholder="Username" name="username" />
-               </div>
-             </div>
+				<div class="container">
+				    <div class="row justify-content-md-center" style="padding:5px">
+				        <section class="hero is-primary is-bold is-center">
+				            <div class="hero-body container" style="text-align: center; height:50px; padding: 5px;">
+				                <span style="font-size: 30px; color: #ffff; font-weight: bold;">ĐĂNG KÝ TÀI KHOẢN</span>
+				            </div>
+				        </section>
+				        <div style="height: 10px"></div>
+				        <div class="container" style="border: solid 2px #00a779; border-radius: 10px">
+				            <form id="form" class="container m-4 pl-4" method="POST">
+				                <div class="field">
+				                    <label class="label">Tên Đăng Nhập <span class="required">*</span></label>
+				                    <div class="control">
+				                        <input class="input" type="text" placeholder="Username" name="username" required />
+				                    </div>
+				                </div>
 
-             <div class="field">
-               <label class="label">Mật Khẩu</label>
-               <div class="control">
-                 <input class="input" type="password" placeholder="Your Password" name="Password" id="password" />
-               </div>
-             </div>
+				                <div class="field">
+				                    <label class="label">Mật Khẩu <span class="required">*</span></label>
+				                    <div class="control">
+				                        <input class="input" type="password" placeholder="Your Password" name="Password" id="password" required />
+				                    </div>
+				                </div>
 
-             <div class="field">
-               <label class="label">Nhập Lại Mật Khẩu</label>
-               <div class="control">
-                 <input class="input" type="password" placeholder="Enter Your Password Again" id="confirm-password" />
-               </div>
-             </div>
+				                <div class="field">
+				                    <label class="label">Nhập Lại Mật Khẩu <span class="required">*</span></label>
+				                    <div class="control">
+				                        <input class="input" type="password" placeholder="Enter Your Password Again" id="confirm-password" />
+				                    </div>
+				                </div>
 
-             <div class="field">
-               <label class="label">Email</label>
-               <div class="control">
-                 <input class="input" type="email" placeholder="Email của bạn" name="Email" />
-               </div>
-             </div>
+				                <div class="field">
+				                    <label class="label">Email</label>
+				                    <div class="control">
+				                        <input class="input" type="email" placeholder="Email của bạn" name="Email" />
+				                    </div>
+				                </div>
 
-             <div class="field is-grouped">
-               <div class="control">
-                 <button class="button is-primary" type="submit" id="submit-button">
-                   Sign up
-                 </button>
+				                <div class="field is-grouped">
+				                    <div class="control">
+				                        <button class="button is-primary" type="submit" id="submit-button">
+				                            Sign up
+				                        </button>
 
-                 <button class="button is-danger" type="button" onclick="getNewRecord()">Xóa tất cả</button>
+				                        <button class="button is-danger" type="button" onclick="getNewRecord()">Xóa tất cả</button>
 
-               </div>
+				                    </div>
 
-			  <div class="control">
-			  	<a href="https://script.google.com/macros/s/AKfycbxE6BeVUs0ZiULixBAtbtI7lSTeTwr-mwvzG5q-BzatbhLbCQO9QNIC6rX9NzCztQWrWQ/exec"> Bạn đã có tài khoản? Đăng nhập ngay</a>
-			  </div>
+				                    <div class="control">
+				                        <a href="https://script.google.com/macros/s/AKfycbxE6BeVUs0ZiULixBAtbtI7lSTeTwr-mwvzG5q-BzatbhLbCQO9QNIC6rX9NzCztQWrWQ/exec">Bạn đã có tài khoản? Đăng nhập ngay</a>
+				                    </div>
 
-             </div>
-           </form>
-           <div
-             id="message"
-             style="
-               display: none;
-               margin: 20px;
-               font-weight: bold;
-               color: green;
-               padding: 8px;
-               background-color: beige;
-               border-radius: 4px;
-               border-color: aquamarine;
-             "
-           ></div>
-         </div>
+				                </div>
+				            </form>
+				            <div
+				                id="message"
+				                style="
+				                    display: none;
+				                    margin: 20px;
+				                    font-weight: bold;
+				                    color: green;
+				                    padding: 8px;
+				                    background-color: beige;
+				                    border-radius: 4px;
+				                    border-color: aquamarine;
+				                "
+				            ></div>
+				        </div>
+				    </div>
+				</div>
 
-    </div>
-</div>
+				<style>
+				    .required {
+				        color: red;
+				        font-weight: bold;
+				    }
+				</style>
+
 
 
 
