@@ -26,14 +26,14 @@
 		.container_fix {
 			width: 100%;
 			padding-right: 15px;
-			padding-left: 20px;
+			padding-left: 10px;
 			margin-right: auto;
 			margin-left: auto;
 		}
 		@media (max-width: 768px){
 			.container_fix{
 			    padding-right: 0px;
-				padding-left: 15px;
+				padding-left: 5px;
 			}
 		}
 		.holder {
@@ -338,97 +338,112 @@
 		}
 
 		/* CSS to enhance the registration form */
-		.hero.is-primary {
-		  background-color: #00a779; /* Primary color */
-		  color: #ffffff; /* Text color for the hero section */
-		  padding: 10px;
-		  border-radius: 10px;
-		}
+ 
 
-		.hero-body.container {
-		  text-align: center;
-		}
 
-		input.input {
-		  border-radius: 5px;
-		  border: 1px solid #ddd;
-		  padding: 10px;
-		  width: 100%;
-		  box-sizing: border-box;
-		}
-
-		button.button {
-		  border-radius: 5px;
-		  padding: 10px 20px;
-		  font-size: 16px;
-		  font-weight: bold;
-		  cursor: pointer;
-		}
-
-		button.button.is-primary {
-		  background-color: #00a779;
-		  color: #ffffff;
-		  border: none;
-		}
-
-		button.button.is-primary:hover {
-		  background-color: #008d63; /* Slightly darker shade for hover effect */
-		}
-
-		button.button.is-danger {
-		  background-color: #ff3860;
-		  color: #ffffff;
-		  border: none;
-		}
-
-		button.button.is-danger:hover {
-		  background-color: #ff2a4a; /* Slightly darker shade for hover effect */
-		}
-
+		/* Tạo hiệu ứng bóng đổ và làm nổi bật các phần tử */
 		.container {
-		  max-width: 800px; /* Ensures form container is not too wide */
-		  margin: auto;
+		    max-width: 900px;
+		    margin: 0 auto;
+		}
+
+		.hero {
+		    background-color: #00a779;
+		    color: white;
+		    border-radius: 10px;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.hero-body {
+		    padding: 10px;
+		}
+
+		.hero-body span {
+		    font-size: 30px;
+		    font-weight: bold;
+		}
+
+		.form-container {
+		    border: solid 2px #00a779;
+		    border-radius: 10px;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		    padding: 20px;
+		    background-color: #f9f9f9;
 		}
 
 		.field {
-		  margin-bottom: 20px;
+		    margin-bottom: 15px;
 		}
 
-		.field .label {
-		  font-size: 18px;
-		  font-weight: bold;
-		  margin-bottom: 5px;
+		.label {
+		    font-weight: bold;
+		    color: #333;
 		}
 
-		.field .control {
-		  margin-bottom: 10px;
+		.input {
+		    border-radius: 5px;
+		    border: 1px solid #ddd;
+		    padding: 10px;
+		    width: 100%;
+		    box-sizing: border-box;
+		}
+
+		.input:focus {
+		    border-color: #00a779;
+		    outline: none;
+		    box-shadow: 0 0 5px rgba(0, 170, 121, 0.5);
+		}
+
+		.button {
+		    border-radius: 5px;
+		    padding: 10px 20px;
+		    font-size: 16px;
+		    color: #fff;
+		    border: none;
+		    cursor: pointer;
+		    transition: background-color 0.3s, transform 0.2s;
+		}
+
+		.button.is-primary {
+		    background-color: #00a779;
+		}
+
+		.button.is-primary:hover {
+		    background-color: #007f5f;
+		    transform: translateY(-2px);
+		}
+
+		.button.is-danger {
+		    background-color: #ff4d4d;
+		}
+
+		.button.is-danger:hover {
+		    background-color: #cc0000;
+		    transform: translateY(-2px);
+		}
+
+		.control a {
+		    color: #00a779;
+		    text-decoration: none;
+		    font-weight: bold;
+		}
+
+		.control a:hover {
+		    text-decoration: underline;
 		}
 
 		#message {
-		  display: none;
-		  margin: 20px;
-		  font-weight: bold;
-		  color: green;
-		  padding: 8px;
-		  background-color: beige;
-		  border: 2px solid aquamarine;
-		  border-radius: 4px;
-		}
-
-		/* Add responsiveness */
-		@media (max-width: 768px) {
-		  .hero-body.container {
-		    padding: 5px;
-		  }
-
-		  .container {
+		    display: none;
+		    margin: 20px;
+		    font-weight: bold;
+		    color: #4caf50;
 		    padding: 10px;
-		  }
-
-		  input.input {
-		    padding: 8px;
-		  }
+		    background-color: #e8f5e9;
+		    border-radius: 4px;
+		    border: 1px solid #c8e6c9;
 		}
+
+
 
 	</style>
 </head>
@@ -805,7 +820,7 @@
              <div class="field">
                <label class="label">Tên Đăng Nhập</label>
                <div class="control">
-                 <input class="input" type="text" placeholder="username" name="username" />
+                 <input class="input" type="text" placeholder="Username" name="username" />
                </div>
              </div>
 
@@ -1010,22 +1025,7 @@
 		
 		
 	<!-- js -->
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap.bundle.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/owl.carousel.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/nouislider.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe-ui-default.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/select2.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/number.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/main.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/header.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/svg4everybody.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/jquery.dataTables.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/sweetalert.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/toastr.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/summernote.min.js.download"></script>
 
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap-datepicker.js.download"></script>
 	<script>
 		hideLoading();
 		function showLoading() {
@@ -1060,14 +1060,26 @@
 			  var confirmPassword = document.getElementById("confirm-password").value;
 
 			  if (password !== confirmPassword) {
-			    document.getElementById("message").textContent = "Passwords do not match!";
+			    document.getElementById("message").textContent = "Mật khẩu xác nhận không khớp";
 			    document.getElementById("message").style.display = "block";
 			    document.getElementById("message").style.backgroundColor = "red";
 			    document.getElementById("message").style.color = "white";
 			    return; // Stop the form from submitting
 			  }
 
-			  document.getElementById("message").textContent = "Submitting..";
+			  if (password.length < 8) {
+			      showMessage("Mật khẩu phải có ít nhất 8 ký tự", "red", "white");
+			      return;
+			  }
+
+
+			  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+			      showMessage("Mật khẩu phải bao gồm cả chữ cái và số", "red", "white");
+			      return;
+			  }
+
+
+			  document.getElementById("message").textContent = "Đang đăng kí..";
 			  document.getElementById("message").style.display = "block";
 			  document.getElementById("submit-button").disabled = true;
 
@@ -1121,6 +1133,20 @@
 			      document.getElementById("message").style.display = "block";
 			    });
 			});
+
+			function showMessage(message, backgroundColor, color) {
+			    const messageElement = document.getElementById("message");
+			    messageElement.textContent = message;
+			    messageElement.style.display = "block";
+			    messageElement.style.backgroundColor = backgroundColor;
+			    messageElement.style.color = color;
+
+			    setTimeout(() => {
+			        messageElement.textContent = "";
+			        messageElement.style.display = "none";
+			    }, 2600);
+			}
+
 
 			function getNewRecord() {
 			  document.getElementById("form").reset();
