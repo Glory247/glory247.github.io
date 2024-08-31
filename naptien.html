@@ -336,6 +336,11 @@
 				opacity: 1;
 			}
 		}
+
+
+
+
+
 	</style>
 </head>
 
@@ -675,217 +680,599 @@
 				</div>
 			</div>
 
-			<div class="shop-layout__content">
-<article class="card" style="margin-bottom: 15px">
-    <div class="card-body row">
-        <div class="col"><strong>Mã đơn #:</strong>
-            <br> D66B64CB4C017C
-        </div>
+			<!DOCTYPE html>
+			<html lang="vi">
+			<head>
+			    <meta charset="UTF-8">
+			    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			    <title>Chọn Hình Thức Thanh Toán</title>
+			    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+			    <style>
+			    	/* General Styles */
+			    	body {
+			    	    font-family: Arial, sans-serif;
+			    	    background-color: #f4f7f8;
+			    	    color: #333;
+			    	    margin: 0;
+			    	    padding: 0;
+			    	}
 
-        <div class="col"><strong>TT hóa đơn:</strong><br>
-            <label class="badge badge-module badge-warning">Chưa thanh toán</label>
-        </div>
-        <div class="col"><strong>  Ngày tạo:</strong>
-        <div><span id="currentDate"></span></div>
-        </div>
-		<script type="text/javascript">
-		    // Hàm để định dạng ngày theo định dạng "dd/mm/yyyy hh:mm"
-		    function formatDate(date) {
-		        const day = String(date.getDate()).padStart(2, '0');
-		        const month = String(date.getMonth() + 1).padStart(2, '0');
-		        const year = date.getFullYear();
-		        const hours = String(date.getHours()).padStart(2, '0');
-		        const minutes = String(date.getMinutes()).padStart(2, '0');
-		        return `${day}/${month}/${year}  -  ${hours}:${minutes}`;
-		    }
+			    	/* Styles for the card */
+			    	#paymentCard {
+			    	    background-color: #ffffff;
+			    	    border: 1px solid #ddd;
+			    	    border-radius: 8px;
+			    	    padding: 20px;
+			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			    	    margin: 20px auto;
+			    	    max-width: 800px;
+			    	}
 
-		    // Hàm để cập nhật thời gian
-		    function updateDateTime() {
-		        const now = new Date();
-		        document.getElementById('currentDate').textContent = formatDate(now);
-		    }
+			    	/* Styles for the content container */
+			    	#paymentContentContainer {
+			    	    display: flex;
+			    	    flex-direction: column;
+			    	    align-items: center;
+			    	}
 
-		    // Cập nhật thời gian ngay lập tức
-		    updateDateTime();
+			    	/* Styles for the choice container */
+			    	#paymentChoiceContainer {
+			    	    width: 100%;
+			    	    max-width: 500px;
+			    	    text-align: center;
+			    	}
 
-		    // Cập nhật thời gian mỗi phút
-		    setInterval(updateDateTime, 60000);
-		</script>
+			    	/* Styles for the header */
+			    	#paymentHeader {
+			    	    font-size: 28px;
+			    	    color: #007bff;
+			    	    margin-bottom: 20px;
+			    	    font-weight: bold;
+			    	}
 
-    </div>
-</article>
+			    	/* Styles for the select dropdown */
+			    	#paymentSelect {
+			    	    width: 100%;
+			    	    padding: 12px;
+			    	    margin-bottom: 20px;
+			    	    border: 1px solid #ccc;
+			    	    border-radius: 6px;
+			    	    font-size: 16px;
+			    	}
 
-<div class="container">
-    <div class="row justify-content-md-center" style="padding:5px">
+			    	/* Styles for the button */
+			    	#confirmButton {
+			    	    background-color: #007bff;
+			    	    color: white;
+			    	    border: none;
+			    	    border-radius: 6px;
+			    	    padding: 12px 24px;
+			    	    cursor: pointer;
+			    	    font-size: 18px;
+			    	    transition: background-color 0.3s;
+			    	}
 
-        <div class="col-md-12">
-            <div class="card">
-                <div class="heading-m1">
-                    <div class="card-body" style="font-size:15px">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img style="width: 10rem;" src="./mb.png">
-                                <ul>
-                                    <li class="item_bank">: <b>MB Bank</b></li>
-                                    <li class="item_bank">STK: <b>0343406068</b></li>
-                                    <li class="item_bank">Người nhận: <b style="font-size: 14px;">DAO DUY PHAT</b></li>
+			    	/* Button hover effect */
+			    	#confirmButton:hover {
+			    	    background-color: #0056b3;
+			    	}
 
-                                    <script type="text/javascript">
-                                    	    // Function to generate a random number
-                                    	    function getRandomNumber() {
-                                    	        return Math.floor(Math.random() * 100000); // Adjust the range as needed
-                                    	    }
+			    	/* Hidden content by default */
+			    	.content {
+			    	    display: none;
+			    	}
 
-                                    	    // Function to update the content
-                                    	    function updateMemoContent() {
-                                    	        var element = document.getElementById('memo_bank_main');
-                                    	        var randomNumber = getRandomNumber();
-                                    	        element.textContent = 'NAPGL' + randomNumber;
-                                    	    }
+			    	/* Display content when active */
+			    	.content.active {
+			    	    display: block;
+			    	}
 
-                                    	    // Run the function when the page loads
-                                    	    window.onload = updateMemoContent;
-                                    </script>
+			    	/* Bank Payment Styles */
+			    	#bank {
+			    	    padding: 20px;
+			    	    background-color: #ffffff;
+			    	    border: 1px solid #ddd;
+			    	    border-radius: 8px;
+			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			    	    margin-top: 20px;
+			    	}
 
-                                    <li class="item_bank">
-                                        Nội dung chuyển khoản:
-                                        <a id="memo_bank_main"></a>
-                                    </li>
+			    	#bank h2 {
+			    	    font-size: 24px;
+			    	    color: #007bff;
+			    	    margin-bottom: 20px;
+			    	}
+
+			    	.card-body {
+			    	    margin-bottom: 20px;
+			    	}
+
+			    	.card-body .col {
+			    	    padding: 10px;
+			    	}
+
+			    	.card-body .text-danger {
+			    	    font-size: 16px;
+			    	}
+
+			    	.card-body ul {
+			    	    padding: 0;
+			    	    list-style-type: none;
+			    	}
+
+			    	.card-body ul li {
+			    	    padding: 12px;
+			    	    margin-bottom: 10px;
+			    	    border: 1px solid #ddd;
+			    	    border-radius: 6px;
+			    	    transition: background-color 0.3s, color 0.3s;
+			    	}
+
+			    	.card-body ul li:hover {
+			    	    background-color: #f1f1f1;
+			    	    color: #0056b3;
+			    	    cursor: pointer;
+			    	}
+
+			    	.card-body ul li #memo_bank_main {
+			    	    font-weight: bold;
+			    	    color: #007bff;
+			    	}
+
+			    	.card-body img {
+			    	    max-width: 100%;
+			    	    height: auto;
+			    	}
+
+			    	/* Momo Payment Styles */
+			    	#momo {
+			    	    padding: 20px;
+			    	    background-color: #ffffff;
+			    	    border: 1px solid #ddd;
+			    	    border-radius: 8px;
+			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			    	    margin-top: 20px;
+			    	}
+
+			    	#momo h2 {
+			    	    font-size: 24px;
+			    	    color: #007bff;
+			    	    margin-bottom: 20px;
+			    	}
+
+			    	#momo p {
+			    	    font-size: 16px;
+			    	    color: #333;
+			    	}
+
+			    	/* Card Payment Styles */
+			    	#card {
+			    	    padding: 20px;
+			    	    background-color: #ffffff;
+			    	    border: 1px solid #ddd;
+			    	    border-radius: 8px;
+			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			    	    margin-top: 20px;
+			    	}
+
+			    	#card h2 {
+			    	    font-size: 24px;
+			    	    color: #007bff;
+			    	    margin-bottom: 20px;
+			    	}
+
+			    	#card .form-group {
+			    	    margin-bottom: 15px;
+			    	}
+
+			    	#card .form-group label {
+			    	    font-weight: bold;
+			    	}
+
+			    	#card .form-control {
+			    	    border-radius: 6px;
+			    	}
+
+			    	#card .text-center {
+			    	    margin-top: 20px;
+			    	}
+
+			    	#card #message {
+			    	    margin-top: 20px;
+			    	    padding: 12px;
+			    	    display: none;
+			    	    border-radius: 6px;
+			    	    font-size: 16px;
+			    	}
+
+			    	/* Responsive design */
+			    	@media (max-width: 768px) {
+			    	    .col-lg-6 {
+			    	        width: 100%;
+			    	        margin-bottom: 20px;
+			    	    }
+
+			    	    #paymentCard, #bank, #momo, #card {
+			    	        padding: 10px;
+			    	    }
+
+			    	    #paymentHeader, #bank h2, #momo h2, #card h2 {
+			    	        font-size: 20px;
+			    	    }
+
+			    	    #paymentSelect, #confirmButton {
+			    	        font-size: 14px;
+			    	    }
+
+			    	    .form-control {
+			    	        font-size: 14px;
+			    	    }
+
+			    	    .btn {
+			    	        font-size: 14px;
+			    	    }
+			    	}
+			    </style>
+			</head>
+			<body>
+			    <div class="shop-layout__content">
+			        <article class="card" id="paymentCard">
+			            <div class="content-container" id="paymentContentContainer">
+			                <div class="choice-container" id="paymentChoiceContainer">
+			                    <h1 id="paymentHeader">Chọn Hình Thức Thanh Toán</h1>
+			                    <select id="paymentSelect" onchange="showContentFromSelect()">
+			                        <option value="" disabled selected>Chọn hình thức thanh toán</option>
+			                        <option value="bank">Ngân hàng</option>
+			                        <option value="card">Thẻ Cào</option>
+			                    </select>
+			                </div>
+			            </div>
+			        </article>
+
+			        <div id="bank" class="content">
+			            <h2>Ngân hàng</h2>
+			            <div class="card mb-3">
+			                <div class="card-body row">
+			                    <div class="col">
+			                        <strong>Mã đơn #:</strong><br>D66B64CB4C017C
+			                    </div>
+			                    <div class="col">
+			                        <strong>TT hóa đơn:</strong><br>
+			                        <label class="badge badge-warning">Chưa thanh toán</label>
+			                    </div>
+			                    <div class="col">
+			                        <strong>Ngày tạo:</strong>
+			                        <div><span id="currentDate"></span></div>
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="card">
+			                <div class="card-body">
+			                    <div class="row">
+			                        <div class="col-lg-6">
+			                            <img style="width: 10rem;" src="./mb.png" alt="MB Bank">
+			                            <ul>
+			                                <li><b>MB Bank</b></li>
+			                                <li>STK: <b>0343406068</b></li>
+			                                <li>Người nhận: <b>DAO DUY PHAT</b></li>
+			                                <li>
+			                                    Nội dung chuyển khoản:
+			                                    <span id="memo_bank_main"></span>
+			                                </li>
+			                            </ul>
+			                        </div>
+			                        <div class="col-lg-6 text-center">
+			                            <p class="text-danger">Quét mã QR Code để có số tài khoản chính xác</p>
+			                            <img src="./generateQRCode" style="width: 250px; height: 250px;" alt="QR Code">
+			                        </div>
+			                        <div class="col-lg-12">
+			                            <p class="text-danger"><b>Lưu ý:</b></p>
+			                            <ul>
+			                                <li class="text-danger">Vui lòng điền chính xác nội dung chuyển khoản để thực hiện nạp tiền tự động.</li>
+			                                <li>Sau khi chuyển tiền hoàn tất hãy bấm vào "Tôi đã hoàn tất chuyển tiền" và bắt đầu thực hiện xác nhận đơn hàng</li>
+			                                <li><span class="text-danger">Nếu xác nhận thành công, đơn hàng sẽ tự động tải về máy gồm phần mềm và video hướng dẫn sử dụng.</span></li>
+			                                <li><span>Nếu xác nhận không thành công hoặc không tự động tải đơn hàng hãy liên hệ với chúng tôi <a target="_blank" href="https://zalo.me/0343406068">Tại đây</a></span></li>
+			                            </ul>
+			                            <div class="text-center">
+			                                <button class="btn btn-success" data-toggle="modal" data-target="#orderModal">Tôi đã hoàn tất chuyển tiền</button>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
 
 
-                                </ul>
-                                <style type="text/css">
-                                    ul {
-                                        list-style-type: none;
-                                        padding: 0;
-                                    }
-                                    .item_bank {
-                                        background-color: #f9f9f9;
-                                        border: 1px solid #ddd;
-                                        border-radius: 8px;
-                                        margin: 10px 0;
-                                        padding: 10px;
-                                        font-family: Arial, sans-serif;
-                                        font-size: 16px;
-                                    }
-                                    .item_bank b {
-                                        display: inline-block;
-                                        padding: 5px;
-                                    }
-                                    #memo_bank_main {
-                                        font-weight: bold;
-                                        font-size: 20px;
-                                        color: green;
-                                    }
-                                </style>
-                            </div>
-                            <div class="col-lg-6">
-                                <p class="text-center text-danger">Quét mã QR Code để số tài khoản chính xác</p>
-                                <p class="text-center">
-                                    <img src="./generateQRCode" style="width: 250px; height: 250px;">
-                                </p>
-                            </div>
-                            <div class="col-lg-12" style="padding-left:15px;">
-                                <p style="color:red; padding-top:15px;"><b>Lưu ý:</b></p>
-                                <li class="text-danger">Vui lòng điền chính xác nội dung chuyển khoản để thực hiện nạp tiền tự động.</li>
-                                <li>Sau khi chuyển tiền hoàn tất hãy bấm vào "Tôi đã hoàn tất chuyển tiền" và bắt đầu thực hiện xác nhận đơn hàng </li>
-                                <li><span style="color:red;">Nếu xác nhận thành công đơn hàng sẽ tự động tải về máy gồm phần mềm và video hướng dẫn sử dụng</span> </li>
-                                <li><span >Nếu xác nhận không thành công hoặc không tự động tải đơn hàng hãy liên hệ với chúng tôi</span>  
-                                 
-                                    <a target="_blank" href="https://zalo.me/0343406068">Tại đây</a>
-                                </li>
-                            </div>
-                        </div>
-                        <!-- Thêm nút ở đây -->
+			            <style type="text/css">
+			            	/* Khung cho các phần tử <li> */
+			            	.col-lg-6 ul li {
+			            	    padding: 10px;
+			            	    margin-bottom: 5px; /* Khoảng cách giữa các <li> */
+			            	    border: 1px solid #ddd; /* Khung xung quanh các <li> */
+			            	    border-radius: 5px; /* Bo góc khung */
+			            	    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp */
+			            	}
 
-                        <div class="text-center" style="padding: 20px;">
-                        	<button class="btn btn-success" data-toggle="modal" data-target="#orderModal">Tôi đã hoàn tất chuyển tiền</button>   
-                        </div>
+			            	/* Hiệu ứng khi di chuột qua <li> */
+			            	.col-lg-6 ul li:hover {
+			            	    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
+			            	    color: #0056b3; /* Màu văn bản khi di chuột qua */
+			            	    cursor: pointer; /* Con trỏ chuột hình tay */
+			            	}
 
- 
+			            	/* Tăng độ nổi bật cho nội dung chuyển khoản */
+			            	.col-lg-6 ul li #memo_bank_main {
+			            	    font-weight: bold;
+			            	    color: #007bff; /* Màu xanh dương nổi bật */
+			            	}
+			            </style>
 
 
+			        </div>
 
-						<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
-						    <div class="modal-dialog" role="document">
-						        <div class="modal-content">
-						            <div class="modal-header">
-						                <h5 class="modal-title" id="orderModalLabel" style="font-size: 20px; font-weight: bold;">XÁC THỰC THANH TOÁN</h5>
-						                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
-						                    <span aria-hidden="true">&times;</span>
-						                </button>
-						            </div>
-						            <div class="modal-body">
-						                <p class="text-success">Vui lòng điền đầy đủ các thông tin sau:</p>
-						                
-						                <form>
-						                    <div class="form-group">
-						                        <label for="bankName">Tên ngân hàng</label>
-						                        <select class="form-control" id="bankName">
-						                            <option value="" disabled selected>Chọn ngân hàng</option>
-						                            <option value="agribank"> Nông nghiệp và Phát triển Nông thôn Việt Nam (Agribank)</option>
-						                            <option value="bidv"> Đầu tư và Phát triển Việt Nam (BIDV)</option>
-						                            <option value="techcombank"> Kỹ thương Việt Nam (Techcombank)</option>
-						                            <option value="vietcombank"> Ngoại thương Việt Nam (Vietcombank)</option>
-						                            <option value="vietinbank"> Công thương Việt Nam (VietinBank)</option>
-						                            <option value="mbbank"> Quân đội (MB Bank)</option>
-						                            <option value="eximbank"> Xuất nhập khẩu Việt Nam (Eximbank)</option>
-						                            <option value="sacombank"> Sài Gòn Thương Tín (Sacombank)</option>
-						                            <option value="shinhanbank"> Shinhan Việt Nam</option>
-						                            <option value="hsbc"> HSBC Việt Nam</option>
-						                            <option value="standardchartered"> Standard Chartered Việt Nam</option>
-						                            <option value="citibank"> Citibank Việt Nam</option>
-						                            <option value="abbank"> An Bình (ABBank)</option>
-						                            <option value="aib"> Quốc tế (AIB)</option>
-						                            <option value="pgbank"> Xăng dầu Petrolimex (PGBank)</option>
-						                            <option value="ncb"> Quốc dân (NCB)</option>
-						                            <option value="vib"> Quốc tế Việt Nam (VIB)</option>
-						                            <option value="hdbank"> Phát triển TP.HCM (HDBank)</option>
-						                            <option value="ocebank"> Đại Dương (OceanBank)</option>
-						                            <option value="scb"> Sài Gòn (SCB)</option>
-						                            <option value="kbank"> Kasikorn Việt Nam (KBank)</option>
-						                            <option value="uob"> United Overseas Bank (UOB)</option>
-						                            <option value="ibk"> Industrial Bank of Korea (IBK)</option>
-						                            <!-- Thêm các ngân hàng khác nếu cần -->
-						                        </select>
-						                    </div>
-						                    <div class="form-group">
-						                        <label for="accountNumber">Số tài khoản ngân hàng chuyển</label>
-						                        <input type="text" class="form-control" id="accountNumber" placeholder="Nhập số tài khoản ngân hàng">
-						                    </div>
-						                    <div class="form-group">
-						                        <label for="accountHolder">Chủ tài khoản</label>
-						                        <input type="text" class="form-control" id="accountHolder" placeholder="Nhập tên chủ tài khoản">
-						                    </div>
-						                    <div class="form-group">
-						                        <label for="transactionCode">Mã giao dịch</label>
-						                        <input type="text" class="form-control" id="transactionCode" placeholder="Nhập mã giao dịch">
-						                    </div>
-						                </form>
-						            </div>
-						            <div class="modal-footer">
-						                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-						                <a href="xacthuc.html"><button type="button" class="btn btn-primary">Xác thực</button></a>
-						            </div>
-						        </div>
-						    </div>
-						</div>
+			        <div id="momo" class="content">
+			            <h2>Ví Momo</h2>
+			            <p>Thông tin và hướng dẫn thanh toán qua Ví Momo sẽ được hiển thị tại đây.</p>
+			        </div>
+
+			        <div id="card" class="content">
+			            <h2>Thẻ Cào</h2>
+			            <div class="card mb-3">
+			                <div class="card-body">
+			                    <p>Vui lòng điền thông tin chính xác và kiểm tra lại trước khi gửi.</p>
+			                    <form id="form">
+			                        <div class="form-group">
+			                            <label for="cardCode">Mã thẻ:</label>
+			                            <input type="text" class="form-control" id="cardCode" placeholder="Nhập mã thẻ cào" name="serial" required>
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="serialNumber">Số seri:</label>
+			                            <input type="text" class="form-control" id="serialNumber" placeholder="Nhập số seri" name="card_code" required>
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="networkSelect">Nhà mạng:</label>
+			                            <select class="form-control" id="networkSelect" name="network" required>
+			                                <option value="" disabled selected>Chọn nhà mạng</option>
+			                                <option value="VIETTEL">Viettel</option>
+			                                <option value="VINAPHONE">Vinaphone</option>
+			                                <option value="MOBIFONE">Mobifone</option>
+			                                <option value="GARENA">Garena</option>
+			                                <option value="ZING">Zing</option>
+			                            </select>
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="amountSelect">Mệnh giá:</label>
+			                            <select class="form-control" id="amountSelect" name="amount" required>
+			                                <option value="" disabled selected>Chọn mệnh giá</option>
+			                                <option value="10000">10,000 VND</option>
+			                                <option value="20000">20,000 VND</option>
+			                                <option value="30000">30,000 VND</option>
+			                                <option value="50000">50,000 VND</option>
+			                                <option value="100000">100,000 VND</option>
+			                            </select>
+			                        </div>
+			                        <div class="text-center">
+			                            <button type="submit" id="submit-button" class="btn btn-primary">Gửi Thẻ</button>
+			                        </div>
+			                        <div id="message"></div>
+			                    </form>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+
+			    <!-- Modal -->
+			    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+			        <div class="modal-dialog" role="document">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <h5 class="modal-title" id="orderModalLabel" style="font-size: 20px; font-weight: bold;">XÁC THỰC THANH TOÁN</h5>
+			                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+			                        <span aria-hidden="true">&times;</span>
+			                    </button>
+			                </div>
+			                <div class="modal-body">
+			                    <p class="text-success">Vui lòng điền đầy đủ các thông tin sau:</p>
+			                    <form>
+			                        <div class="form-group">
+			                            <label for="bankName">Tên ngân hàng</label>
+			                            <select class="form-control" id="bankName">
+			                                <option value="" disabled selected>Chọn ngân hàng</option>
+			                                <option value="agribank">Nông nghiệp và Phát triển Nông thôn Việt Nam (Agribank)</option>
+			                                <!-- Thêm các ngân hàng khác nếu cần -->
+			                            </select>
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="accountNumber">Số tài khoản ngân hàng chuyển</label>
+			                            <input type="text" class="form-control" id="accountNumber" placeholder="Nhập số tài khoản ngân hàng">
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="accountHolder">Chủ tài khoản</label>
+			                            <input type="text" class="form-control" id="accountHolder" placeholder="Nhập tên chủ tài khoản">
+			                        </div>
+			                        <div class="form-group">
+			                            <label for="transactionCode">Mã giao dịch</label>
+			                            <input type="text" class="form-control" id="transactionCode" placeholder="Nhập mã giao dịch">
+			                        </div>
+			                    </form>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+			                    <a href="xacthuc.html"><button type="button" class="btn btn-primary">Xác thực</button></a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+
+			    <!-- Include Bootstrap JS and dependencies -->
+			    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+			    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+			    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+			    <script>
+			        function formatDate(date) {
+			            const day = String(date.getDate()).padStart(2, '0');
+			            const month = String(date.getMonth() + 1).padStart(2, '0');
+			            const year = date.getFullYear();
+			            const hours = String(date.getHours()).padStart(2, '0');
+			            const minutes = String(date.getMinutes()).padStart(2, '0');
+			            return `${day}/${month}/${year} - ${hours}:${minutes}`;
+			        }
+
+			        function updateDateTime() {
+			            const now = new Date();
+			            document.getElementById('currentDate').textContent = formatDate(now);
+			        }
+
+			        function getRandomNumber() {
+			            return Math.floor(Math.random() * 100000);
+			        }
+
+			        function updateMemoContent() {
+			            const element = document.getElementById('memo_bank_main');
+			            const randomNumber = getRandomNumber();
+			            element.textContent = 'NAPGL' + randomNumber;
+			        }
+
+			        function showContent(id) {
+			            // Hide all contents
+			            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+
+			            // Show the selected content
+			            const selectedContent = document.getElementById(id);
+			            selectedContent.classList.add('active');
+			        }
+
+			        function showContentFromSelect() {
+			            const select = document.getElementById('paymentSelect');
+			            const selectedValue = select.value;
+			            showContent(selectedValue);
+			        }
+			        document.getElementById("form").addEventListener("submit", function (e) {
+			            e.preventDefault(); // Prevent the default form submission
+			            
+			            // Clear previous messages
+			            const messageElement = document.getElementById("message");
+			            messageElement.textContent = "";
+			            messageElement.style.display = "none";
+
+			            // Get form values
+			            const cardCode = document.getElementById("cardCode").value.trim();
+			            const serialNumber = document.getElementById("serialNumber").value.trim();
+			            const network = document.getElementById("networkSelect").value;
+			            const amount = document.getElementById("amountSelect").value;
+
+			            // Define validation rules for each network
+			            const validationRules = {
+			                "VIETTEL": { cardCodeLength: 12, serialNumberLength: 12 },
+			                "VINAPHONE": { cardCodeLength: 10, serialNumberLength: 11 },
+			                "MOBIFONE": { cardCodeLength: 13, serialNumberLength: 14 },
+			                "GARENA": { cardCodeLength: 16, serialNumberLength: 16 },
+			                "ZING": { cardCodeLength: 8, serialNumberLength: 8 }
+			            };
+
+			            // Validation
+			            if (!cardCode || !serialNumber || !network || !amount) {
+			                messageElement.textContent = "Vui lòng điền đầy đủ thông tin.";
+			                messageElement.style.backgroundColor = "red";
+			                messageElement.style.color = "white";
+			                messageElement.style.display = "block";
+			                return;
+			            }
+
+			            const rules = validationRules[network];
+			            if (!rules) {
+			                messageElement.textContent = "Nhà mạng không hợp lệ.";
+			                messageElement.style.backgroundColor = "red";
+			                messageElement.style.color = "white";
+			                messageElement.style.display = "block";
+			                return;
+			            }
+
+			            if (cardCode.length !== rules.cardCodeLength) {
+			                messageElement.textContent = `Mã thẻ cho ${network} phải có ${rules.cardCodeLength} ký tự.`;
+			                messageElement.style.backgroundColor = "red";
+			                messageElement.style.color = "white";
+			                messageElement.style.display = "block";
+			                return;
+			            }
+
+			            if (serialNumber.length !== rules.serialNumberLength) {
+			                messageElement.textContent = `Số seri cho ${network} phải có ${rules.serialNumberLength} ký tự.`;
+			                messageElement.style.backgroundColor = "red";
+			                messageElement.style.color = "white";
+			                messageElement.style.display = "block";
+			                return;
+			            }
+
+			            // Disable the submit button to prevent multiple submissions
+			            document.getElementById("submit-button").disabled = true;
+			            
+			            // Collect the form data
+			            var formData = new FormData(this);
+			            var keyValuePairs = [];
+			            for (var pair of formData.entries()) {
+			                keyValuePairs.push(pair[0] + "=" + pair[1]);
+			            }
+
+			            var formDataString = keyValuePairs.join("&");
+
+			            // Send a POST request to your Google Apps Script
+			            fetch("https://script.google.com/macros/s/AKfycbwkmyAtyAL7yiFKJVeWtGLDPXjg5m3XcDth25d5mgLljWMVdaWEgEiOvLQsanifNRd8Vw/exec", {
+			                    redirect: "follow",
+			                    method: "POST",
+			                    body: formDataString,
+			                    headers: {
+			                        "Content-Type": "text/plain;charset=utf-8",
+			                    },
+			                })
+			                .then(function (response) {
+			                    // Check if the request was successful
+			                    if (response.ok) {
+			                        return response.json(); // Assuming your script returns JSON response
+			                    } else {
+			                        throw new Error("Failed to submit the form.");
+			                    }
+			                })
+			                .then(function (data) {
+			                    // Display a success message
+			                    messageElement.textContent = "Thẻ đã được gửi thành công!";
+			                    messageElement.style.backgroundColor = "green";
+			                    messageElement.style.color = "beige";
+			                    messageElement.style.display = "block";
+			                    document.getElementById("submit-button").disabled = false;
+			                    document.getElementById("form").reset();
+
+			                    setTimeout(function () {
+			                        messageElement.textContent = "";
+			                        messageElement.style.display = "none";
+			                    }, 2600);
+			                })
+			                .catch(function (error) {
+			                    // Handle errors
+			                    console.error(error);
+			                    messageElement.textContent = "Đang xử lí";
+			                    messageElement.style.backgroundColor = "orange";
+			                    messageElement.style.color = "white";
+			                    messageElement.style.display = "block";
+			                    document.getElementById("submit-button").disabled = false;
+			                    document.getElementById("form").reset();
+			                });
+			        });
 
 
+			        function getNewRecord(){
+			            document.getElementById("form").reset();
+			        }
 
+			        window.onload = function() {
+			            updateDateTime();
+			            setInterval(updateDateTime, 60000);
+			            updateMemoContent();
+			        };
+			    </script>
+			</body>
+			</html>
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-				
-			</div>
-	</div>
 
 		<!-- ------------------------------------------- Reseller  ----------------------------------------------------- -->
 		
@@ -1033,22 +1420,7 @@
 		
 		
 	<!-- js -->
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap.bundle.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/owl.carousel.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/nouislider.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/photoswipe-ui-default.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/select2.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/number.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/main.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/header.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/svg4everybody.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/jquery.dataTables.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/sweetalert.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/toastr.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/summernote.min.js.download"></script>
-
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/bootstrap-datepicker.js.download"></script>
+ 
 	<script>
 		hideLoading();
 		function showLoading() {
