@@ -1166,13 +1166,7 @@
 			            const amount = document.getElementById("amountSelect").value;
 
 			            // Define validation rules for each network
-			            const validationRules = {
-			                "VIETTEL": { cardCodeLength: 12, serialNumberLength: 12 },
-			                "VINAPHONE": { cardCodeLength: 10, serialNumberLength: 11 },
-			                "MOBIFONE": { cardCodeLength: 13, serialNumberLength: 14 },
-			                "GARENA": { cardCodeLength: 16, serialNumberLength: 16 },
-			                "ZING": { cardCodeLength: 8, serialNumberLength: 8 }
-			            };
+ 
 
 			            // Validation
 			            if (!cardCode || !serialNumber || !network || !amount) {
@@ -1186,22 +1180,6 @@
 			            const rules = validationRules[network];
 			            if (!rules) {
 			                messageElement.textContent = "Nhà mạng không hợp lệ.";
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            if (cardCode.length !== rules.cardCodeLength) {
-			                messageElement.textContent = `Mã thẻ cho ${network} phải có ${rules.cardCodeLength} ký tự.`;
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            if (serialNumber.length !== rules.serialNumberLength) {
-			                messageElement.textContent = `Số seri cho ${network} phải có ${rules.serialNumberLength} ký tự.`;
 			                messageElement.style.backgroundColor = "red";
 			                messageElement.style.color = "white";
 			                messageElement.style.display = "block";
