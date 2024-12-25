@@ -1,1480 +1,822 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0039)#danh-muc/phan-mem -->
-<html lang="en" dir="ltr" xmlns:with="http://www.thymeleaf.org/extras/with"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- Required meta tags -->
-	
-	<meta name="_csrf" content="b965e7f8-6059-4ba2-b000-f9fe754054d0">
-	<!-- default header name is X-CSRF-TOKEN -->
-	<meta name="_csrf_header" content="X-CSRF-TOKEN">
-	
-		<title>GloryShop</title>
-		<meta property="og:title" content="GloryShop">
-		<meta property="og:description" content="GloryShop">
-		<meta name="description" content="GloryShop">
+<html>
+<head lang="vi-VN">
+    <title>Pay Profile - @dphat</title>
+    <link rel="shortcut icon" href="https://imgur.com/mruOsLm" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/styles/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="./assets/styles/porn-hub.css">
+    <link id="dark-style" class="dark-theme" rel="stylesheet" href="./assets/styles/style-dark.css">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- fonts -->
-	<link rel="stylesheet" href="./css">
-	<link rel="shortcut icon" type="image/png" href="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-1/254119297_142829881414207_946298403396805965_n.jpg?stp=dst-jpg_p200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeFUuI3nRTXZ0kchwYqWNJ_BCKS4vcXh0UwIpLi9xeHRTM0v__L-6j6DBJWy_ahxJ-8wNuYNTG0N_wJwA1upND1q&_nc_ohc=giQfv65HQZAQ7kNvgGrK229&_nc_ht=scontent.fsgn5-10.fna&oh=00_AYAdfU2tTAgvFoBr8jGkJy54kJNOfCLUubl_9pv30YesEA&oe=66BBD7DC"/>
-	<!-- css -->
-	<link rel="stylesheet" href="./bootstrap.min.css">
-	<link rel="stylesheet" href="./style.css">
-	
-<!--	<script th:src='|https://www.google.com/recaptcha/api.js?render=${@captchaService.getReCaptchaSite()}'></script>-->
-	
-	<style>
-		.container_fix {
-			width: 100%;
-			padding-right: 15px;
-			padding-left: 20px;
-			margin-right: auto;
-			margin-left: auto;
-		}
-		@media (max-width: 768px){
-			.container_fix{
-			    padding-right: 0px;
-				padding-left: 15px;
-			}
-		}
-		.holder {
-			z-index: 1000;
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			bottom: 0px;
-			right: 0px;
-			width: 100%;
-			height: 100%;
-			background-color: transparent;
-		}
 
-		.preloader {
-			/* size */
-			width: 100px;
-			height: 100px;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translateX(-50%) translateY(-50%);
-			animation: rotatePreloader 2s infinite ease-in;
-		}
+    <style type="text/css">
+        
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+        }
+        .container_card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .provider_card {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .provider_card img {
+            width: 150px;
+            height: auto;
+            opacity: 0.7;
+        }
+        .provider_card img.selected {
+            opacity: 1;
+            border: 3px solid green;
+        }
+        .form-group_card {
+            margin-bottom: 15px;
+        }
+        .form-group_card label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group_card select,
+        .form-group_card input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+ 
+        .submit-btn_card {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        /* Adjusted CSS for horizontal layout of series and code */
+/* Adjusted CSS for the input row */
+        .input-row_card {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px; /* Space between the inputs */
+        }
 
-		@keyframes rotatePreloader {
-			0% {
-				transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
-			}
-			100% {
-				transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
-			}
-		}
-		.preloader div {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-		}
+        .input-row_card .form-group_card {
+            flex: 1;
+            min-width: 45%; /* Minimum width for each input */
+        }
 
-		.preloader div:before {
-			content: "";
-			position: absolute;
-			left: 50%;
-			top: 0%;
-			width: 10%;
-			height: 10%;
-			background-color: #21be73;
-			transform: translateX(-50%);
-			border-radius: 50%;
-		}
+        .input-row_card .form-group_card label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-		.preloader div:nth-child(1) {
-			transform: rotateZ(0deg);
-			animation: rotateCircle1 2s infinite linear;
-			z-index: 9;
-		}
+        .input-row_card .form-group_card input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* Slightly smaller font size */
+        }
 
-		@keyframes rotateCircle1 {
-			0% {
-				opacity: 0;
-			}
-			0% {
-				opacity: 1;
-				transform: rotateZ(36deg);
-			}
-			7% {
-				transform: rotateZ(0deg);
-			}
-			57% {
-				transform: rotateZ(0deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(2) {
-			transform: rotateZ(36deg);
-			animation: rotateCircle2 2s infinite linear;
-			z-index: 8;
-		}
-
-		@keyframes rotateCircle2 {
-			5% {
-				opacity: 0;
-			}
-			5.0001% {
-				opacity: 1;
-				transform: rotateZ(0deg);
-			}
-			12% {
-				transform: rotateZ(-36deg);
-			}
-			62% {
-				transform: rotateZ(-36deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(3) {
-			transform: rotateZ(72deg);
-			animation: rotateCircle3 2s infinite linear;
-			z-index: 7;
-		}
-
-		@keyframes rotateCircle3 {
-			10% {
-				opacity: 0;
-			}
-			10.0002% {
-				opacity: 1;
-				transform: rotateZ(-36deg);
-			}
-			17% {
-				transform: rotateZ(-72deg);
-			}
-			67% {
-				transform: rotateZ(-72deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(4) {
-			transform: rotateZ(108deg);
-			animation: rotateCircle4 2s infinite linear;
-			z-index: 6;
-		}
-
-		@keyframes rotateCircle4 {
-			15% {
-				opacity: 0;
-			}
-			15.0003% {
-				opacity: 1;
-				transform: rotateZ(-72deg);
-			}
-			22% {
-				transform: rotateZ(-108deg);
-			}
-			72% {
-				transform: rotateZ(-108deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(5) {
-			transform: rotateZ(144deg);
-			animation: rotateCircle5 2s infinite linear;
-			z-index: 5;
-		}
-
-		@keyframes rotateCircle5 {
-			20% {
-				opacity: 0;
-			}
-			20.0004% {
-				opacity: 1;
-				transform: rotateZ(-108deg);
-			}
-			27% {
-				transform: rotateZ(-144deg);
-			}
-			77% {
-				transform: rotateZ(-144deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(6) {
-			transform: rotateZ(180deg);
-			animation: rotateCircle6 2s infinite linear;
-			z-index: 4;
-		}
-
-		@keyframes rotateCircle6 {
-			25% {
-				opacity: 0;
-			}
-			25.0005% {
-				opacity: 1;
-				transform: rotateZ(-144deg);
-			}
-			32% {
-				transform: rotateZ(-180deg);
-			}
-			82% {
-				transform: rotateZ(-180deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(7) {
-			transform: rotateZ(216deg);
-			animation: rotateCircle7 2s infinite linear;
-			z-index: 3;
-		}
-
-		@keyframes rotateCircle7 {
-			30% {
-				opacity: 0;
-			}
-			30.0006% {
-				opacity: 1;
-				transform: rotateZ(-180deg);
-			}
-			37% {
-				transform: rotateZ(-216deg);
-			}
-			87% {
-				transform: rotateZ(-216deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(8) {
-			transform: rotateZ(252deg);
-			animation: rotateCircle8 2s infinite linear;
-			z-index: 2;
-		}
-
-		@keyframes rotateCircle8 {
-			35% {
-				opacity: 0;
-			}
-			35.0007% {
-				opacity: 1;
-				transform: rotateZ(-216deg);
-			}
-			42% {
-				transform: rotateZ(-252deg);
-			}
-			92% {
-				transform: rotateZ(-252deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(9) {
-			transform: rotateZ(288deg);
-			animation: rotateCircle9 2s infinite linear;
-			z-index: 1;
-		}
-
-		@keyframes rotateCircle9 {
-			40% {
-				opacity: 0;
-			}
-			40.0008% {
-				opacity: 1;
-				transform: rotateZ(-252deg);
-			}
-			47% {
-				transform: rotateZ(-288deg);
-			}
-			97% {
-				transform: rotateZ(-288deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
-		.preloader div:nth-child(10) {
-			transform: rotateZ(324deg);
-			animation: rotateCircle10 2s infinite linear;
-			z-index: 0;
-		}
-
-		@keyframes rotateCircle10 {
-			45% {
-				opacity: 0;
-			}
-			45.0009% {
-				opacity: 1;
-				transform: rotateZ(-288deg);
-			}
-			52% {
-				transform: rotateZ(-324deg);
-			}
-			102% {
-				transform: rotateZ(-324deg);
-			}
-			100% {
-				transform: rotateZ(-324deg);
-				opacity: 1;
-			}
-		}
+        /* Optional: For better input focus effect */
+        .input-row_card .form-group_card input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
 
 
 
 
 
-	</style>
+        /* Kiểu cho phần tử MB Bank */
+        #qrbank, #card {
+            cursor: pointer; /* Hiển thị con trỏ dạng tay khi di chuột vào */
+            border-radius: 8px; /* Bo góc nhẹ */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng cho hover */
+        }
+
+        /* Hiệu ứng khi hover vào phần tử MB Bank */
+        #qrbank:hover, #card:hover {
+            transform: scale(1.05); /* Tăng kích thước khi hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ khi hover */
+        }
+
+        /* Kiểu cho phần tử con bên trong MB Bank */
+        #qrbank .case-item, #card .case-item {
+            background-color: #fff; /* Màu nền trắng */
+            padding: 20px; /* Thêm khoảng cách bên trong */
+            border-radius: 8px; /* Bo góc cho box */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ cho box */
+            transition: box-shadow 0.3s ease; /* Thêm hiệu ứng cho shadow */
+        }
+
+        /* Kiểu cho hình ảnh trong MB Bank */
+        #qrbank .case-item__icon, #card .case-item__icon {
+            max-width: 50px; /* Hình ảnh có chiều rộng tối đa là 50px */
+            margin-bottom: 15px; /* Khoảng cách giữa hình ảnh và tiêu đề */
+        }
+
+        /* Kiểu cho tên ngân hàng và thông tin dưới nó */
+        #qrbank h3.title--h5,  #card h3.title--h5 {
+            font-size: 18px; /* Kích thước chữ */
+            font-weight: bold; /* In đậm tiêu đề */
+            margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+        }
+
+        #qrbank .case-item__caption, #card .case-item__caption  {
+            font-size: 14px; /* Kích thước chữ nhỏ hơn cho phần mô tả */
+            line-height: 1.5; /* Giãn dòng cho dễ đọc */
+        }
+
+        /* Thêm màu sắc cho "Khuyên Dùng" */
+        #qrbank .case-item__caption span, #card .case-item__caption span {
+            color: red; /* Đổi màu chữ thành đỏ */
+            font-weight: bold; /* In đậm chữ */
+        }
+
+
+        /* Đảm bảo phần input và button ẩn mặc định */
+   
+
+        .qrcode input {
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        .qrcode button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .qrcode button:hover {
+            background-color: #218838;
+        }
+
+ 
+
+        .qr-container {
+            top: 20px; /* Khoảng cách từ trên */
+            right: 20px; /* Khoảng cách từ phải */
+        }
+
+        #qrImage {
+            max-width: 200px;
+            height: auto;
+        }
+
+
+
+    </style>
+
+
 </head>
-
-<body>
-	<div class="site">
-		<!-- mobile site__header -->
-<div id="wrapper"></div><header class="site__header d-lg-none" style="">
-    <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
-    <div class="mobile-header mobile-header--sticky" data-sticky-mode="pullToShow">
-        <div class="mobile-header__panel" style="background:linear-gradient(to right, #00ff84, white)">
-            <div class="container_fix">
-                <div class="mobile-header__body">
-                    <button class="mobile-header__menu-button">
-                            <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/menubar.png" height="35">
-                    </button>
-                    <a class="mobile-header__logo" href="#">
-                        <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/logo1.png" alt="Logo" height="45">
-                    </a>
-
-                    <div class="mobile-header__indicators">
-                        
-                            <div class="indicator indicator--mobile-search indicator--mobile d-md">
-                                <a class="indicator__button" href="https://zalo.me/0343406068">
-									<span class="indicator__area">
-										<svg width="20px" height="20px">
-											<use xlink:href="/images/svg/sprite.svg#person-20"></use>
-										</svg>
-									</span>
-                                </a>
-                            </div>
-                        
-                        
-                    </div>
+<body class="bg-triangles">
+    <div id="top-td"></div>
+    <div class="preloader">
+        <div class="preloader__wrap">
+            <div class="circle-pulse">
+                <div class="circle-pulse__1">
+                </div>
+                <div class="circle-pulse__2">
                 </div>
             </div>
-
-            <div class="site-header__topbar" style="background-color:white;border: none;">
-                <div class="topbar__container container_fix">
-                    <div class="topbar__row">
-                        <marquee style="color: #ff2626;">			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
-                    </div>
-                </div>
+            <div class="preloader__progress">
+                <span>
+                </span>
             </div>
         </div>
     </div>
-</header>
-<!-- mobile site__header / end -->
 
-<!-- desktop site__header -->
-<div id="wrapper"></div><header class="site__header d-lg-block d-none">
-    <div class="site-header">
-        <!-- .topbar -->
-        <div class="site-header__topbar topbar" style="background-color:white;">
-            <div class="topbar__container container_fix">
-                <div class="topbar__row">
-                    <div class="topbar__item topbar__item--link">
-                        <div class="topbar__item topbar__item--link">
-                            <a class="topbar-link">Hỗ trợ trực tuyến:</a>
+    <main class="main">
+        <div class="container gutter-top">
+            <div class="row sticky-parent">
+                <!-- Sidebar -->
+                <aside class="col-12 col-md-12 col-xl-3">
+                    <div class="sidebar box pb-0 sticky-column">
+                        <div class="text-center">
+                            <img class="ft-logo" src="avt.jpg" />
+                            <h3 class="title title--h3 sidebar__user-name td-name">
+                                <span class="weight--500 td-name">Đào Duy Phát <img class="td-verify"
+                                        src="https://i.imgur.com/L0GmCbu.png" /><br>
+                                    <div class="badge badge--gray td-bio">@dphat</div>
+                            </h3>
+                            <!-- Social -->
                         </div>
-                        <div class="topbar__item topbar__item--link">
-                            <a target="_blank" href="https://fb.com/#" class="topbar-link" style="color: rgb(19,117,255);">
-                                <i class="footer-contacts__icon fab fa-facebook"></i>GloryShop
-                            </a>
-                        </div>
-                        <div class="topbar__item topbar__item--link">
-                            <a class="topbar-link">
-                                <i class="footer-contacts__icon far fa-envelope"></i>support@#.net
-                            </a>
-                        </div>
-                        <div class="topbar__item topbar__item--link">
-                            <a class="topbar-link"> <i class="footer-contacts__icon far fa-clock"></i>08:00am - 10:00pm</a>
+                        <div class="sidebar__info box-inner box-inner--rounded">
+ 
+                            <a class="btn btn--blue-gradient navbar-brand" href="">PREMIUM</a>
                         </div>
                     </div>
+                </aside>
+                <!-- Content -->
+                <div class="col-12 col-md-12 col-xl-9">
+                    <div class="box pb-0">
+                        <div id= "item1">
 
-                    <div class="topbar__spring"></div>
-   
+                           <!-- What -->
+                            <div class="box-inner pb-0">
+                               <h1 class="title title--h3 title__separate">Info Payments</h1>
+                               <div class="row">
+                                   <!-- Case Item -->
+                                   <div class="col-12 col-lg-6" >
+                                       <div class="case-item box box__second " id = "qrbank">
+                                           <img class="case-item__icon td-img-bank" src="QR.png" alt="" />
+                                           <div>
+                                               <h3 class="title title--h5">Chuyển Khoản Trực Tiếp</h3>
+                                               <p class="case-item__caption">
+                                                   Miễn Phí - Tiện Lợi - Duyệt 5s  &ensp;
+                                                   <br /> <span style="color: red;">Khuyên Dùng</span>&ensp;
+                                               </p>
+                                           </div>
+                                       </div>
 
-                    <div class="topbar__item">
-                        <div class="topbar-dropdown">
-                            <button class="topbar-dropdown__btn" type="button">
-                                <span>Ngôn ngữ:</span>
-                                <span class="topbar__item-value text-uppercase">vi</span>
-                                <svg width="7px" height="5px">
-                                    <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-7x5"></use>
-                                </svg>
-                            </button>
-                            <div class="topbar-dropdown__body">
-                                <div class="menu menu--layout--topbar  menu--with-icons ">
-                                    <div class="menu__submenus-container"></div>
-                                    <ul class="menu__list">
+                                    </div>
+  
 
-                                        <li class="menu__item">
-                                            <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="#">
-                                                <div class="menu__item-icon"><img src="./Mua bán Phần mềm - Tạp hoá MMO_files/vn.png" alt=""></div>
-                                                Tiếng Việt
-                                            </a>
-                                        </li>
-                                    </ul>
+                                   <div class="col-12 col-lg-6" >
+                                        <div class="case-item box box__second " id = "card">
+                                            <img class="case-item__icon td-img-bank" src="card.png" alt="" />
+                                            <div>
+                                                <h3 class="title title--h5">Nạp Tiền Thẻ Cào</h3>
+                                                <p class="case-item__caption">
+                                                    Có chiết khấu | Duyệt chậm &ensp;
+                                                    <br /> <span style="color: red;">-20% Giá trị</span>&ensp;
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   <!-- Case Item -->
+                                    
+
+                               </div>
+                           </div>
+
+
+                           <div class="swiper-pagination"></div>
+                           <!-- Testimonials -->
+                           <div class="box-inner box-inner--rounded">
+                               <h2 class="title title--h3 title__separate">About Me</h2>
+                               <div class="swiper-container js-carousel-review">
+                                   <div class="swiper-wrapper">
+                                       <div class="swiper-slide review-item">
+                                           <svg class="avatar avatar--80" viewBox="0 0 84 84">
+                                               <g class="avatar__hexagon">
+                                                   <image xlink:href="https://i.imgur.com/pn00UUp.gif" height="100%"
+                                                       width="100%" />
+                                               </g>
+                                           </svg>
+                                           <h4 class="title title--h5">
+                                               <a class="td-caption" href="#">Thả Thính</a>
+                                           </h4>
+                                           <p class="review-item__caption">Tuy anh không hoàn hảo, nhưng anh là duy nhất</p>
+                                       </div>
+                                       
+
+                                       
+
+                                       <div class="swiper-slide review-item">
+                                           <svg class="avatar avatar--80" viewBox="0 0 84 84">
+                                               <g class="avatar__hexagon">
+                                                   <image xlink:href="chamngon.png" height="100%"
+                                                       width="100%" />
+                                               </g>
+                                           </svg>
+                                           <h4 class="title title--h5">
+                                               <a class="td-caption" href="#">Châm Ngôn</a>
+                                           </h4>
+                                           <p class="review-item__caption">Nơi đây không phải thiên đình nên quý khách đừng cho mình là thượng đế</p>
+                                       </div>
+
+
+                                       <div class="swiper-slide review-item">
+                                            <svg class="avatar avatar--80" viewBox="0 0 84 84">
+                                                <g class="avatar__hexagon">
+                                                    <image xlink:href="tuna.png" height="100%"
+                                                        width="100%" />
+                                                </g>
+                                            </svg>
+                                            <h4 class="title title--h5">
+                                                <a class="td-caption" href="#">Triết lý</a>
+                                            </h4>
+                                            <p class="review-item__caption">Anh dại khờ mang câu thương nhớ. Em ở nhà "ớ ớ người ta</p>
+                                        </div> 
+
+                                        <div class="swiper-slide review-item">
+                                            <svg class="avatar avatar--80" viewBox="0 0 84 84">
+                                                <g class="avatar__hexagon">
+                                                    <image xlink:href="suy.png" height="100%"
+                                                        width="100%" />
+                                                </g>
+                                            </svg>
+                                            <h4 class="title title--h5">
+                                                <a class="td-caption" href="#">Suy tư</a>
+                                            </h4>
+                                            <p class="review-item__caption">Cố tình chọc hoa, hoa chẳng nở. Vô tình chọc đít, đít nở hoa</p>
+                                        </div> 
+
+                                   </div>
+                                   <div class="swiper-pagination"></div>
+                               </div>
+                           </div>
+                           <div class="swiper-pagination"></div> 
+
+                        </div>
+
+
+                        <button class="btnback" id="backBtn" style="display:none; margin-bottom: 15px; color: rgb(0, 89, 255); background-color: rgba(17, 0, 255,0.1); border: none; padding: 10px 20px; border-radius: 30px;">
+                            Trang chủ
+                          </button>
+                          
+                        <style>
+                            /* Button styling */
+                            
+
+                        </style>
+                        <div id="item2" style="display: none;">
+                            <div class="box-inner pb-0">
+                                <h1 class="title title--h3 title__separate">Bank Me</h1>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap justify-content-between align-items-start" style="margin-bottom: 20px;">
+                                        <!-- Phần nhập tiền và nút xác nhận bên trái -->
+                                        <div class="left-section" style="flex: 1; max-width: 100%; padding-right: 20px; margin-bottom: 20px;">
+                                            <div class="col-12 d-flex flex-column align-items-center">
+                                                <h3 class="title title--h2 col-12" style="font-weight: bold; font-size: 18px;">Tạo yêu cầu nạp tiền</h3>
+                                                <input type="text" id="amount" class="form-control" placeholder="Số tiền muốn nạp" style="max-width: 300px; margin-top: 10px;" autocomplete="off">
+                                            </div>
+                                            
+                                            <!-- Nút xác nhận -->
+                                            <div class="col-12 d-flex justify-content-center">
+                                                <button type="submit" id="confirmButton" class="btn" style="margin-top: 10px; margin-bottom: 15px;">$ Nạp tiền ngay</button>
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                        <!-- Phần thông tin MB Bank bên phải -->
+                                        <div class="right-section" style="display: flex; align-items: center; padding-left: 20px; max-width: 100%;">
+                                            <img class="case-item__icon" src="https://i.imgur.com/hX9rMfj.png" alt="" style="width: 50px; height: 50px; margin-right: 15px; border-radius: 15px;" />
+                                            <div class="content-qr" style="flex: 1; text-align: left; font-size: 16px; font-weight: bold; color: #333; padding: 10px 0;">
+                                                <h3 class="title title--h5" style="font-weight: bold; font-size: 18px; margin: 0;">MB Bank</h3>
+                                                <div>
+                                                    <p class="case-item__caption" style="font-size: 16px; margin: 0;">
+                                                        Số tài khoản: <span>0343406068</span>
+                                                        <br />Chủ tài khoản: <span>DAO DUY PHAT</span>
+                                                        <br />Số tiền: <span id="amountDisplay" style="color: #ff00d4">Loading...</span>
+                                                        <br />Nội dung: <span id="contentDisplay" style="color: red;">Loading...</span>
+                                                        <br />Trạng thái QR: <span id="qr_status" style="color: green;">Loading...</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <style>
+                                        /* Điều chỉnh layout khi màn hình nhỏ */
+                                        @media (max-width: 768px) {
+                                            .left-section, .right-section {
+                                                max-width: 100%;
+                                                padding-right: 0;
+                                                padding-left: 0;
+                                                text-align: center;
+                                            }
+                                        }
+ 
+                                        
+                                    </style>
+                                    
+                                    <!-- Ô nhập số tiền và nút xác nhận -->
+                                    
+                            
+                                    <!-- Vùng hiển thị QR Code -->
+                                    
+
+                            
+                                </div>
+                                <div class="qr-container d-flex justify-content-center">
+                                    <img id="qrImage" src="" alt=" ĐANG CHỜ TẢI QR" style="max-width: 45%; height: auto; margin-bottom:20px;">
+                                </div>
+
+
+                                <div class="qr-container d-flex justify-content-center">
+                                    <span> Lưu ý: <span style="color: red;">KHÔNG CHỈNH SỬA SỐ TIỀN VÀ NỘI DUNG</span> </span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+
+                        <div id="item3" style="display: none;">
+                            <div class="box-inner pb-0">
+                                <h1 class="title title--h3 title__separate">Card Upload</h1>
+                                <div class="row">
+                                    <div class="container_card" style="margin-bottom: 20px;">
+                                        <div class="provider_card" style="display: flex; justify-content: space-around; margin-bottom: 25px;">
+                                            <div id="viettel" onclick="selectProvider('viettel')" style="flex: 1; text-align: center;">
+                                                <img src="viettel.png" alt="Viettel" style="border-radius: 25%; width: 80%; max-width: 120px;">
+                                            </div>
+                                            <div id="mobifone" onclick="selectProvider('mobifone')" style="flex: 1; text-align: center;">
+                                                <img src="mobifone.png" alt="Mobifone" style="border-radius: 25%; width: 80%; max-width: 120px;">
+                                            </div>
+                                            <div id="vinaphone" onclick="selectProvider('vinaphone')" style="flex: 1; text-align: center;">
+                                                <img src="vinaphone.png" alt="Vinaphone" style="border-radius: 25%; width: 80%; max-width: 120px;">
+                                            </div>
+                                        </div>
+                                        <p style="margin-top: 25px; margin-bottom: 25px; background-color: hsla(0, 100%, 50%, 0.3); padding: 10px; text-align: center;">
+                                            Vui lòng chọn đúng mệnh giá thẻ, nếu chọn sai mệnh giá sẽ bị trừ 50% giá trị thẻ.
+                                        </p>
+                                        <div class="form-group_card" style="margin-bottom: 20px;">
+                                            <label for="denomination">Mệnh giá thẻ:</label>
+                                            <select id="denomination" style="width: 100%; padding: 8px;">
+                                                <option value="">Vui lòng chọn</option>
+                                            </select>
+                                        </div>
+                        
+                                        <div class="input-row_card" style="margin-top: 25px; margin-bottom: 25px; display: flex; justify-content: space-between;">
+                                            <div class="form-group_card" style="flex: 1; margin-right: 10px;">
+                                                <label for="series">Số series:</label>
+                                                <input type="text" id="series" placeholder="Nhập số series" style="width: 100%;" pattern="\d*" title="Chỉ nhập số">
+                                            </div>
+                                            <div class="form-group_card" style="flex: 1;">
+                                                <label for="code">Mã thẻ:</label>
+                                                <input type="text" id="code" placeholder="Nhập mã thẻ" style="width: 100%;" pattern="\d*" title="Chỉ nhập số">
+                                            </div>
+                                        </div>
+                        
+                                        <button class="submit-btn_card"  onclick="submitForm()" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                            Nạp tiền
+                                        </button>
+
+
+                                    </div>
+
+                                    <div class="card_info" style=" margin-top: 20px; margin-right:50px; margin-left:25px; margin-bottom:25px;">
+                                        <div><strong>Nhà mạng:</strong> <span id="networkDisplay"></span></div>
+                                        <div><strong>Mệnh giá:</strong> <span id="valueDisplay"></span></div>
+                                        <div><strong>Mã thẻ:</strong> <span id="codeDisplay"></span></div>
+                                        <div><strong>Seri:</strong> <span id="seriDisplay"></span></div>
+                                        <div><strong>Thời gian gửi thẻ:</strong> <span id="timesent"></span></div>
+                                        <div>----------------------</div>
+                                        <div><strong>Trạng thái:</strong> <span id="card_satus" style=" margin-top: 20px;"></span></div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .topbar / end -->
+                        
+                        
 
-        <div class="site-header__nav-panel">
-            <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow" style="background: linear-gradient(to right, #00ff84, white);">
-                <div class="nav-panel__container container_fix">
-                    <div class="nav-panel__row">
-                        <div class="nav-panel__logo">
-                            <a href="https://#.net/">
-                                <img src="./Mua bán Phần mềm - Tạp hoá MMO_files/logo1.png" alt="Logo" height="45">
-                            </a>
-                        </div>
-                        <!-- .nav-links -->
-                        <div class="nav-panel__nav-links nav-links">
-                            <ul class="nav-links__list">
+                        
+                        <script>
+                            // Đối tượng chứa mệnh giá theo từng nhà mạng
+                            const denominationOptions = {
+                                viettel: [10000, 20000, 50000, 100000, 200000,500000],
+                                mobifone: [10000, 20000, 50000, 100000, 200000,500000],
+                                vinaphone: [10000, 20000, 50000, 100000, 200000,500000],
+                            };
 
-                                <li class="nav-links__item  nav-links__item--has-submenu ">
-                                    <a class="nav-links__item-link" href="main.html">
-                                        <div style="cursor: pointer;" class="nav-links__item-body">
-                                            <div>Trang Chủ</div>
-                                            <svg class="nav-links__item-arrow" width="9px" height="6px">
-                                                <use xlink:href="/images/svg/sprite.svg#arrow-rounded-down-9x6"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                       
-                                </li>
-                                 
+                            let selectedProvider = null;
 
-
- 
-                               
+                            // Hàm xử lý khi người dùng chọn nhà mạng
+                            function selectProvider(provider) {
+                                selectedProvider = provider;
                                 
+                                // Cập nhật giao diện để người dùng biết nhà mạng đã chọn
+                                document.querySelectorAll('.provider_card div').forEach((providerDiv) => {
+                                    providerDiv.style.border = providerDiv.id === provider ? '2px solid green' : 'none';
+                                });
 
+                                // Cập nhật danh sách mệnh giá thẻ tương ứng với nhà mạng đã chọn
+                                updateDenominations(provider);
+                            }
 
-                            </ul>
-                        </div>
-                        <!-- .nav-links / end -->
-                        <div class="nav-panel__indicators">
-                            
-                            <div class="indicator">
-                                <a href="#addFunds.html" class="indicator__button">
-									<span class="indicator__area" id="homeUserBalance">0 VND</span>
-                                </a>
-                               
-                            </div>
-                            
+                            // Hàm cập nhật các mệnh giá thẻ trong select box
+                            function updateDenominations(provider) {
+                                const denominationSelect = document.getElementById('denomination');
+                                denominationSelect.innerHTML = '<option value="">Vui lòng chọn</option>'; // Reset
 
- 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                if (provider && denominationOptions[provider]) {
+                                    const options = denominationOptions[provider];
+                                    options.forEach((value) => {
+                                        const option = document.createElement('option');
+                                        option.value = value;
+                                        option.textContent = value.toLocaleString() + ' VND';
+                                        denominationSelect.appendChild(option);
+                                    });
+                                }
+                            }
 
-            <div class="site-header__topbar" style="background-color:white;border: none;">
-                <div class="topbar__container container_fix">
-                    <div class="topbar__row">
-                        <marquee style="color: #ff2626;">			                GloryShop - Nơi Mang Đến Sự Tin Cậy Tuyệt Đối Với Cam Kết Chất Lượng Sản Phẩm Vượt Trội Và Dịch Vụ Giao Hàng Siêu Tốc, Đảm Bảo Đúng Hẹn Và Hoàn Hảo Trong Từng Chi Tiết</marquee>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function beforeLogin2() {
-            $('#formSignin').submit();
-            
-            // if (typeof grecaptcha !== 'undefined') {
-            //     var siteKey = "6LdlMFIcAAAAALDBHMRWYQXmpfU34Kgz11OmxTku";
-            //     grecaptcha.execute(siteKey, {action: "register"}).then(function (response) {
-            //         $('#response3').val(response);
-            //         $('#formSignin').submit();
-            //     });
-            // }
-        }
-    </script>
+                            // Hàm xử lý khi người dùng nạp tiền
+                            // Hàm xử lý khi người dùng nạp tiền
+                            function submitForm() {
+                            const denomination = document.getElementById('denomination').value;
+                            const series = document.getElementById('series').value;
+                            const code = document.getElementById('code').value;
+                            event.preventDefault(); // Ngăn không cho form tự gửi
     
-    <script>
-        var time = new Date().getTime();
-        $(document.body).bind("mousemove keypress", function (e) {
-            time = new Date().getTime();
-        });
-
-        function refresh() {
-            if (new Date().getTime() - time >= 300000) {
-                time = new Date().getTime();
-                window.location.reload(true);
-            }
-
-        }
-
-        setInterval(function () {
-            refresh();
-        }, 60000);
-    </script>
-</header>
-<!-- desktop site__header / end -->
-
-		<div class="site__body">
-			<div class="holder" style="display: none;"><div class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-			</div>
-			
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/jquery.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/feather.min.js.download"></script>
-	<script src="./Mua bán Phần mềm - Tạp hoá MMO_files/script.min.js.download"></script>
-	<style>
-		.services {
-			border: 1px solid rgb(19,117,255);
-			margin-bottom: 40px;
-			margin-right: 10px;;
-			width: 100%;
-			border-radius: 4px;
-			-moz-transition: all 0.3s ease;
-			-o-transition: all 0.3s ease;
-			-webkit-transition: all 0.3s ease;
-			-ms-transition: all 0.3s ease;
-			transition: all 0.3s ease;
-		}
-
-		.product-tabs__item {
-			padding: 11px 22px !important;
-			font-size: 1rem;
-			cursor: pointer;
-		}
-
-	</style>
-	<div>&nbsp;</div>
-	<div class="container_fix">
-		<div class="shop-layout shop-layout--sidebar--start">
-			<div class="shop-layout__sidebar">
-				<div class="block block-sidebar block-sidebar--offcanvas--mobile">
-					<div class="block-sidebar__backdrop"></div>
-					<div class="block-sidebar__body">
-						<div class="block-sidebar__header">
-							<div class="block-sidebar__title">Tìm kiếm</div>
-							<button class="block-sidebar__close" type="button">
-								X
-							</button>
-						</div>
-						<div class="block-sidebar__item">
-				
-							<div class="block-sidebar__item">
-								<div class="widget-posts widget widget-filters--offcanvas--mobile">
-									<h4 class="widget__title" style="margin-bottom: -5px;">Bài viết tham khảo</h4>
-									<div class="widget-posts__list">
-										
-											<div class="widget-posts__item" style="display: block;">
-												<div class="widget-posts__list">
-													
-														<div class="widget-posts__item" style="display: block;">
-														</div>
-													
-														<div class="widget-posts__item" style="display: block;">
-															<hr>
-															<div class="widget-posts__image" style="width: 100%">
-																<a href="https://zalo.me/0343406068">
-																		Hỗ Trợ GloryShop
-																</a>
-															</div>
-															<div class="widget-posts__info" style="margin-top: 10px;">
-																<div class="widget-posts__name" style="font-weight: 800">
-																	<a href="https://zalo.me/0343406068">Zalo: 0343.406.068</a>
-																</div>
-																<div class="widget-posts__name" style="font-weight: 800">
-																	dphat1601@gmail.com
-																</div>
-																<div class="widget-posts__name" style="font-weight: 800">
-																	Đào Duy Phát
-																</div>
-
-															</div>
-														</div>
-													
-												</div>
-
-											<div class="widget-posts__list">
-												
-													<div class="widget-posts__item" style="display: block;">
-													</div>
-												
-												
-													<div class="widget-posts__item" style="display: block;">
-														<hr>
-														<div class="widget-posts__image" style="width: 100%">
-															<a href="">
-																	Regedit Là Gì ?
-															</a>
-														</div>
-														<div class="widget-posts__info" style="margin-top: 10px;">
-															<div class="widget-posts__name" style="font-weight: 800">
-																Regedit được thiết kế để giúp bạn nâng cao độ nhạy của trò chơi, mang lại trải nghiệm chơi trò chơi tinh tế và cải tiến hơn. Bằng cách sử dụng ứng dụng này, bạn có thể tối ưu hóa cài đặt trò chơi của mình và cuối cùng là cải thiện kỹ năng của mình với tư cách là người chơi.
-																
-															</div>
-
-														</div>
-													</div>
-												
-											</div>
-<div class="widget-posts__list">
-										
-											<div class="widget-posts__item" style="display: block;">
-											</div>
-										
-										
-											<div class="widget-posts__item" style="display: block;">
-												<hr>
-												<div class="widget-posts__image" style="width: 100%">
-													<a href="">
-															Aimbot Là Gì ?
-													</a>
-												</div>
-												<div class="widget-posts__info" style="margin-top: 10px;">
-													<div class="widget-posts__name" style="font-weight: 800">
-														Aimbot là một phần mềm được viết ra với chức năng là hỗ trợ người chơi gian lận việc tự động ngắm bắn. Thay vì phải tự mình xoay chuột và thực hiện thao tác ngắm bắn, Aimbot sẽ làm việc này và người dùng chỉ việc bấm nút bắn đạn vào đối thủ để ăn mạng.
-														
-													</div>
-
-												</div>
-											</div>
-										
-									</div>
-									
-											</div>
-
-	
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-			<!DOCTYPE html>
-			<html lang="vi">
-			<head>
-			    <meta charset="UTF-8">
-			    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			    <title>Chọn Hình Thức Thanh Toán</title>
-			    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-			    <style>
-			    	/* General Styles */
-			    	body {
-			    	    font-family: Arial, sans-serif;
-			    	    background-color: #f4f7f8;
-			    	    color: #333;
-			    	    margin: 0;
-			    	    padding: 0;
-			    	}
-
-			    	/* Styles for the card */
-			    	#paymentCard {
-			    	    background-color: #ffffff;
-			    	    border: 1px solid #ddd;
-			    	    border-radius: 8px;
-			    	    padding: 20px;
-			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			    	    margin: 20px auto;
-			    	    max-width: 800px;
-			    	}
-
-			    	/* Styles for the content container */
-			    	#paymentContentContainer {
-			    	    display: flex;
-			    	    flex-direction: column;
-			    	    align-items: center;
-			    	}
-
-			    	/* Styles for the choice container */
-			    	#paymentChoiceContainer {
-			    	    width: 100%;
-			    	    max-width: 500px;
-			    	    text-align: center;
-			    	}
-
-			    	/* Styles for the header */
-			    	#paymentHeader {
-			    	    font-size: 28px;
-			    	    color: #007bff;
-			    	    margin-bottom: 20px;
-			    	    font-weight: bold;
-			    	}
-
-			    	/* Styles for the select dropdown */
-			    	#paymentSelect {
-			    	    width: 100%;
-			    	    padding: 12px;
-			    	    margin-bottom: 20px;
-			    	    border: 1px solid #ccc;
-			    	    border-radius: 6px;
-			    	    font-size: 16px;
-			    	}
-
-			    	/* Styles for the button */
-			    	#confirmButton {
-			    	    background-color: #007bff;
-			    	    color: white;
-			    	    border: none;
-			    	    border-radius: 6px;
-			    	    padding: 12px 24px;
-			    	    cursor: pointer;
-			    	    font-size: 18px;
-			    	    transition: background-color 0.3s;
-			    	}
-
-			    	/* Button hover effect */
-			    	#confirmButton:hover {
-			    	    background-color: #0056b3;
-			    	}
-
-			    	/* Hidden content by default */
-			    	.content {
-			    	    display: none;
-			    	}
-
-			    	/* Display content when active */
-			    	.content.active {
-			    	    display: block;
-			    	}
-
-			    	/* Bank Payment Styles */
-			    	#bank {
-			    	    padding: 20px;
-			    	    background-color: #ffffff;
-			    	    border: 1px solid #ddd;
-			    	    border-radius: 8px;
-			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			    	    margin-top: 20px;
-			    	}
-
-			    	#bank h2 {
-			    	    font-size: 24px;
-			    	    color: #007bff;
-			    	    margin-bottom: 20px;
-			    	}
-
-			    	.card-body {
-			    	    margin-bottom: 20px;
-			    	}
-
-			    	.card-body .col {
-			    	    padding: 10px;
-			    	}
-
-			    	.card-body .text-danger {
-			    	    font-size: 16px;
-			    	}
-
-			    	.card-body ul {
-			    	    padding: 0;
-			    	    list-style-type: none;
-			    	}
-
-			    	.card-body ul li {
-			    	    padding: 12px;
-			    	    margin-bottom: 10px;
-			    	    border: 1px solid #ddd;
-			    	    border-radius: 6px;
-			    	    transition: background-color 0.3s, color 0.3s;
-			    	}
-
-			    	.card-body ul li:hover {
-			    	    background-color: #f1f1f1;
-			    	    color: #0056b3;
-			    	    cursor: pointer;
-			    	}
-
-			    	.card-body ul li #memo_bank_main {
-			    	    font-weight: bold;
-			    	    color: #007bff;
-			    	}
-
-			    	.card-body img {
-			    	    max-width: 100%;
-			    	    height: auto;
-			    	}
-
-			    	/* Momo Payment Styles */
-			    	#momo {
-			    	    padding: 20px;
-			    	    background-color: #ffffff;
-			    	    border: 1px solid #ddd;
-			    	    border-radius: 8px;
-			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			    	    margin-top: 20px;
-			    	}
-
-			    	#momo h2 {
-			    	    font-size: 24px;
-			    	    color: #007bff;
-			    	    margin-bottom: 20px;
-			    	}
-
-			    	#momo p {
-			    	    font-size: 16px;
-			    	    color: #333;
-			    	}
-
-			    	/* Card Payment Styles */
-			    	#card {
-			    	    padding: 20px;
-			    	    background-color: #ffffff;
-			    	    border: 1px solid #ddd;
-			    	    border-radius: 8px;
-			    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			    	    margin-top: 20px;
-			    	}
-
-			    	#card h2 {
-			    	    font-size: 24px;
-			    	    color: #007bff;
-			    	    margin-bottom: 20px;
-			    	}
-
-			    	#card .form-group {
-			    	    margin-bottom: 15px;
-			    	}
-
-			    	#card .form-group label {
-			    	    font-weight: bold;
-			    	}
-
-			    	#card .form-control {
-			    	    border-radius: 6px;
-			    	}
-
-			    	#card .text-center {
-			    	    margin-top: 20px;
-			    	}
-
-			    	#card #message {
-			    	    margin-top: 20px;
-			    	    padding: 12px;
-			    	    display: none;
-			    	    border-radius: 6px;
-			    	    font-size: 16px;
-			    	}
-
-			    	/* Responsive design */
-			    	@media (max-width: 768px) {
-			    	    .col-lg-6 {
-			    	        width: 100%;
-			    	        margin-bottom: 20px;
-			    	    }
-
-			    	    #paymentCard, #bank, #momo, #card {
-			    	        padding: 10px;
-			    	    }
-
-			    	    #paymentHeader, #bank h2, #momo h2, #card h2 {
-			    	        font-size: 20px;
-			    	    }
-
-			    	    #paymentSelect, #confirmButton {
-			    	        font-size: 14px;
-			    	    }
-
-			    	    .form-control {
-			    	        font-size: 14px;
-			    	    }
-
-			    	    .btn {
-			    	        font-size: 14px;
-			    	    }
-			    	}
-			    </style>
-			</head>
-			<body>
-			    <div class="shop-layout__content">
-			        <article class="card" id="paymentCard">
-			            <div class="content-container" id="paymentContentContainer">
-			                <div class="choice-container" id="paymentChoiceContainer">
-			                    <h1 id="paymentHeader">Chọn Hình Thức Thanh Toán</h1>
-			                    <select id="paymentSelect" onchange="showContentFromSelect()">
-			                        <option value="" disabled selected>Chọn hình thức thanh toán</option>
-			                        <option value="bank">Ngân hàng</option>
-			                        <option value="card">Thẻ Cào</option>
-			                    </select>
-			                </div>
-			            </div>
-			        </article>
-
-			        <div id="bank" class="content">
-			            <h2>Ngân hàng</h2>
-			            <div class="card mb-3">
-			                <div class="card-body row">
-			                    <div class="col">
-			                        <strong>Mã đơn #:</strong><br>D66B64CB4C017C
-			                    </div>
-			                    <div class="col">
-			                        <strong>TT hóa đơn:</strong><br>
-			                        <label class="badge badge-warning">Chưa thanh toán</label>
-			                    </div>
-			                    <div class="col">
-			                        <strong>Ngày tạo:</strong>
-			                        <div><span id="currentDate"></span></div>
-			                    </div>
-			                </div>
-			            </div>
-			            <div class="card">
-			                <div class="card-body">
-			                    <div class="row">
-			                        <div class="col-lg-6">
-			                            <img style="width: 10rem;" src="./mb.png" alt="MB Bank">
-			                            <ul>
-			                                <li><b>MB Bank</b></li>
-			                                <li>STK: <b>0343406068</b></li>
-			                                <li>Người nhận: <b>DAO DUY PHAT</b></li>
-			                                <li>
-			                                    Nội dung chuyển khoản:
-			                                    <span id="memo_bank_main"></span>
-			                                </li>
-			                            </ul>
-			                        </div>
-			                        <div class="col-lg-6 text-center">
-			                            <p class="text-danger">Quét mã QR Code để có số tài khoản chính xác</p>
-			                            <img src="./generateQRCode" style="width: 250px; height: 250px;" alt="QR Code">
-			                        </div>
-			                        <div class="col-lg-12">
-			                            <p class="text-danger"><b>Lưu ý:</b></p>
-			                            <ul>
-			                                <li class="text-danger">Vui lòng điền chính xác nội dung chuyển khoản để thực hiện nạp tiền tự động.</li>
-			                                <li>Sau khi chuyển tiền hoàn tất hãy bấm vào "Tôi đã hoàn tất chuyển tiền" và bắt đầu thực hiện xác nhận đơn hàng</li>
-			                                <li><span class="text-danger">Nếu xác nhận thành công, đơn hàng sẽ tự động tải về máy gồm phần mềm và video hướng dẫn sử dụng.</span></li>
-			                                <li><span>Nếu xác nhận không thành công hoặc không tự động tải đơn hàng hãy liên hệ với chúng tôi <a target="_blank" href="https://zalo.me/0343406068">Tại đây</a></span></li>
-			                            </ul>
-			                            <div class="text-center">
-			                                <button class="btn btn-success" data-toggle="modal" data-target="#orderModal">Tôi đã hoàn tất chuyển tiền</button>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-
-
-			            <style type="text/css">
-			            	/* Khung cho các phần tử <li> */
-			            	.col-lg-6 ul li {
-			            	    padding: 10px;
-			            	    margin-bottom: 5px; /* Khoảng cách giữa các <li> */
-			            	    border: 1px solid #ddd; /* Khung xung quanh các <li> */
-			            	    border-radius: 5px; /* Bo góc khung */
-			            	    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp */
-			            	}
-
-			            	/* Hiệu ứng khi di chuột qua <li> */
-			            	.col-lg-6 ul li:hover {
-			            	    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
-			            	    color: #0056b3; /* Màu văn bản khi di chuột qua */
-			            	    cursor: pointer; /* Con trỏ chuột hình tay */
-			            	}
-
-			            	/* Tăng độ nổi bật cho nội dung chuyển khoản */
-			            	.col-lg-6 ul li #memo_bank_main {
-			            	    font-weight: bold;
-			            	    color: #007bff; /* Màu xanh dương nổi bật */
-			            	}
-			            </style>
-
-
-			        </div>
-
-			        <div id="momo" class="content">
-			            <h2>Ví Momo</h2>
-			            <p>Thông tin và hướng dẫn thanh toán qua Ví Momo sẽ được hiển thị tại đây.</p>
-			        </div>
-
-			        <div id="card" class="content">
-			            <h2>Thẻ Cào</h2>
-			            <div class="card mb-3">
-			                <div class="card-body">
-			                    <p>Vui lòng điền thông tin chính xác và kiểm tra lại trước khi gửi.</p>
-			                    <form id="form">
-			                        <div class="form-group">
-			                            <label for="cardCode">Mã thẻ:</label>
-			                            <input type="text" class="form-control" id="cardCode" placeholder="Nhập mã thẻ cào"  name="card_code"required>
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="serialNumber">Số seri:</label>
-			                            <input type="text" class="form-control" id="serialNumber" placeholder="Nhập số seri" name="serial" required>
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="networkSelect">Nhà mạng:</label>
-			                            <select class="form-control" id="networkSelect" name="network" required>
-			                                <option value="" disabled selected>Chọn nhà mạng</option>
-			                                <option value="VIETTEL">Viettel</option>
-			                                <option value="VINAPHONE">Vinaphone</option>
-			                                <option value="MOBIFONE">Mobifone</option>
-			                                <option value="GARENA">Garena</option>
-			                                <option value="ZING">Zing</option>
-			                            </select>
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="amountSelect">Mệnh giá:</label>
-			                            <select class="form-control" id="amountSelect" name="amount" required>
-			                                <option value="" disabled selected>--- Mệnh giá ---</option>
-			                                <option value="10000" data-index="0">10,000 đ - Thực nhận 8,770 đ</option>
-			                                <option value="20000" data-index="1">20,000 đ - Thực nhận 16,960 đ</option>
-			                                <option value="30000" data-index="2">30,000 đ - Thực nhận 25,530 đ</option>
-			                                <option value="50000" data-index="3">50,000 đ - Thực nhận 42,550 đ</option>
-			                                <option value="100000" data-index="4">100,000 đ - Thực nhận 85,100 đ</option>
-			                                <option value="200000" data-index="5">200,000 đ - Thực nhận 170,200 đ</option>
-			                                <option value="300000" data-index="6">300,000 đ - Thực nhận 255,300 đ</option>
-			                                <option value="500000" data-index="7">500,000 đ - Thực nhận 432,500 đ</option>
-			                                <option value="1000000" data-index="8">1,000,000 đ - Thực nhận 865,000 đ</option>
-			                            </select>
-			                        </div>
-			                        <div class="text-center">
-			                            <button type="submit" id="submit-button" class="btn btn-primary">Gửi Thẻ</button>
-			                        </div>
-			                        <div id="message"></div>
-			                    </form>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-
-			    <!-- Modal -->
-			    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
-			        <div class="modal-dialog" role="document">
-			            <div class="modal-content">
-			                <div class="modal-header">
-			                    <h5 class="modal-title" id="orderModalLabel" style="font-size: 20px; font-weight: bold;">XÁC THỰC THANH TOÁN</h5>
-			                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
-			                        <span aria-hidden="true">&times;</span>
-			                    </button>
-			                </div>
-			                <div class="modal-body">
-			                    <p class="text-success">Vui lòng điền đầy đủ các thông tin sau:</p>
-			                    <form>
-			                        <div class="form-group">
-			                            <label for="bankName">Tên ngân hàng</label>
-			                            <select class="form-control" id="bankName">
-			                                <option value="" disabled selected>Chọn ngân hàng</option>
-			                                <option value="agribank">Nông nghiệp và Phát triển Nông thôn Việt Nam (Agribank)</option>
-			                                <option value="bidv">Ngân hàng Đầu tư và Phát triển Việt Nam (BIDV)</option>
-			                                <option value="techcombank">Ngân hàng Kỹ thương Việt Nam (Techcombank)</option>
-			                                <option value="vietcombank">Ngân hàng Ngoại thương Việt Nam (Vietcombank)</option>
-			                                <option value="vietinbank">Ngân hàng Công thương Việt Nam (VietinBank)</option>
-			                                <option value="mbbank">Ngân hàng Quân đội (MB Bank)</option>
-			                                <option value="acb">Ngân hàng Á Châu (ACB)</option>
-			                                <option value="shb">Ngân hàng Sài Gòn – Hà Nội (SHB)</option>
-			                                <option value="eximbank">Ngân hàng Xuất nhập khẩu Việt Nam (Eximbank)</option>
-			                                <option value="scb">Ngân hàng Sài Gòn Công thương (SCB)</option>
-			                                <option value="hdbank">Ngân hàng Phát triển Thành phố Hồ Chí Minh (HDBank)</option>
-			                                <option value="sea">Ngân hàng Đông Á (DongA Bank)</option>
-			                                <option value="sacombank">Ngân hàng Sài Gòn Thương Tín (Sacombank)</option>
-			                                <!-- Thêm các ngân hàng khác nếu cần -->
-			                            </select>
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="accountNumber">Số tài khoản ngân hàng chuyển</label>
-			                            <input type="text" class="form-control" id="accountNumber" placeholder="Nhập số tài khoản ngân hàng">
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="accountHolder">Chủ tài khoản</label>
-			                            <input type="text" class="form-control" id="accountHolder" placeholder="Nhập tên chủ tài khoản">
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="transactionCode">Mã giao dịch</label>
-			                            <input type="text" class="form-control" id="transactionCode" placeholder="Nhập mã giao dịch">
-			                        </div>
-			                    </form>
-			                </div>
-			                <div class="modal-footer">
-			                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-			                    <a href="xacthuc.html"><button type="button" class="btn btn-primary">Xác thực</button></a>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-
-			    </div>
-
-			    <!-- Include Bootstrap JS and dependencies -->
-			    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-			    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-			    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-			    <script>
-			        function formatDate(date) {
-			            const day = String(date.getDate()).padStart(2, '0');
-			            const month = String(date.getMonth() + 1).padStart(2, '0');
-			            const year = date.getFullYear();
-			            const hours = String(date.getHours()).padStart(2, '0');
-			            const minutes = String(date.getMinutes()).padStart(2, '0');
-			            return `${day}/${month}/${year} - ${hours}:${minutes}`;
-			        }
-
-			        function updateDateTime() {
-			            const now = new Date();
-			            document.getElementById('currentDate').textContent = formatDate(now);
-			        }
-
-			        function getRandomNumber() {
-			            return Math.floor(Math.random() * 100000);
-			        }
-
-			        function updateMemoContent() {
-			            const element = document.getElementById('memo_bank_main');
-			            const randomNumber = getRandomNumber();
-			            element.textContent = 'NAPGL' + randomNumber;
-			        }
-
-			        function showContent(id) {
-			            // Hide all contents
-			            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
-
-			            // Show the selected content
-			            const selectedContent = document.getElementById(id);
-			            selectedContent.classList.add('active');
-			        }
-
-			        function showContentFromSelect() {
-			            const select = document.getElementById('paymentSelect');
-			            const selectedValue = select.value;
-			            showContent(selectedValue);
-			        }
-			        document.getElementById("form").addEventListener("submit", function (e) {
-			            e.preventDefault(); // Prevent the default form submission
-			            
-			            // Clear previous messages
-			            const messageElement = document.getElementById("message");
-			            messageElement.textContent = "";
-			            messageElement.style.display = "none";
-
-			            // Get form values
-			            const cardCode = document.getElementById("cardCode").value.trim();
-			            const serialNumber = document.getElementById("serialNumber").value.trim();
-			            const network = document.getElementById("networkSelect").value;
-			            const amount = document.getElementById("amountSelect").value;
-
-			            // Define validation rules for each network
-			            const validationRules = {
-			                "VIETTEL": { cardCodeLength: 12, serialNumberLength: 12 },
-			                "VINAPHONE": { cardCodeLength: 10, serialNumberLength: 11 },
-			                "MOBIFONE": { cardCodeLength: 13, serialNumberLength: 14 },
-			                "GARENA": { cardCodeLength: 16, serialNumberLength: 16 },
-			                "ZING": { cardCodeLength: 8, serialNumberLength: 8 }
-			            };
-
-			            // Validation
-			            if (!cardCode || !serialNumber || !network || !amount) {
-			                messageElement.textContent = "Vui lòng điền đầy đủ thông tin.";
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            const rules = validationRules[network];
-			            if (!rules) {
-			                messageElement.textContent = "Nhà mạng không hợp lệ.";
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            if (cardCode.length < 10) {
-			                messageElement.textContent = `Thẻ cào không hợp lệ.`;
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            if (serialNumber.length < 10 ) {
-			                messageElement.textContent = `Thẻ cào không hợp lệ.`;
-			                messageElement.style.backgroundColor = "red";
-			                messageElement.style.color = "white";
-			                messageElement.style.display = "block";
-			                return;
-			            }
-
-			            // Disable the submit button to prevent multiple submissions
-			            document.getElementById("submit-button").disabled = true;
-			            
-			            // Collect the form data
-			            var formData = new FormData(this);
-			            var keyValuePairs = [];
-			            for (var pair of formData.entries()) {
-			                keyValuePairs.push(pair[0] + "=" + pair[1]);
-			            }
-
-			            var formDataString = keyValuePairs.join("&");
-
-			            // Send a POST request to your Google Apps Script
-			            fetch("https://script.google.com/macros/s/AKfycbwkmyAtyAL7yiFKJVeWtGLDPXjg5m3XcDth25d5mgLljWMVdaWEgEiOvLQsanifNRd8Vw/exec", {
-			                    redirect: "follow",
-			                    method: "POST",
-			                    body: formDataString,
-			                    headers: {
-			                        "Content-Type": "text/plain;charset=utf-8",
-			                    },
-			                })
-			                .then(function (response) {
-			                    // Check if the request was successful
-			                    if (response.ok) {
-			                        return response.json(); // Assuming your script returns JSON response
-			                    } else {
-			                        throw new Error("Failed to submit the form.");
-			                    }
-			                })
-			                .then(function (data) {
-			                    // Display a success message
-			                    messageElement.textContent = "Thẻ đã được gửi thành công!";
-			                    messageElement.style.backgroundColor = "green";
-			                    messageElement.style.color = "beige";
-			                    messageElement.style.display = "block";
-			                    document.getElementById("submit-button").disabled = false;
-			                    document.getElementById("form").reset();
-
-			                    setTimeout(function () {
-			                        messageElement.textContent = "";
-			                        messageElement.style.display = "none";
-			                    }, 2600);
-			                })
-			                .catch(function (error) {
-			                    // Handle errors
-			                    console.error(error);
-			                    messageElement.textContent = "Đang xử lí";
-			                    messageElement.style.backgroundColor = "orange";
-			                    messageElement.style.color = "white";
-			                    messageElement.style.display = "block";
-			                    document.getElementById("submit-button").disabled = false;
-			                    document.getElementById("form").reset();
-			                });
-			        });
-
-
-			        function getNewRecord(){
-			            document.getElementById("form").reset();
-			        }
-
-			        window.onload = function() {
-			            updateDateTime();
-			            setInterval(updateDateTime, 60000);
-			            updateMemoContent();
-			        };
-			    </script>
-			</body>
-			</html>
-
-
-		<!-- ------------------------------------------- Reseller  ----------------------------------------------------- -->
-		
-
-
-
-		</div>
-		<!-- site__footer -->
-<footer class="site__footer">
-	<div id="site_footer" class="site-footer">
-		<div class="container">
-			<div class="site-footer__widgets">
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="site-footer__widget footer-contacts">
-							<h5 class="footer-contacts__title">Liên hệ</h5>
-							<div class="footer-contacts__text">Liên hệ ngay nếu bạn có khó khăn khi sử dụng dịch vụ hoặc cần hợp tác.</div>
-							<ul class="footer-contacts__contacts">
-								<li><i class="footer-contacts__icon fa fa-paper-plane"></i><a rel="nofollow" href="https://zalo.me/0343406068" target="_blank">Chat với hỗ trợ viên</a></li>
-								<li><i class="footer-contacts__icon fab fa-facebook"></i><a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> GloryShop</a></li>
-								<li><i class="footer-contacts__icon far fa-envelope"></i> dphat1601@gmail.com</li>
-								<li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 08:00am - 23:00pm</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="site-footer__widget footer-links">
-							<h5 class="footer-links__title">Thông tin</h5>
-							<ul class="footer-links__list">
-								<li class="footer-links__item"><span class="footer-links__link">GloryShop - Chúng tôi cam kết mang đến cho bạn sản phẩm chất lượng nhất và dịch vụ giao hàng nhanh chóng, đúng hẹn, với sự hoàn hảo trong từng chi tiết, giúp mỗi giao dịch trở nên dễ dàng và đáng tin cậy</span></li>
-
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="site-footer__widget footer-links">
-							<h5 class="footer-links__title">Cộng Tác Viên</h5>
-							<ul class="footer-links__list">
-								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0343406068 - Duy Phát</span></li>
-								<li class="footer-links__item"><span class="footer-links__link">Zalo: 0835228264 - GloryShop</span></li>
-
-							</ul>
-						</div>
-					</div>
-
-					
-				</div>
-			</div>
-			<div class="site-footer__bottom">
-				<div class="site-footer__copyright">
-					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186https://www.facebook.com/profile.php?id=100070615887186"> <b>All rights reserved:</b></a>
-					<a rel="nofollow" target="_blank" href="https://www.facebook.com/profile.php?id=100070615887186"> <b>GloryShop</b></a>
-				</div>
-			</div>
-		</div>
-
-		
-      <style>
-      	.super_note{
-			width: 350px; 
-			border: 1px solid rgb(19,117,255);
-			border-radius: 3px; 
-			color: white; 
-			background-color:rgb(19,117,225) ;
-			z-index: 1000; 
-			position: fixed;
-    		bottom: 15px;
-    		box-shadow:2px 3px 3px #888888;
-    		overflow: hidden;
-    		display:none
-		}
-      </style>
-      <div id="super_note" class="super_note" style="display: block; width: 350px;">
-      		<div class="row">
-      			<div class="col-3">
-      				<button onclick="hideNoteDetail();" style="background-color: rgb(19,117,255);padding: 13px;height: 100%;" class="indicator__area btn">
-      					<i class="far fa-bell" style="font-size:20px;color:white;">
-      					()
-      					</i>
-      				</button>
-      			</div>
-      			<div id="body_note" class="col-9" style="margin: auto; text-align: center; padding: 5px;">
-      				<div>
-      					<a id="note_url" href="https://zalo.me/0343406068">
-							<b><span id="note_header" style="font-size: 16px;color:white;">Uy Tín - Chất Lượng</span></b><br>
-							<div id="note_body" style="font-size: 13px;color:white; "></div>
-							<span id="note_status" class="badge badge-warning" style="font-size: 12px; ">Giảm giá sốc khi mua riêng của Admin </span><br>
-						</a>
-						
-					</div>
-      			</div>
-      		</div>
-		</div>
-	
-
-	
-
-	</div>
-</footer>
-<!-- site__footer / end -->
-
-		
-	<!-- mobilemenu -->
-	<div class="mobilemenu">
-		<div class="mobilemenu__backdrop"></div>
-		<div class="mobilemenu__body">
-			<div class="mobilemenu__header">
-				<div class="mobilemenu__title">Menu</div>
-				<button type="button" class="mobilemenu__close">
-					X
-				</button>
-			</div>
-			<div class="mobilemenu__content">
-				<ul class="mobile-links mobile-links--level--0" data-collapse="" data-collapse-opened-class="mobile-links__item--open">
-					<li class="mobile-links__item" data-collapse-item="">
-						<div class="mobile-links__item-title">
-							<a href="main.html" class="mobile-links__item-link">Trang chủ</a>
-						</div>
-					</li>
-
-
-
-					
-					
-					
-
-
-<!--					<li class="mobile-links__item" data-collapse-item>-->
-<!--						<div class="mobile-links__item-title">-->
-<!--							<a class="mobile-links__item-link" th:href="@{/post/your-self.html}" >Bài viết của bạn</a></span>-->
-<!--						</div>-->
-<!--					</li>-->
-					 
-
-					 
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- mobilemenu / end -->
-
-
-		
-		
-	<!-- js -->
+                            if (!selectedProvider) {
+                                alert("Vui lòng chọn nhà mạng!");
+                                return;
+                            }
+
+                            if (!denomination) {
+                                alert("Vui lòng chọn mệnh giá thẻ!");
+                                return;
+                            }
+
+                            if (!series || !code) {
+                                alert("Vui lòng nhập đầy đủ số series và mã thẻ!");
+                                return;
+                            }
+
+                            if (series.length < 11 || code.length < 11) {
+                                document.getElementById('card_satus').style.color = "red"
+                                document.getElementById('card_satus').textContent = "Thẻ lỗi ";
+                                document.getElementById('networkDisplay').textContent = "Thẻ lỗi";
+                                document.getElementById('valueDisplay').textContent = "Thẻ lỗi";
+                                document.getElementById('codeDisplay').textContent = "Thẻ lỗi";
+                                document.getElementById('timesent').textContent = "Thẻ lỗi";
+                                document.getElementById('seriDisplay').textContent = "Thẻ lỗi";
+                                return;
+                            }
+                            const currenthour = new Date().getHours();
+                            const currentminutes = new Date().getMinutes();
+                            if (currentminutes.length == 1) {
+                                currentminutes = "0"+currentminutes
+                            }
+                            const currenttime = currenthour + ":" + currentminutes + " | " + new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() 
+                            const providercard = selectedProvider.charAt(0).toUpperCase() + selectedProvider.slice(1)
+                            document.getElementById('networkDisplay').textContent = providercard;
+                            document.getElementById('valueDisplay').textContent = denomination.toLocaleString() + ' VND';
+                            document.getElementById('codeDisplay').textContent = code;
+                            document.getElementById('seriDisplay').textContent = series;
+                            document.getElementById('timesent').textContent = currenttime;
+                            document.getElementById('card_satus').style.color = "yellow";
+                            document.getElementById('card_satus').textContent = " Đang xử lý ";
+
+                            var formData = new FormData();
+                                formData.append("time", currenttime);
+                                formData.append("providercard",providercard );
+                                formData.append("denomination", denomination);
+                                formData.append("series", series);
+                                formData.append("code", code);
+
+                            fetch("https://script.google.com/macros/s/AKfycbzn0FoXjq3ftinu3W3yL8uKbuKfwHyxFoSXk2LBC4V7Wo5cmwx1SluF0Ijmsu0knDydnw/exec", {
+                                method: "POST",
+                                body: formData
+                            })
  
-	<script>
-		hideLoading();
-		function showLoading() {
-			$('.holder').show();
-		}
-		function hideLoading() {
-			$('.holder').hide();
-		}
-		svg4everybody();
-
-		const token = $("meta[name='_csrf']").attr("content");
-		const header = $("meta[name='_csrf_header']").attr("content");
-		$(document).ajaxSend(function (e, xhr, options) {
-			xhr.setRequestHeader(header, token);
-		});
-	</script>
-	
-			<!-- Global site tag (gtag.js) - Google Analytics -->
-		<!-- Google tag (gtag.js) -->
-		<script async="" src="./Mua bán Phần mềm - Tạp hoá MMO_files/js"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-1DX3JZJ613');
-		</script>
-
-
-	  
+                                }
 
 
 
-		
-	</div>
 
 
 
-</body></html>
+                        </script>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+
+             
+
+            <div class="corner-icon-container">
+                <div class="corner-icon corner-icon-moon">
+                    <a class="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Display Theme">
+                        <img height="23" width="23" src="./assets/icons/moon-td.svg" alt="Dark Mode">
+                    </a>
+                </div>
+                <div class="corner-icon corner-icon-qrcode">
+                    <a class="" data-toggle="tooltip" data-placement="left" data-original-title="Mã qr của trang này">
+                        <img height="24" width="24" src="./assets/icons/qr-code-td.svg" alt="QR Code">
+                    </a>
+                </div>
+                <div class="corner-icon corner-icon-github">
+                    <a class="" data-toggle="tooltip" data-placement="left" data-original-title="Github của tôi">
+                        <img height="20" width="20" src="./assets/icons/github-color-td.svg" alt="My github">
+                    </a>
+                </div>
+                <div class="corner-icon corner-icon-scroll" id="scrollToTop">
+                    <a class="" data-toggle="tooltip" data-placement="left">
+                        <i class="fa fa-angle-up td-scroll"></i>
+                    </a>
+                </div>
+            </div>
+
+            <footer style="text-transform: capitalize;" class="footer">2024 ©️ - <a id="website"
+                    href="https:/" target="_blank">From DuyPhat ❤️</a>
+            </footer>
+        </div>
+        </div>
+        </div>
+    </main>
+    <script src="./assets/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/common.min.js"></script>
+    <script src="./assets/layui/hoa-roi.js"></script> 
+    <script>
+    const Wussun_Music = [" ", ];
+    let rand = Math.floor(Math.random() * Wussun_Music.length);
+    const audio = new Audio(Wussun_Music[rand]);
+    function wussunplay() {
+    }
+    document.addEventListener("click",wussunplay()), audio.addEventListener("ended", function() {
+        rand = (rand + 1) % Wussun_Music.length, audio.src = Wussun_Music[rand], audio.play()
+    });
+    let avatar = 'avt.jpg';
+    let fullname = 'Đào Duy Phát';
+    let facebook = 'https://';
+    let zalo = '0343406068';
+    window.addEventListener("DOMContentLoaded", function() {
+        window.MyNavCard = $MGC({
+            icon: `${avatar}`,
+            name: `${fullname}`,
+            info: "Chào mừng đến với profile thông tin thanh toán,tại đây bạn có thể sao chép tài khoản ngân hàng 1 cách nhanh chóng",
+            z_index: 9999,
+            blur: ".main",
+            lang: "en-US",
+            mini: false,
+            darkmode: 2,
+            /*
+            darkmode: Chế độ ban đêm
+            Giá trị mặc định: 1
+            Giá trị tùy chọn: 0、1、2、3
+            0: Tắt chế độ ban đêm
+            1: Theo dõi hệ thống (nếu hệ thống hỗ trợ chế độ ban đêm)
+            2: Bật chế độ ban đêm từ 18h đến 6h sáng tùy thời điểm
+            3: Luôn ở chế độ ban đêm
+            */
+            maxWidth: "380px",
+            /*
+            maxWidth: Chiều rộng tối đa
+            */
+            fontFamily: "",
+            /*
+            fontFamily: Phông chữ, trống hoặc không được đặt sẽ sử dụng phông chữ mặc định
+            */
+            closeDuration: 15000,
+            /*
+            closeDuration: Sau khi đóng popup, bao lâu thì nó không còn hiển thị nữa (ngay cả khi trang được làm mới thì nó không còn hiển thị nữa nhưng vẫn có thể mở thủ công thông qua nút mini)
+            Giá trị mặc định: 60000 (60 giây)
+            Lưu ý: closeDuration chỉ hoạt động khi defaultClosed được đặt thành false
+            */
+            defaultClosed: false,
+            /*
+            defaultClosed: Popup bị tắt theo mặc định
+            Giá trị mặc định: false
+            Giá trị tùy chọn: true / false
+            Lưu ý: Nếu defaultClosed là true thì closeDuration sẽ không hoạt động.
+            */
+            defaultLinkIcon: "fa-solid fa-paw",
+            fontawesome: {
+                "type": "svg",
+                "CDN": "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/js/all.min.js"
+            },
+            iconLinks: [{
+                "title": "My Github",
+                "icon": "fa-brands fa-github",
+            }, {
+                "title": "My Blog",
+                "icon": "fa-brands fa-instagram"
+            }, ],
+            links: [{
+                "title": "Contact Facebook",
+                "url": `${facebook}`,
+                "type": "primary",
+                "target": "_blank"
+            }, {
+                "title": "Contact Zalo",
+                "url": `https://zalo.me/${zalo}`,
+                "type": "primary",
+                "target": "_blank"
+            }, ],
+        });
+    });
+
+
+    // Khi nhấn vào phần tử qrbank
+    document.getElementById('qrbank').addEventListener('click', function() {
+        // Ẩn item1
+        document.getElementById('item1').style.display = 'none';
+        // Hiển thị item2
+        document.getElementById('item2').style.display = 'block';
+        // Hiển thị nút quay lại
+        document.getElementById('backBtn').style.display = 'inline-block';
+    });
+
+
+    document.getElementById('card').addEventListener('click', function() {
+        // Ẩn item1
+        document.getElementById('item1').style.display = 'none';
+        // Hiển thị item2
+        document.getElementById('item3').style.display = 'block';
+        // Hiển thị nút quay lại
+        document.getElementById('backBtn').style.display = 'inline-block';
+    });
+
+    document.getElementById('backBtn').addEventListener('click', function() {
+        // Hiển thị item1
+        document.getElementById('item1').style.display = 'block';
+        // Ẩn item2
+        document.getElementById('item2').style.display = 'none';
+        document.getElementById('item3').style.display = 'none';
+
+        // Ẩn nút quay lại
+        document.getElementById('backBtn').style.display = 'none';
+    });
+
+
+
+
+    document.getElementById('amount').addEventListener('input', function(event) {
+    let value = event.target.value;
+    
+    // Loại bỏ tất cả các ký tự không phải số
+    value = value.replace(/\D/g, '');
+
+    // Thêm dấu chấm phân cách hàng nghìn
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Cập nhật lại giá trị cho ô nhập tiền
+    event.target.value = value;
+});
+
+// Hàm định dạng số với dấu chấm phân cách hàng nghìn
+function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+document.getElementById('confirmButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Ngừng hành động gửi form
+    
+    // Lấy giá trị người dùng nhập vào ô "amount" và loại bỏ dấu chấm
+    const amountString = document.getElementById('amount').value.replace(/\./g, '');
+    const amount = parseInt(amountString.trim());
+
+    // Kiểm tra nếu amount hợp lệ và lớn hơn 20.000
+    if (isNaN(amount) || amount < 20000) {
+        alert('Số tiền phải lớn hơn 20.000!');
+        return;
+    }
+
+    // Hàm tạo chuỗi ngẫu nhiên (chữ và số)
+    function generateRandomInfo() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const length = 8; // Độ dài của chuỗi ngẫu nhiên
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            result += chars[randomIndex];
+        }
+        return result;
+    }
+
+    // Tạo giá trị ngẫu nhiên cho addInfo
+    const randomInfo = generateRandomInfo();
+
+    // Hiển thị số tiền đã định dạng
+    document.getElementById('amountDisplay').textContent = formatNumber(amount)+"đ";  // Hiển thị số tiền
+
+    // Hiển thị nội dung ngẫu nhiên
+    document.getElementById('contentDisplay').textContent = randomInfo;  // Hiển thị nội dung
+
+    // Tạo URL cho hình ảnh QR với giá trị amount và addInfo ngẫu nhiên
+    const qrUrl = `https://img.vietqr.io/image/mb-0343406068-qr_only.jpg?amount=${amount}&addInfo=${randomInfo}&accountName=DAO%20DUY%20PHAT%20`;
+
+    // Cập nhật src của ảnh QR với URL mới
+    document.getElementById('qrImage').src = qrUrl;
+// Thay đổi nội dung thành "Đang load" ngay lập tức
+    document.getElementById('qr_status').textContent = "Đang tải QR";
+
+    // Sử dụng setTimeout để thay đổi nội dung sau 2 giây
+    setTimeout(() => {
+        document.getElementById('qr_status').textContent = "Thành công";
+    }, 4000);  // 2000 mili giây = 2 giây
+
+});
+ 
+
+    </script>
+</body>
+</html>
